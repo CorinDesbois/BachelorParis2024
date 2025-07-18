@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Billetterie en ligne";
+}
+
+@section header {
+<div id="header" class="text-center offers">
+        <div class="logoParis2024"> 
+            <img src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%"/>
+            <h1>Billetterie</h1>
+            <img src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height ="30%"/>
+        </div>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+            </ol>
+        </nav>
+    </div>
+}
+
+@section main {
+    <div id="main" class="text-center">
+        <!--A mettre en BDD-->
+        <div class="offre">
+            <h3>Offre solo</h3>
+            <p>Nombre de personnes: 1</p>
+            <p>Prix: 95€</p>
+        </div>
+        <div class="offre">
+            <h3>Offre duo</h3>
+            <p>Nombre de personnes: 2</p>
+            <p>Prix: 180€</p>
+        </div>
+        <div class="offre">
+            <h3>Offre famille</h3>
+            <p>Nombre de personnes: 4</p>
+            <p>Prix: 350€</p>
+        </div>
+    </div>
+}
+
