@@ -21,6 +21,8 @@ body {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     border: none;
+    box-sizing: unset;
+    width: 100vw
 }
 
 header {
@@ -29,17 +31,21 @@ header {
 
 #header {
     width: 100vw;
-    height: 60vh;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background-image: url("../images/pics/tour_eiffel_header.jpg");
-    background-size:cover;
+   
+    
 }
 
-    #header .offers {
-        height: 30vh;
-        background-color: pink;
-    }
+.header__home {
+    height: 60vh;
+    background-image: url("../images/pics/tour_eiffel_header.jpg");
+    background-size: cover;
+}
+
+.header__offers, .header__connection {
+    height: 20vh;
+}
 
 .logoParis2024 {
     height: 90%;
@@ -48,4 +54,9 @@ header {
 .breadcrumb {
     background-color: yellowgreen;
 }
+
+.footer {
+    height: 10vh;
+}
+
 
