@@ -52,7 +52,10 @@ header {
 }
 
 .breadcrumb {
-    background-color: yellowgreen;
+    padding-left: 5rem;
+    color: white;
+    display: flex;
+    align-items: center;
 }
 
 .footer {
