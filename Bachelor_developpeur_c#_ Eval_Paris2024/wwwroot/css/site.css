@@ -32,9 +32,12 @@ header {
 #header {
     width: 100vw;
     margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-   
-    
+    padding: 0px 0px 0px 0px; 
+}
+
+.header__construction 
+{
+    display: none;
 }
 
 .header__home {
@@ -56,6 +59,18 @@ header {
     color: white;
     display: flex;
     align-items: center;
+}
+
+.main__construction
+{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.main__img_construction {
+    height: 100%;
 }
 
 .footer {

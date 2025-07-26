@@ -33,6 +33,11 @@ namespace Bachelor_developpeur_c___Eval_Paris2024.Controllers
             return View();       
         }
 
+        public IActionResult ConstructionPage()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
