@@ -1,4 +1,46 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-// Write your JavaScript code.
+console.log("Hello from site.js!");
+
+/*Animation des images représentant les disciplines 
+sur la page d'acceuil*/
+
+    /*1_ au survol de la souris l'image tourne de 180° autour
+de l'axe y*/
+const imgToRotate = document.querySelectorAll('.js-discipline')
+
+imgToRotate.forEach(img => {
+    let sportImg = img.lastElementChild
+    let sportName = img.firstElementChild.textContent
+    img.addEventListener('mouseenter', () => {
+        img.classList.add('js-discipline-rotation')
+        img.classList.add('js-pointer')
+        timeOutId = setTimeout(() => {
+            img.classList.add('bg_blue')
+            img.classList.add('text-white')
+            img.classList.add('text-center')
+            img.textContent = sportName
+            img.classList.remove()
+        }, 400)
+        /*setTimeout(() => {
+            img.classList.add('js-discipline-rotation-done')
+        },1900)*/
+        
+    })
+    img.addEventListener('mouseleave', () => {
+        clearTimeout(timeOutId)
+        img.classList.remove('js-discipline-rotation')
+        sportImg.classList.remove('js-hidden')
+        img.classList.remove('bg_blue')
+        img.textContent = ""
+        img.appendChild(sportImg)
+        
+    })
+})
+
+
+
+    /*2_Arrivé à 180° le nom du sport s'affiche au lieu du dessin*/
+
+    /*3_ Lorsque la souris sort, l'image tourne dans l'autre sens afin d'afficher à nouveau l'image*/
