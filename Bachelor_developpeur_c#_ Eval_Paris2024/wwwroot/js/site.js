@@ -1,13 +1,13 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-console.log("Hello from site.js!");
-
 /*Animation des images représentant les disciplines 
-sur la page d'acceuil*/
+sur la page d'accueil*/
 
     /*1_ au survol de la souris l'image tourne de 180° autour
 de l'axe y*/
+    /*2_Arrivé à 180° le nom du sport s'affiche au lieu du dessin*/
+    /*3_ Lorsque la souris sort, l'image tourne dans l'autre senspour revenir à son état initial*/
 const imgToRotate = document.querySelectorAll('.js-discipline')
 
 imgToRotate.forEach(img => {
@@ -33,13 +33,8 @@ imgToRotate.forEach(img => {
         img.textContent = ""
         img.appendChild(sportImg)  
     })
-    img.addEventListener('click', () => {
-        window.open('https://localhost:7130/Home/ConstructionPage', popup=1)
-    })
 })
 
 
 
-    /*2_Arrivé à 180° le nom du sport s'affiche au lieu du dessin*/
-
-    /*3_ Lorsque la souris sort, l'image tourne dans l'autre sens afin d'afficher à nouveau l'image*/
+    

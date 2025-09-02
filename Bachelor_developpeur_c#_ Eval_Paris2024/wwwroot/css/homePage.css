@@ -39,10 +39,6 @@
     padding: 3vh 8vw;
 }
 
-.homepage_anchor {
-   /*supprimer la classe dans index.cshtml*/
-}
-
 #sports_preview {
     padding-top: 2rem;
 }
@@ -60,6 +56,7 @@
     font-size: 2rem;
 }
 
+
 .discipline_picture {
     width: 12.5rem;
     
@@ -74,17 +71,9 @@
     animation-duration: 1s;
 }
 
-/*@media (max-width: 405px) {
-    .sports_button {
-        position: sticky;
-        top: 20%;
-        background-color: yellowgreen;
-    }
-}*/
-
 .end-img {
     margin: 3rem;
-    max-width: 85vh;
+    max-width: 50vh;
 }
 
 @keyframes animation-rotate {
