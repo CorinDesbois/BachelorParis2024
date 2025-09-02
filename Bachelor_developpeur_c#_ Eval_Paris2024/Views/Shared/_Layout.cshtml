@@ -1,54 +1,57 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Bachelor_developpeur_c#_Eval_Paris2024</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Bachelor_developpeur_c___Eval_Paris2024.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/reset.css" />
-    <link rel="stylesheet" href="~/css/homePage.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div id="header" class="container text-center">
-            @RenderSection("header")
-        </div>
-       </header>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Bachelor_developpeur_c#_Eval_Paris2024</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/Bachelor_developpeur_c___Eval_Paris2024.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/reset.css" />
+        <link rel="stylesheet" href="~/css/homePage.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div id="header" class="container text-center">
+                @RenderSection("header")
+            </div>
+        </header>
         
      
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid bg_gold">
-            <a class="navbar-brand ms-5" asp-controller="Home" asp-action="Index">
-                <img class="navbar-logo" src="~/images/logos_jo/eiffel-tower-svgrepo-com.svg" alt="icone tour effeil" height="40">
-            </a>
+                <a class="navbar-brand ms-5" asp-controller="Home" asp-action="Index">
+                    <img class="navbar-logo" src="~/images/logos_jo/eiffel-tower-svgrepo-com.svg" alt="icone tour effeil" height="40">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class=" collapse navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item me-2">
-                        <a class="nav-link text-dark active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
+                            <a class="nav-link text-dark active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Offers">Billetterie en ligne</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Offers">Billetterie en ligne
+
+                            </a>
                         </li>
                     </ul>
-                <ul class="navbar-nav me-5">
+                    <ul class="navbar-nav me-5">
                         <li class="nav-item me-2">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
                                 <img src="~/images/icones/user2.png" alt="connexion" height="35"/>
-                                Connexion</a>
+                                 Connexion
+                            </a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-dark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voir mon panier"
-                           asp-area="" asp-controller="Home" asp-action="ConstructionPage">
-                                <img src="./images/icones/basket.png" alt="panier" height="35"/>
+                            <a class="nav-link text-dark" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voir mon panier"
+                               asp-area="" asp-controller="Home" asp-action="ConstructionPage">
+                                    <img src="./images/icones/basket.png" alt="panier" height="35"/>
                             </a>
                         </li>
                     </ul>
@@ -59,21 +62,21 @@
 
 
 
-    <div id="main" class="container full-width">
-        @RenderSection("main")
-    </div>
-
-    <footer class="border-top footer text-muted bg_gold">
-        <div class="container">
-            &copy; 2025 - Bachelor_developpeur_C#_Eval_Paris2024 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            <a href="https://www.flaticon.com/fr/icones-gratuites/panier" title="panier icônes">Panier icônes créées par Freepik - Flaticon</a>
-            <a href="https://www.flaticon.com/fr/icones-gratuites/sidentifier" title="s'identifier icônes">S'identifier icônes créées par Good Ware - Flaticon</a>
-            https://toppng.com/free-image/the-phryges-official-mascots-of-paris-2024-abstract-backgrounds-PNG-free-PNG-Images_493291        
+        <div id="main" class="container full-width">
+            @RenderSection("main")
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+
+        <footer class="border-top footer text-muted bg_gold">
+            <div class="container">
+                &copy; 2025 - Bachelor_developpeur_C#_Eval_Paris2024 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/panier" title="panier icônes">Panier icônes créées par Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/sidentifier" title="s'identifier icônes">S'identifier icônes créées par Good Ware - Flaticon</a>
+                https://toppng.com/free-image/the-phryges-official-mascots-of-paris-2024-abstract-backgrounds-PNG-free-PNG-Images_493291        
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>

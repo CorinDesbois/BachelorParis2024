@@ -22,11 +22,8 @@ imgToRotate.forEach(img => {
             img.classList.add('text-center')
             img.textContent = sportName
             img.classList.remove()
+            img.classList.remove('js-discipline-rotation')
         }, 400)
-        /*setTimeout(() => {
-            img.classList.add('js-discipline-rotation-done')
-        },1900)*/
-        
     })
     img.addEventListener('mouseleave', () => {
         clearTimeout(timeOutId)
@@ -34,8 +31,10 @@ imgToRotate.forEach(img => {
         sportImg.classList.remove('js-hidden')
         img.classList.remove('bg_blue')
         img.textContent = ""
-        img.appendChild(sportImg)
-        
+        img.appendChild(sportImg)  
+    })
+    img.addEventListener('click', () => {
+        window.open('https://localhost:7130/Home/ConstructionPage', popup=1)
     })
 })
 

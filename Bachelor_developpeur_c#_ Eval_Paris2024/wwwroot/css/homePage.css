@@ -29,18 +29,18 @@
 
 .main_title {
     padding-top: 1rem;
+    font-size: 1.8rem
 }
 
 .presentation {
     font-weight: 300;
     font-style: normal;
     font-size: 1.2rem;
-    padding: 1rem 8rem;
+    padding: 3vh 8vw;
 }
 
 .homepage_anchor {
-    position: absolute;
-    bottom: 15%;
+   /*supprimer la classe dans index.cshtml*/
 }
 
 #sports_preview {
@@ -48,7 +48,7 @@
 }
 
 .discipline {
-    height: 11.5rem;
+    height: 12rem;
     width: 13rem;
     margin: 0 0 2rem 0;
     border-radius: 20%;
@@ -61,8 +61,8 @@
 }
 
 .discipline_picture {
-    width: 100%;
-    height: 100%;
+    width: 12.5rem;
+    
 }
 
 .js-rotate180 {
@@ -71,16 +71,20 @@
 
 .js-discipline-rotation {
     animation: animation-rotate;
-    animation-duration: 2s;
-}   
-    
-.sports_button {
-    text-decoration: none;
+    animation-duration: 1s;
 }
 
+/*@media (max-width: 405px) {
+    .sports_button {
+        position: sticky;
+        top: 20%;
+        background-color: yellowgreen;
+    }
+}*/
+
 .end-img {
-    height: 95vh;
     margin: 3rem;
+    max-width: 85vh;
 }
 
 @keyframes animation-rotate {

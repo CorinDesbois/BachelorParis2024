@@ -34,9 +34,10 @@ body {
     padding: 0px 0px 0px 0px;
     border: none;
     box-sizing: unset;
-    width: 100vw;
+  
     font-family: "Inclusive Sans", sans-serif;
     font-optical-sizing: auto;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -99,13 +100,15 @@ h2 {
 
 .btn_large {
     width: 30vw;
+    min-width: 170px;
     height: 5vh;
+    min-height: 35px;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    margin: 3rem 0 3rem 0;
+    margin: 5rem 0 3rem 0;
 }
 
     .btn_large:hover {
