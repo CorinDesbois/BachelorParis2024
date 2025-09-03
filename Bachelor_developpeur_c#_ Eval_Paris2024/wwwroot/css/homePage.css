@@ -43,6 +43,10 @@
     padding-top: 2rem;
 }
 
+.row_sports_preview {
+    background-color: yellowgreen;
+}
+
 .discipline {
     height: 12rem;
     width: 13rem;
@@ -54,11 +58,28 @@
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+    text-decoration: none;
 }
 
+@media not (hover) {
+    .discipline{
+        display:flex;
+        flex-direction:column;
+        background-color: #3b7197;
+    }
+    .discipline_picture {
+        max-height: 6rem;
+    }
+    .discipline-name {
+        display:inline;
+        color: white;
+        font-size: 1.5rem;
+       
+    }
+}
 
 .discipline_picture {
-    width: 12.5rem;
+    max-width: 12.5rem;
     
 }
 
@@ -73,7 +94,7 @@
 
 .end-img {
     margin: 3rem;
-    max-width: 50vh;
+    max-height: 80vh;
 }
 
 @keyframes animation-rotate {
