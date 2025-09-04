@@ -1,11 +1,14 @@
 ﻿/*page d'accueil du site*/
-.header__home {
+#header__homepage {
     height: 75vh;
     background-image: url("../images/backgrounds/tour_eiffel_header.jpg");
     background-size: cover;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    min-width: 100%;
 }
 
-.logoParis2024 {
+.logoHome {
     height: 90%;
 }
 

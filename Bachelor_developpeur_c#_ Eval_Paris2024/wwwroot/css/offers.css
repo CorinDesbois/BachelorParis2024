@@ -1,0 +1,12 @@
+﻿.card__offer {
+    width: 20vw;
+    height: 45vh;
+    margin: 0px 2vw 0px 2vw;
+    padding-bottom: 3.5vh;
+    font-weight: bolder;
+}
+
+.img-offre {
+    max-height: 60%;
+    align-self: center;
+}

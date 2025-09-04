@@ -30,9 +30,6 @@ html {
 }
 
 body {
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    border: none;
     box-sizing: unset;
     font-family: "Inclusive Sans", sans-serif;
     font-optical-sizing: auto;
@@ -40,21 +37,44 @@ body {
     overflow-x: hidden;
 }
 
+.with-background {
+    min-height: 100vh;
+    background-image: url("../images/backgrounds/tour_eiffel_header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 0px 0px 0px 0px;
+}
+
+.active {
+    font-weight: bolder;
+}
+
 h1 {
     font-weight: 700;
     font-style: normal;
 }
 
-#header {
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    min-width: 100%;
-   
+.header {
+    height: 19vh;
+    margin-top: 5vh;
+    margin-bottom: 0.5vh;
+    min-width: 95vw;
+    background-color: hsla(0, 0%, 85%, 30%);
+    padding-top: 1vh;
 }
 
-header {
-    margin-bottom: 0;
-    
+.logoSite {
+   /*a supprimer du cshtml*/
+}
+
+.logo-flamme-header {
+    max-height: 10vh;
+    margin-right: 2rem;
+}
+
+.logo-anneaux-header {
+    max-height: 9vh;
 }
 
 h2 {
@@ -62,16 +82,27 @@ h2 {
     font-style: normal;
 }
 
-#main {
-    max-width: 100%;
-    margin-bottom: 0px;
+.smallerNavbar {
+    margin: 0px 2.5vw 0px 2.5vw;
+}
+
+
+.main {
+    margin: 2vh 2.5vw 2vh 2.5vw;
+    background-color: hsla(0, 0%, 85%, 30%);
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+    height: auto;
 }
 
 .footer {
-    padding: 2vh 2vw 2vh 2vw;
+    padding: 1vh 2vw 1vh 2vw;
     height: fit-content;
+    min-width: 100vw;
     font-size: 1rem;
     text-wrap:wrap;
+    position: absolute;
+    bottom: 0px;
 }
 
 .full-width {
@@ -120,6 +151,23 @@ h2 {
         background-color: #3b7197;
     }
 
+.btn_small {
+    width: 10vw;
+    min-width: 170px;
+    min-height: 35px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin: 4rem 0 3rem 0;
+}
+
+    .btn_small:hover {
+        background-color: hsl(205, 44%, 30%);
+    }
+
+
 .js-pointer {
     cursor: pointer;
 }
@@ -140,12 +188,6 @@ h2 {
     justify-content: center;
 }
 
-
-
-/*Header du site, hors page d'accueil*/
-.header__offers, .header__connection {
-    height: 20vh;
-}
 
 
 
