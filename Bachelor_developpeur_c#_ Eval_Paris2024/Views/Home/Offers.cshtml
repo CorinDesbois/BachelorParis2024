@@ -7,8 +7,7 @@
         <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
             <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%"/>
             <h1 class="d-block">PARIS 2024</h1>
-            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height ="30%"/>
-                
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height ="30%"/>     
         </div>
         <h2 class="d-block d-flex align-items-start justify-content-center">Billetterie</h2>
 
@@ -16,27 +15,44 @@
 }
 
 @section main {
-    <div id="main" class="main text-center flex-centered">
+    <div id="main" class="main main__offers text-center flex-centered">
         <!--A mettre en BDD-->
-        <div class="card card__offer bg_gold">
-            <h3 class="card-header text-white">SOLO</h3>
-            <img class="img-offre img-fluid" src="~/images/logos_jo/solo.png" alt="offre solo"/>
-            <div class="btn_small bg_blue text-white rounded-pill container-fluid align-self-center">
-                Voir l'offre
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row__offers">
+            <div class="col">
+                <div class="card card__offer bg_gold container container-fluid d-flex">
+                    <h3 class="card-header text-white">SOLO</h3>
+                    <img class="img-offre img-fluid" src="~/images/logos_jo/solo.png" alt="offre solo"/>
+                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered justify-self-center" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
+
+                        Voir l'offre
+
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="card card__offer bg_gold">
-            <h3 class="card-header text-white">DUO</h3>
-            <img class="img-offre img-fluid" src="~/images/logos_jo/frigy_duo.png" alt="offre duo" />
-            <div class="btn_small bg_blue text-white rounded-pill container-fluid align-self-center">
-                Voir l'offre
+ 
+            <div class="col mb-3 mb-sm-0">
+                <div class="card card__offer bg_gold container container-fluid">
+                    <h3 class="card-header text-white">DUO</h3>
+                    <img class="img-offre img-fluid" src="~/images/logos_jo/frigy_duo.png" alt="offre duo" />
+                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
+                        
+                            Voir l'offre
+                       
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="card card__offer bg_gold">
-            <h3 class="card-header text-white">FAMILLE</h3>
-            <img class="img-offre img-fluid" src="~/images/logos_jo/family.png" alt="offre famille" />
-            <div class="btn_small bg_blue text-white rounded-pill container-fluid align-self-center">
-                Voir l'offre
+ 
+            <div class="col mb-3 mb-sm-0">
+                <div class="card card__offer bg_gold container container-fluid">
+                    <h3 class="card-header text-white">FAMILLE</h3>
+                    <img class="img-offre img-fluid" src="~/images/logos_jo/family.png" alt="offre famille" />
+                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
+
+                        Voir l'offre
+
+                    </a>
+  
+                 </div>
             </div>
         </div>
     </div>
