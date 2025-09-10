@@ -98,8 +98,7 @@ h2 {
     min-width: 100vw;
     font-size: 1rem;
     text-wrap:wrap;
-    position: absolute;
-    bottom: 0px;
+
 }
 
 .full-width {

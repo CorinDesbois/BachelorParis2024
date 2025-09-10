@@ -1,7 +1,9 @@
-﻿/*La classe main ayant un fond légèrement transparent, j'utilise une nouvelle classe
-    main_events pour garder les propriété de la classe main mais en appliquant un 
-    background opaque.
-*/
-.main_events {
+﻿.main_events {
+    min-height: 60vh; 
+}
+
+.table-background {
     background-color: #d6dce3;
+    min-width:90%;
+    min-height: 40vh;
 }
