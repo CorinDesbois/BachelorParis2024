@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Bachelor_developpeur_c___Eval_Paris2024</RootNamespace>
+    <RootNamespace>BachelorParis2024</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

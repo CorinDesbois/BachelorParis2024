@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Bachelor_developpeur_c___Eval_Paris2024.Models;
+using BachelorParis2024.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bachelor_developpeur_c___Eval_Paris2024.Controllers
+namespace  BachelorParis2024.Controllers
 {
     public class HomeController : Controller
     {

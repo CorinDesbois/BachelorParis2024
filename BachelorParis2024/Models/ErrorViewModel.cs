@@ -1,4 +1,4 @@
-namespace Bachelor_developpeur_c___Eval_Paris2024.Models
+namespace  BachelorParis2024.Models
 {
     public class ErrorViewModel
     {
