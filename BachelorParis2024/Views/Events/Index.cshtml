@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Evénements";
+}
+
+@section header {
+<div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%"/>
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height ="30%"/>     
+        </div>
+        <h2 class="d-block d-flex align-items-start justify-content-center">Evénements</h2>
+
+</div>
+}
+
+@section main {
+    <div id="main" class="main main_events text-center bg_light-blue">
+        
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Discipline</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Lieu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>31.08.2024</td>
+                        <td>Judo</td>
+                        <td>Final Homme 80kg</td>
+                        <td>Dojo de Paris</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+       
+    </div>
+
+}

@@ -1,0 +1,7 @@
+﻿/*La classe main ayant un fond légèrement transparent, j'utilise une nouvelle classe
+    main_events pour garder les propriété de la classe main mais en appliquant un 
+    background opaque.
+*/
+.main_events {
+    background-color: #d6dce3;
+}
