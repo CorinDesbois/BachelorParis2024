@@ -3,9 +3,9 @@ using BachelorParis2024.Models;
 
 namespace BachelorParis2024.Mocks
 {
-    public static class EventsMock 
+    public class EventsMock : IEventRepository
     {
-        public static List<EventModel>ListEvents = new List<EventModel>
+        public static List<EventModel> ListEvents = new List<EventModel>
         {
             new EventModel
             {
@@ -188,6 +188,12 @@ namespace BachelorParis2024.Mocks
                 AvailablePlaces = 6000
             },
         };
+
+        public IEnumerable<EventModel> GetAllEvents() => ListEvents;
+
+        public EventModel GetEventById(int id) => ListEvents.FirstOrDefault(e => e.Id == id);
+
+        public EventModel GetEventByName(string name) => ListEvents.FirstOrDefault(e => e.Name == name);
 
     }
 }

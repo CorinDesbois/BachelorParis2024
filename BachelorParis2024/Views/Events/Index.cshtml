@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Evénements";
 }
+
+@model IEnumerable<BachelorParis2024.Mocks.EventsMock>
 
 @section header {
 <div id="header" class="header text-center">
@@ -9,7 +12,7 @@
             <h1 class="d-block">PARIS 2024</h1>
             <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height ="30%"/>     
         </div>
-        <h2 class="d-block d-flex align-items-start justify-content-center">Evénements</h2>
+        <h2 class="js-eventsPage-title' d-block d-flex align-items-start justify-content-center">Evénements</h2>
 
 </div>
 }
@@ -26,60 +29,20 @@
                         <th scope="col">Lieu</th>
                     </tr>
                 </thead>
+                @foreach (var eventItem in @BachelorParis2024.Mocks.EventsMock.ListEvents)
+                {
                 <tbody>
                     <tr>
-                        <td>31.08.2024</td>
-                        <td>Judo</td>
-                        <td>Final Homme 80kg</td>
-                        <td>Dojo de Paris</td>
+                        
+                        <td>@eventItem.Sport</td>
+                        <td>@eventItem.Description</td>
+                        <td>@eventItem.Sport</td>
+                        <td>@eventItem.Date</td>
                     </tr>
-                    <tr>
-                        <td>24.08.2024</td>
-                        <td>Natation</td>
-                        <td>Finale 100m nage libre</td>
-                        <td>Stade Aquatique de Paris</td>
-                    </tr>
-                    <tr>
-                        <td>30.08.2024</td>
-                        <td>Escrime</td>
-                        <td>Finale Fleuret Homme</td>
-                        <td>Grand Palais</td>
-                    </tr>
-                    <tr>
-                        <td>27.08.2024</td>
-                        <td>Athlétisme</td>
-                        <td>Finale 100m Homme</td>
-                    <td>Stade de France</td>
-                    </tr>
-                    <tr>
-                        <td>26.08.2024</td>
-                        <td>Gymnastique</td>
-                        <td>Finale sol Homme</td>
-                        <td>Accor Arena</td>
-                    </tr>
-                    <tr>
-                        <td>25.08.2024</td>
-                        <td>Cyclisme</td>
-                        <td>Finale VTT Homme</td>
-                        <td>Bois de Boulogne</td>
-                    </tr>
-                    <tr>
-                        <td>29.08.2024</td>
-                        <td>Boxe</td>
-                        <td>Finale Poids Moyen Homme</td>
-                        <td>Le Zénith</td>
-                    </tr>
-                    <tr>
-                        <td>28.08.2024</td>
-                        <td>Haltérophilie</td>
-                        <td>Finale 81kg Homme</td>
-                        <td>Le Bourget</td>
-                    </tr>
+                   
                 </tbody>
-
-            </table>
+                }   
+            </table>   
         </div>
-       
     </div>
-
 }

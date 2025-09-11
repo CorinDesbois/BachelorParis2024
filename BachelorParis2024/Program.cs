@@ -1,7 +1,13 @@
+using BachelorParis2024.Mocks;
+using BachelorParis2024.Models;
+using System.ComponentModel;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IEventRepository, EventsMock>();
 
 var app = builder.Build();
 

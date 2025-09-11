@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BachelorParis2024.Models\BachelorParis2024.Models.csproj" />
-  </ItemGroup>
-
 </Project>

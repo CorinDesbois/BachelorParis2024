@@ -5,12 +5,14 @@
 sur la page d'accueil*/
 
     /*1_ au survol de la souris l'image tourne de 180° autour
-de l'axe y*/
-    /*2_Arrivé à 180° le nom du sport s'affiche au lieu du dessin*/
-    /*3_ Lorsque la souris sort, l'image tourne dans l'autre senspour revenir à son état initial*/
-const imgToRotate = document.querySelectorAll('.js-discipline')
+    de l'axe y*/
+    /*2_le nom du sport s'affiche au lieu du dessin*/
+    /*3_ Lorsque la souris sort, l'image revient à son état initial*/
+const disciplineImage = document.querySelectorAll('.js-discipline')
+const eventsPageTitle = document.querySelector('.js-eventsPage-title');
+console.log(eventsPageTitle)
 
-imgToRotate.forEach(img => {
+disciplineImage.forEach(img => {
     let sportImg = img.lastElementChild
     let sportName = img.firstElementChild.textContent
     img.addEventListener('mouseenter', () => {
@@ -34,6 +36,11 @@ imgToRotate.forEach(img => {
         img.appendChild(sportImg)  
     })
 })
+
+
+    
+
+
 
 
 

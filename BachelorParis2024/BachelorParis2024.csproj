@@ -15,6 +15,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BachelorParis2024.Mocks\BachelorParis2024.Mocks.csproj" />
+    <ProjectReference Include="..\BachelorParis2024.Models\BachelorParis2024.Models.csproj" />
+  </ItemGroup>
+
 	
 	
     
