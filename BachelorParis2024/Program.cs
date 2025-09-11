@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Injections de dépendance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();
+builder.Services.AddScoped<ISportRepository, SportsMock>();
 
 var app = builder.Build();
 

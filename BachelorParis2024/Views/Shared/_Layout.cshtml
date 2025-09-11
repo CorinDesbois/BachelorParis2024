@@ -16,15 +16,16 @@
     </head>
 
 
-<!--Mise en place d'un layout avec une condition d'appliquer un layout différent 
-sur la page d'accueil sans faire un layout spécifique-->
-<!--Instance de la classe ViewContext qui encapsule les informations relatives au rendu d'une vue.
-     RouteData obtient ou définit les données d'itinéraire d'URL.-->
 @{
+    <!--Mise en place d'un layout avec une condition d'appliquer un layout différent
+    sur la page d'accueil sans faire un layout spécifique-->
+    <!--Instance de la classe ViewContext qui encapsule les informations relatives au rendu d'une vue.
+    RouteData obtient ou définit les données d'itinéraire d'URL.-->
     var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
     var isNotHomepage = !(controller == "Home" && action == "Index") && !(controller == "Home" && action == "ConstructionPage");
-    
+
+    var sportName = "";
 }
 
 <body class="@(isNotHomepage ? "with-background" : "")">

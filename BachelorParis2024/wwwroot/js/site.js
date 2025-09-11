@@ -9,8 +9,7 @@ sur la page d'accueil*/
     /*2_le nom du sport s'affiche au lieu du dessin*/
     /*3_ Lorsque la souris sort, l'image revient à son état initial*/
 const disciplineImage = document.querySelectorAll('.js-discipline')
-const eventsPageTitle = document.querySelector('.js-eventsPage-title');
-console.log(eventsPageTitle)
+let eventsPageTitle = document.getElementsByClassName('.js-eventsPage-title')
 
 disciplineImage.forEach(img => {
     let sportImg = img.lastElementChild
@@ -35,6 +34,14 @@ disciplineImage.forEach(img => {
         img.textContent = ""
         img.appendChild(sportImg)  
     })
+    img.addEventListener('click', () => {
+        eventsPageTitle.innerHTML = sportName 
+        eventsPageTitle.textContent = sportName
+        console.log("click !!")
+        console.log("sportName:" + sportName)
+        console.log("eventsPageTitle:" + eventsPageTitle.innerHTML)
+    })
+
 })
 
 

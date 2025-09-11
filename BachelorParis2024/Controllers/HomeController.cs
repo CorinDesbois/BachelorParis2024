@@ -8,11 +8,19 @@ namespace  BachelorParis2024.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISportRepository sportRepository)
         {
             _logger = logger;
+            _sportRepository = sportRepository;
         }
+        //utilisation de l'interface ISportRepository pour récupérer la liste des sports du mock (SportsMock.cs)
+        public readonly ISportRepository _sportRepository;
 
+        public IEnumerable<SportModel> GetAllSports()
+        {
+            return _sportRepository.GetAllSports();
+        }
+        //---------------------------------
         public IActionResult Index()
         {
             return View();
