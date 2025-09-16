@@ -54,11 +54,10 @@
                         </div>
                     </div>
                 }
-                <!--formulaire caché-->
+                <!--formulaire caché qui communique le nom du sport au controller -->
                 <form id="hiddenFormHomePage" asp-controller="Events" asp-action="DisplayEventsBySport" method="post" value="">
                     @Html.AntiForgeryToken()
                     <input type="hidden" name="valueFromHiddenForm" id="hiddenFormInput"  />
-                    <button type="submit"></button>
                 </form> 
                 <!---->
                 

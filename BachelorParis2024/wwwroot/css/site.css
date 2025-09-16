@@ -153,8 +153,19 @@ h2 {
     font-size: 0.9rem;
 }
 
-    .btn_small:hover {
-        background-color: hsl(205, 44%, 30%);
+.btn_small:hover {
+    background-color: hsl(205, 44%, 30%);
+}
+
+.btn_outline_blue {
+    border: 2px solid #3b7197;
+    color: #3b7197;
+    margin: 2px 2px 2px 2px;
+}
+
+    .btn_outline_blue:hover {
+        background-color: #3b7197;
+        color: white;
     }
 
 
@@ -176,6 +187,11 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+caption {
+    margin-top: 100px;
+    font-size: 0.9rem;
 }
 
 
