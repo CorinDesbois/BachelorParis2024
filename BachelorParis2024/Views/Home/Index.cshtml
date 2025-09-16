@@ -43,17 +43,25 @@
             </a>
         </div>
         <section id="sports_preview" class="container container-fluid sports">
+            
             <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
                 @foreach(var item in BachelorParis2024.Mocks.SportsMock.ListSports )
                 {
                     <div class="col flex-centered">
-                        <a class="discipline js-discipline container container-fluid"
-                         asp-area="" asp-controller="Events" asp-action="Index">
+                        <div class="discipline js-discipline container container-fluid">
                             <p class="discipline-name js-discipline-name js-hidden">@item.Name</p>
                             <img class="js-discipline-picture discipline_picture img-fluid" src="@Url.Content($"~/images/sports/{item.ImageUrl}.png")" alt="@item.Name" />
-                        </a>
-                    </div>  
+                        </div>
+                    </div>
                 }
+                <!--formulaire caché-->
+                <form id="hiddenFormHomePage" asp-controller="Events" asp-action="DisplayEventsBySport" method="post" value="">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="valueFromHiddenForm" id="hiddenFormInput"  />
+                    <button type="submit"></button>
+                </form> 
+                <!---->
+                
             </div>
             <a class="relative link flex-centered justify-content-center" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
                   <div class=" sports_button btn_large bg_gold text-white rounded-pill container-fluid">

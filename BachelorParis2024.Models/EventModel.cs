@@ -1,4 +1,5 @@
-﻿namespace BachelorParis2024.Models
+﻿
+namespace BachelorParis2024.Models
 {
     public class EventModel
     {

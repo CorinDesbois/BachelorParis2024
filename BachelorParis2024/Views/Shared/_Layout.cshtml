@@ -25,7 +25,7 @@
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
     var isNotHomepage = !(controller == "Home" && action == "Index") && !(controller == "Home" && action == "ConstructionPage");
 
-    var sportName = "";
+    
 }
 
 <body class="@(isNotHomepage ? "with-background" : "")">

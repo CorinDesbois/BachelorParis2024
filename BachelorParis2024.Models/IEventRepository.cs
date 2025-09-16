@@ -13,8 +13,11 @@ namespace BachelorParis2024.Models
     public interface IEventRepository
     {
         IEnumerable<EventModel> GetAllEvents();
+        //IEnumerable<EventModel> DisplayEventsBySport(string sport);
 
         EventModel GetEventById(int id);
         EventModel GetEventByName(string name);
+
+        EventModel GetEventBySport(string sport);
     }
 }

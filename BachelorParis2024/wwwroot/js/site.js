@@ -34,20 +34,22 @@ disciplineImage.forEach(img => {
         img.textContent = ""
         img.appendChild(sportImg)  
     })
-    img.addEventListener('click', () => {
-        eventsPageTitle.innerHTML = sportName 
-        eventsPageTitle.textContent = sportName
-        console.log("click !!")
-        console.log("sportName:" + sportName)
-        console.log("eventsPageTitle:" + eventsPageTitle.innerHTML)
-    })
-
 })
 
-
     
-
-
+/*Au click sur l'image:
+    1_récupération du nom du sport 
+    2_envoi dans le formulaire de la page Home/Index
+    3_submit du formulaire pour que le controller puisse récupérer la valeur
+*/
+disciplineImage.forEach(img => {
+    let sportName = img.firstElementChild.textContent
+    img.addEventListener('mousedown', () => {
+        console.log("click !!")
+        document.getElementById("hiddenFormInput").value = sportName
+        document.getElementById("hiddenFormHomePage").submit()
+    })
+})
 
 
 

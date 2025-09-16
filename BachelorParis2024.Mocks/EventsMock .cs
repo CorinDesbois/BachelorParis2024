@@ -1,11 +1,12 @@
 ﻿using BachelorParis2024;
 using BachelorParis2024.Models;
+using System.Collections.Generic;
 
 namespace BachelorParis2024.Mocks
 {
     public class EventsMock : IEventRepository
     {
-        public static List<EventModel> ListEvents = new List<EventModel>
+        public List<EventModel> _listEvents = new List<EventModel>
         {
             new EventModel
             {
@@ -101,7 +102,7 @@ namespace BachelorParis2024.Mocks
             {
                 Id = 10,
                 Date = new DateTime(2024, 08, 04, 20, 0, 0),
-                Sport = "Canöe-kayak",
+                Sport = "Canoë",
                 Name = "Finale du kayak monoplace",
                 Description = "Course finale du kayak monoplace.",
                 Location = "Lac Daumesnil, Paris",
@@ -121,11 +122,11 @@ namespace BachelorParis2024.Mocks
             {
                 Id = 12,
                 Date = new DateTime(2024, 08, 06, 16, 0, 0),
-                Sport = "Football",
-                Name = "Finale du tournoi masculin",
-                Description = "Match final du tournoi de football masculin.",
-                Location = "Stade de France, Paris",
-                AvailablePlaces = 80000
+                Sport = "Gymnastique",
+                Name = "Finale individuelle masculine",
+                Description = "Compétition finale individuelle masculine.",
+                Location = "Accor Arena, Paris",
+                AvailablePlaces = 12000
             },
             new EventModel
             {
@@ -151,7 +152,7 @@ namespace BachelorParis2024.Mocks
             {
                 Id = 15,
                 Date = new DateTime(2024, 08, 09, 19, 0, 0),
-                Sport = "Hatérophilie",
+                Sport = "Haltérophilie",
                 Name = "Finale des 81 kg masculins",
                 Description = "Compétition finale des 81 kg masculins.",
                 Location = "Palais des Sports, Paris",
@@ -171,7 +172,7 @@ namespace BachelorParis2024.Mocks
             {
                 Id = 17,
                 Date = new DateTime(2024, 08, 11, 13, 0, 0),
-                Sport = "Hockey sur gazon",
+                Sport = "Hockey",
                 Name = "Finale du tournoi masculin",
                 Description = "Match final du tournoi de hockey sur gazon masculin.",
                 Location = "Stade Yves-du-Manoir, Colombes",
@@ -189,11 +190,14 @@ namespace BachelorParis2024.Mocks
             },
         };
 
-        public IEnumerable<EventModel> GetAllEvents() => ListEvents;
+        public IEnumerable<EventModel> GetAllEvents() => _listEvents;
 
-        public EventModel GetEventById(int id) => ListEvents.FirstOrDefault(e => e.Id == id);
+        //public IEnumerable<EventModel> DisplayEventsBySport(string sport) => [.. _listEvents.Where(e => e.Sport.Equals(sport, StringComparison.OrdinalIgnoreCase)).ToList(new List<EventModel>())];
+   
+        public EventModel GetEventById(int id) => _listEvents.FirstOrDefault(e => e.Id == id);
 
-        public EventModel GetEventByName(string name) => ListEvents.FirstOrDefault(e => e.Name == name);
+        public EventModel GetEventByName(string name) => _listEvents.FirstOrDefault(e => e.Name == name);
 
+        public EventModel GetEventBySport(string sport) => _listEvents.FirstOrDefault(e => e.Sport == sport);
     }
 }
