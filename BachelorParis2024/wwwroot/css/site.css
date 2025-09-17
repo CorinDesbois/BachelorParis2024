@@ -173,16 +173,36 @@ h2 {
     color: #050601;
     margin: 2px 2px 2px 2px;
 }
-
     .btn_outline_black:hover {
         background-color: #050601;
         color: white;
     }
 
+.btn_outline_gold {
+    border: 2px solid #ccbb7b;
+    color: #ccbb7b;
+    margin: 2px 2px 2px 2px;
+}
 
-    .js-pointer {
-        cursor: pointer;
+    .btn_outline_gold:hover {
+        background-color: #ccbb7b;
+        color: white;
     }
+.btn_outline_white {
+    border: 2px solid white;
+    color: white;
+    margin: 2px 2px 2px 2px;
+}
+
+    .btn_outline_white:hover {
+        background-color: white;
+        color: #3b7197;
+    }
+
+
+.js-pointer {
+    cursor: pointer;
+}
 
 caption {
     margin-top: 100px;

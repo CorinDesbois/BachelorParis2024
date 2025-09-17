@@ -1,11 +1,7 @@
 ﻿.main__offers {
     padding-top: 8vh;
     padding-bottom: 1vh;
-    margin-bottom: 7rem;
-}
-
-.main__offerDetail {
-    
+    margin-bottom: 3vh;
 }
 
 .row__offers {
@@ -32,4 +28,42 @@
     max-height: 10%;
     margin-top: 1.5rem;
     margin-bottom: 5rem;  
+}
+
+.main__offerDetail {
+    min-height: 70vh;
+    padding: 0px;
+
+}
+
+.offerDetail {
+    min-width: 95%;
+    min-height: 60vh;
+    display: inline;
+    align-self: center;
+}
+
+.offerDescription {
+    text-align: left;
+    padding: 3vh 3vw 0vh 3vw;
+}
+
+.offerTitle {
+    text-align: center;
+}
+
+.numberOfPersons {
+    margin-top: 5vh;
+}
+
+.conditionsTitle {
+    margin-top: 3vh;
+}
+
+.conditions {
+    margin-bottom: 5vh;
+}
+
+.selectOffer {
+  
 }
