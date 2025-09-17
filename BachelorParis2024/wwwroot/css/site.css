@@ -59,7 +59,7 @@ h1 {
     height: 19vh;
     margin-top: 5vh;
     margin-bottom: 0.5vh;
-    min-width: 95vw;
+    min-width: 94vw;
     background-color: hsla(0, 0%, 85%, 30%);
     padding-top: 1vh;
 }
@@ -168,14 +168,30 @@ h2 {
         color: white;
     }
 
+.btn_outline_black {
+    border: 2px solid #050601;
+    color: #050601;
+    margin: 2px 2px 2px 2px;
+}
 
-.js-pointer {
-    cursor: pointer;
+    .btn_outline_black:hover {
+        background-color: #050601;
+        color: white;
+    }
+
+
+    .js-pointer {
+        cursor: pointer;
+    }
+
+caption {
+    margin-top: 100px;
+    font-size: 0.9rem;
 }
 
 /*page "site en construction"*/
 .header__construction {
-    display: none;
+    background-color: yellowgreen;
 }
 
 .main__img_construction {
@@ -189,10 +205,7 @@ h2 {
     justify-content: center;
 }
 
-caption {
-    margin-top: 100px;
-    font-size: 0.9rem;
-}
+
 
 
 

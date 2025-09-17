@@ -5,4 +5,5 @@
 .table-background {
     background-color: #d6dce3;
     min-width:90%;  
+    min-height: 50vh;
 }

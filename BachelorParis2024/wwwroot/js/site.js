@@ -51,12 +51,14 @@ disciplineImage.forEach(img => {
     })
 })
 
-//Bouton de fermeture de la page Events
-const closeButton = document.querySelector(".js-closeEventsList")
-closeButton.addEventListener("click", () => {
-    console.log("click")
-    history.back()
-})
+//Bouton de fermeture de la page Events/Index
+let closeButton = document.querySelector(".js-closeEventsList")
+if (typeof closeButton !== "null") {
+    closeButton.addEventListener("click", () => {
+        history.back()
+    })
+}
+
 
 
     

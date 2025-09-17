@@ -23,7 +23,7 @@
     RouteData obtient ou définit les données d'itinéraire d'URL.-->
     var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
-    var isNotHomepage = !(controller == "Home" && action == "Index") && !(controller == "Home" && action == "ConstructionPage");
+    var isNotHomepage = !(controller == "Home" && action == "Index");
 
     
 }
@@ -52,7 +52,7 @@
                         <a class="nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")" aria-current="@(controller == "Home" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(controller == "Home" && action == "Offers" ? "active" : "")" aria-current="@(controller == "Home" && action == "Offers" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Offers">
+                            <a class="nav-link text-dark @(controller == "Shop" && action == "Index" ? "active" : "")" aria-current="@(controller == "Shop" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Shop" asp-action="Index">
                                 Billetterie en ligne
                             </a>
                         </li>
@@ -87,7 +87,8 @@
                 &copy; 2025 - Bachelor_developpeur_C#_Eval_Paris2024 - <br />
                 <a href="https://www.flaticon.com/fr/icones-gratuites/panier" title="panier icônes">Panier icônes créées par Freepik - Flaticon</a> <br />
                 <a href="https://www.flaticon.com/fr/icones-gratuites/sidentifier" title="s'identifier icônes">S'identifier icônes créées par Good Ware - Flaticon</a> <br />
-                https://toppng.com/free-image/the-phryges-official-mascots-of-paris-2024-abstract-backgrounds-PNG-free-PNG-Images_493291        
+                https://toppng.com/free-image/the-phryges-official-mascots-of-paris-2024-abstract-backgrounds-PNG-free-PNG-Images_493291
+            <a href="https://www.flaticon.com/fr/icones-gratuites/billet" title="billet icônes">Billet icônes créées par Freepik - Flaticon</a>
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
