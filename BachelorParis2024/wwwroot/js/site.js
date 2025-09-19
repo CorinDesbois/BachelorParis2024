@@ -55,7 +55,7 @@ disciplineImage.forEach(img => {
 let closeButton = document.querySelector(".js-closeEventsList")
 if (typeof closeButton !== "null") {
     closeButton.addEventListener("click", () => {
-        history.back()
+        document.location.href = "/Home/Index/#sports_preview"
     })
 }
 
