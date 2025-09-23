@@ -30,4 +30,5 @@
 
 .addToCardButton {
     margin-top: 2vh;
+    display: inline;
 }

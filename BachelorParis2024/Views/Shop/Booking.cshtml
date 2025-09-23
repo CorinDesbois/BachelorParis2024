@@ -2,6 +2,8 @@
     ViewData["Title"] = "Billetterie";
 }
 
+
+
 @section header {
     <div id="header" class="header text-center">
         <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
@@ -19,21 +21,69 @@
             <table class="table table-striped table-hover table-responsive align-middle">
                 <thead>
                     <tr class="border-bottom">
-                        <th scope="col">Libellé</th>
-                        <th scope="col">Date</th>
+                        <th class="hidden" scope="col">Id</th>
+                        <th scope="col">Sport</th>
+                        <th scope="col">&Eacutepreuve</th>
+                        <th scope="col">Date et heure</th>
                         <th scope="col">Lieu</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="border-bottom">
-                        <td scope="row">xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td class="hidden">@ViewBag.Id</td>
+                        <td class="js-sportNameValue">@ViewBag.Sport</td>
+                        <td>@ViewBag.Description</td>
+                        <td>@ViewBag.Date</td>
+                        <td>@ViewBag.Location</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="btn btn_outline_blue js-addToCard" title="ajouter au panie">+</div>
-            <div class="btn btn_outline_black js-closeBookingPage" title="fermer la page">X</div>
+            <section class="offerSelection">
+                <h4 class="chooseOfferFormTitle">Choisissez une offre:</h4>
+                <div class="chooseOfferForm flex-centered row row-cols-sm-1 row-cols-md-2 row row-cols-lg-3">
+                    <label class="col" for="solo">
+                        <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
+                            <h3 class="card-header offerTitle text-white">SOLO</h3>
+                            <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/solo.png" alt="offre solo" />
+                            <p>1 personne</p>
+                            <p>95€</p>
+                        </div>
+                        <input type="radio" name="offerSelection" id="solo" />
+                    </label>
+
+                    <label class="col" for="duo">
+                        <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
+                            <h3 class="card-header offerTitle text-white">SOLO</h3>
+                            <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/frigy_duo.png" alt="offre solo" />
+                            <p>2 personnes</p>
+                            <p>180€</p>
+                        </div>
+                        <input type="radio" name="offerSelection" id="duo" />
+                    </label>
+
+                    <label class="col" for="family">
+                        <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
+                            <h3 class="card-header offerTitle text-white">SOLO</h3>
+                            <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/family.png" alt="offre solo" />
+                            <p>4 personnes</p>
+                            <p>330€</p>
+                        </div>
+                        <input type="radio" name="offerSelection" id="family" />
+                    </label>
+                    <div class="btn btn_outline_blue addToCardButton js-addToCard" title="ajouter au panier">Ajouter au panier</div>
+                </div>
+                
+            </section>
+            
+            <!--formulaire caché qui communique le nom du sport au controller EventsController
+            pour réafficher la liste des événements lorsque l'on ferme la page booking avec le bouton'
+            -->
+            <form id="hiddenFormCLoseBookingPage" asp-controller="Events" asp-action="DisplayEventsBySport" method="post" value="">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="valueFromHiddenForm" id="hiddenInputCLoseBookingPage" />
+                <button type="submit" class="btn btn_outline_black js-buttonBackToEventList" title="fermer la page">X</button>
+            </form>
+            <!---->
         </div>
     </div>
 }

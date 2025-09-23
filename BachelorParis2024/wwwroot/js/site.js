@@ -105,21 +105,4 @@ backToListButton?.addEventListener("click", () => {
 
 
 
-//Réservation d'un événement
-/*Au click sur un bouton + de la page Events/Index: 
-    1_récupération de l'événement ()
-    2_envoi des valeurs vers le controller via un fomulaire caché pour affichage sur la page Shop/Booking*/
-
-/*const addButtons = document.querySelectorAll(".js-bookEvent")
-
-forEach(button in addButtons)
-{   
-    button.addEventListener("mousedown", () => {
-        console.log("click")
-        document.getElementById(".hiddenFormEventsPage").submit()
-        console.log(document.getElementById(".hiddenFormEventsPage"))
-    })
-}*/
-
-
     
