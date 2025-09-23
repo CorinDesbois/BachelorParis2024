@@ -3,6 +3,13 @@
     ViewData["Title"] = "Evénements";
 }
 
+@{
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var isNotFullList = !(controller == "Events" && action == "Index");
+}
+
+
 @model IEnumerable<BachelorParis2024.Models.EventModel>
 
 @section header {
@@ -24,6 +31,7 @@
                 <thead>
                     <tr class="border-bottom">
                         <th class="hidden" scope="col">Id</th>
+                        <th class="@(isNotFullList ? "hidden" : "")" scope="col">Sport</th>
                         <th scope="col">&Eacutepreuve</th>
                         <th scope="col">Date et heure</th>
                         <th scope="col">Lieu</th>
@@ -37,6 +45,7 @@
                     <tbody>
                         <tr class="border-bottom">
                             <td class="hidden" scope="row">@eventItem.Id</td>
+                            <td class="@(isNotFullList ? "hidden" : "")">@eventItem.Sport</td>
                             <td>@eventItem.Description</td>
                             <td>@eventItem.Date</td>
                             <td>@eventItem.Location</td>

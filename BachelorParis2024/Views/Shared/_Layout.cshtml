@@ -25,6 +25,7 @@
     var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
     var isNotHomepage = !(controller == "Home" && action == "Index");
+}
 
     
 }
@@ -52,6 +53,11 @@
                         <li class="nav-item me-2">
                         <a class="nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")" aria-current="@(controller == "Home" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
                         </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark @(controller == "Events" ? "active" : "")" aria-current="@(controller == "Events" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Events" asp-action="Index">
+                            Evénements
+                        </a>
+                    </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark @(controller == "Shop" ? "active" : "")" aria-current="@(controller == "Shop" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Shop" asp-action="Index">
                                 Billetterie en ligne

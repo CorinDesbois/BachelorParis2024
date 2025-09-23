@@ -37,7 +37,12 @@ namespace BachelorParis2024.Controllers
 
         }
 
-        
+        public IActionResult Index()
+        {
+            IEnumerable<EventModel> allEvents = _eventRepository.GetAllEvents();
+            ViewBag.Titre = "&Eacutevénements";
+            return View("Index", allEvents);
+        }
     }    
 }
 

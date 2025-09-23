@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Evénements";
+}
+
+@model IEnumerable<BachelorParis2024.Models.EventModel>
+
+@section header {
+    <div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%" />
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height="30%" />
+        </div>
+        <h2 class="js-eventsPage-title d-block d-flex align-items-start justify-content-center">@ViewBag.Titre</h2>
+    </div>
+}
+
+@section main {
+    <div id="main" class="main main_events text-center bg_light-blue d-flex align-items-center justify-content-center">
+        <div class="table-background">
+            <table class="table table-striped table-hover table-responsive align-middle">
+                <caption>"Liste des événements @ViewBag.Titre"</caption>
+                <thead>
+                    <tr class="border-bottom">
+                        <th class="hidden" scope="col">Id</th>
+                        <th scope="col">&Eacutepreuve</th>
+                        <th scope="col">Date et heure</th>
+                        <th scope="col">Lieu</th>
+                        <th scope="col">Réserver des places</th>
+                    </tr>
+                </thead>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var eventItem in Model)
+                    {
+                        <tbody>
+                            <tr class="border-bottom">
+                                <td class="hidden" scope="row">@eventItem.Id</td>
+                                <td>@eventItem.Description</td>
+                                <td>@eventItem.Date</td>
+                                <td>@eventItem.Location</td>
+                                <td>
+                                    <!--formulaire caché-->
+                                    <!--seul le bouton submit apparaît sur la page, il permet de sélectionner l'événement choisi
+                                    et d'en transmettre les valeurs au controller "ShopController"-->
+                                    <form id="hiddenFormEventsPage" asp-controller="Shop" asp-action="DisplayEventToBook" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="eventId" id="js-hiddenEventId" value="@eventItem.Id" />
+                                        <input type="hidden" name="eventSport" id="js-hiddenEventSport" value="@eventItem.Sport" />
+                                        <input type="hidden" name="eventDescription" id="js-hiddenEventDescription" value="@eventItem.Description" />
+                                        <input type="hidden" name="eventDate" id="js-hiddenEventDate" value="@eventItem.Date" />
+                                        <input type="hidden" name="eventLocation" id="js-hiddenEventLocation" value="@eventItem.Location" />
+
+                                        <button type="submit" class="btn btn_outline_blue js-bookEvent" title="Réserver">
+                                            +
+                                        </button>
+                                    </form>
+                                    <!---->
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    }
+                }
+                else
+                {
+                    <tr>Aucun événement trouvé, veuillez réessayer</tr>
+                }
+
+            </table>
+            <div class="btn btn_outline_black js-closeEventsList" title="fermer la page">X</div>
+        </div>
+    </div>
+}
+
