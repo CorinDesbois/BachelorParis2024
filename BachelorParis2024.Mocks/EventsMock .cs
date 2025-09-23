@@ -188,6 +188,26 @@ namespace BachelorParis2024.Mocks
                 Location = "Seine, Paris",
                 AvailablePlaces = 6000
             },
+            new EventModel
+            {
+                Id = 19,
+                Date= new DateTime(2024, 08, 13, 11, 0, 0),
+                Sport = "Football",
+                Name = "Finale du tournoi féminin", 
+                Description = "Match final du tournoi de football féminin.",
+                Location = "Stade de France, Paris",
+                AvailablePlaces = 80000
+            },
+            new EventModel
+            {
+                Id = 20,
+                Date = new DateTime(2024, 08, 14, 20, 0, 0),
+                Sport = "Rugby à sept",
+                Name = "Finale du tournoi masculin",
+                Description = "Match final du tournoi de rugby à sept masculin.",
+                Location = "Stade Jean-Bouin, Paris",
+                AvailablePlaces = 20000
+            }
         };
 
         public IEnumerable<EventModel> GetAllEvents() => _listEvents;

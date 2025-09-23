@@ -122,6 +122,10 @@ h2 {
     display: none;
 }
 
+.hidden {
+    display: none;
+}
+
 .link {
     text-decoration: none;
 }

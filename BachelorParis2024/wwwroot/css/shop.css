@@ -1,0 +1,34 @@
+﻿.offerSelection {
+    width: 85vw;
+}
+
+.chooseOfferFormTitle{
+    display: block;
+    width: 100%;
+}
+
+.chooseOfferForm {
+    border: 2px solid #3b7197;
+    padding: 2rem;
+    margin: 0px 10% 0px 10%;
+}
+
+.card__chooseOffer {
+   max-width: 15em;
+   height: 18em;
+   font-size: 0.8rem;
+}
+
+.offerTitle {
+    font-size: 1rem;
+}
+
+.img-offreSelection {
+    max-height: 15vh;
+    align-self: center;
+}
+
+.addToCardButton {
+    margin-top: 2vh;
+    display: inline;
+}
