@@ -1,7 +1,7 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-//script permettant de revenir vers a section sport preview de maniète plus fluide
+//script permettant de revenir vers la section sport preview de manière plus fluide
 //à revoir
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.hash) {
@@ -20,12 +20,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-/*Animation des images représentant les disciplines 
-sur la page d'accueil*/
-    /*1_ au survol de la souris l'image tourne de 180° autour
-    de l'axe y*/
-    /*2_le nom du sport s'affiche au lieu du dessin*/
-    /*3_ Lorsque la souris sort, l'image revient à son état initial*/
+/*Images représentant les disciplines sur la page d'accueil*/
+    //1_Animation au survol
 const disciplineImage = document.querySelectorAll('.js-discipline')
 let eventsPageTitle = document.getElementsByClassName('.js-eventsPage-title')
 
@@ -54,8 +50,7 @@ disciplineImage.forEach(img => {
     })
 })
 
-    
-/*Au click sur l'image:
+        /* 2_Au click sur l'image:
     1_récupération du nom du sport 
     2_envoi dans le formulaire de la page Home/Index
     3_submit du formulaire pour que le controller puisse récupérer la valeur
@@ -68,41 +63,37 @@ disciplineImage.forEach(img => {
     })
 })
 
-window.addEventListener("DOMContentLoaded", () => {
-    if (window.location.hash) {
-        const target = document.querySelector(window.location.hash);
-        if (target) {
-            // Calcul de la position avec offset
-            const headerHeight = document.querySelector("header").offsetHeight;
-            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = elementPosition - headerHeight;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        }
-    }
-});
 
 //Bouton de fermeture de la page Events/Index
 let closeButton = document.querySelector(".js-closeEventsList")
     closeButton?.addEventListener("click", () => {
-        console.log("click !!")
         window.location.assign("../Home#sports_preview")
     })
 
 //Fermeture de la page Shop/Booking
-
 let backToListButton = document.querySelector(".js-buttonBackToEventList")
 backToListButton?.addEventListener("click", () => {  
-    
     let category = document.querySelector(".js-sportNameValue")
     let sport = category.textContent
     document.getElementById("hiddenInputCLoseBookingPage").value = sport
     document.getElementById("hiddenFormCLoseBookingPage").submit() 
 })
 
+//Accès à la liste des événement par sport depuis la liste complète des sport de la page Home/Index
+//En cliquant sur le sport souhaité dans la liste affichée
+//Utilisation du formulaire caché de la page Home/Index
+/*let eventsButton = document.querySelectorAll(".js-sportSelection")
+eventsButton.forEach(btn => {
+    btn.addEventListener("click", () => {
+        console.log("click !!")
+        let category = document.querySelector(".js-sportSelection")
+        let sport = category.textContent
+        console.log(sport)
+        document.getElementById("hiddenFormInput").value = sport
+        document.getElementById("hiddenFormHomePage").submit()
+    })
+})
+A revoir, ne fonctionne pas correctement pour le moment*/
 
 
     

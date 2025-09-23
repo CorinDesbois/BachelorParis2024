@@ -45,7 +45,7 @@
                     <tbody>
                         <tr class="border-bottom">
                             <td class="hidden" scope="row">@eventItem.Id</td>
-                            <td class="@(isNotFullList ? "hidden" : "")">@eventItem.Sport</td>
+                            <td class="sportSelection js-sportSelection js-pointer @(isNotFullList ? "hidden" : "")">@eventItem.Sport</td>
                             <td>@eventItem.Description</td>
                             <td>@eventItem.Date</td>
                             <td>@eventItem.Location</td>
@@ -68,15 +68,15 @@
                             <!---->
                             </td>
                         </tr>
-                           
                     </tbody>
+                   
                 }
                 }
                 else
                 {
                     <tr>Aucun événement trouvé, veuillez réessayer</tr>
                 }
-                
+               
             </table>
             <div class="btn btn_outline_black js-closeEventsList" title="fermer la page">X</div>
         </div>

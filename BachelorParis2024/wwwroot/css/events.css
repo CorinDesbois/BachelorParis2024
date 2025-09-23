@@ -7,3 +7,7 @@
     min-width:90%;  
     min-height: 50vh;
 }
+
+.sportSelection:hover {
+    font-weight: bold;
+}
