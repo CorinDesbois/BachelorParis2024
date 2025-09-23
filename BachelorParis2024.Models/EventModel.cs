@@ -11,6 +11,5 @@ namespace BachelorParis2024.Models
         public required string Location { get; set; }
 
         public required int AvailablePlaces { get; set; }
-
     }
 }
