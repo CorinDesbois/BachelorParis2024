@@ -1,4 +1,4 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
 //script permettant de revenir vers la section sport preview de manière plus fluide
@@ -66,8 +66,10 @@ disciplineImage.forEach(img => {
 
 //Bouton de fermeture de la page Events/Index
 let closeButton = document.querySelector(".js-closeEventsList")
+Feature/select-event-and-offer
     closeButton?.addEventListener("click", () => {
         window.location.assign("../Home#sports_preview")
+
     })
 
 //Fermeture de la page Shop/Booking
