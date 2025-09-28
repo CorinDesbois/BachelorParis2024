@@ -1,16 +1,18 @@
-name: Build and deploy .NET Core application to Web App BachelorParis202420250918111623
+name: Build and deploy .NET Core application to Azure Web App
+
 on:
   push:
     branches:
-    - master
+      - master
+
 env:
-  AZURE_WEBAPP_NAME: BachelorParis202420250918111623
-  AZURE_WEBAPP_PACKAGE_PATH: BachelorParis2024\published
+  AZURE_WEBAPP_NAME: BachelorParis202420250918111623 
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: BachelorParis2024
+  WORKING_DIRECTORY: ./BachelorParis2024
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
@@ -43,7 +45,7 @@ jobs:
     - name: Azure Login
       uses: azure/login@v2
       with:
-        creds: ${{ secrets.BachelorParis202420250918111623_SPN }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Run EF Core migrations
         run: dotnet ef database update --connection "$env:ConnectionStrings__DefaultConnection"
         env:ConnectionStrings__DefaultConnection: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
