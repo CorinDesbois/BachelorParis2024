@@ -63,7 +63,6 @@ disciplineImage.forEach(img => {
     })
 })
 
-
 //Bouton de fermeture de la page Events/Index
 let closeButton = document.querySelector(".js-closeEventsList")
     closeButton?.addEventListener("click", () => {

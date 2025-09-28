@@ -1,5 +1,8 @@
+using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Mocks;
-using BachelorParis2024.Models;
+using BachelorParis2024.Repository.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,9 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Ajout de Entity Framework et de la chaîne de connexion
+builder.Services.AddDbContext<DbProjectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+
 // Injections de dépendance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();
 builder.Services.AddScoped<ISportRepository, SportsMock>();
+
+var mvcBuilder = builder.Services.AddRazorPages();
+
 
 var app = builder.Build();
 

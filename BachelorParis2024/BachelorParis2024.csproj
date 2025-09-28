@@ -12,12 +12,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BachelorParis2024.Mocks\BachelorParis2024.Mocks.csproj" />
-    <ProjectReference Include="..\BachelorParis2024.Models\BachelorParis2024.Models.csproj" />
+    <ProjectReference Include="..\BachelorParis2024.Models\BachelorParis2024.Domain.csproj" />
+    <ProjectReference Include="..\BachelorParis2024.Repository\BachelorParis2024.Repository.csproj" />
   </ItemGroup>
 
 	

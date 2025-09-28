@@ -4,13 +4,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BachelorParis2024.Models;
+using BachelorParis2024.Domain.Interfaces;
+using BachelorParis2024.Domain.Models;
 
 namespace BachelorParis2024.Mocks
 {
     public class SportsMock : ISportRepository
     {
-        public static List<SportModel> ListSports = new List<Models.SportModel>
+        public static List<SportModel> ListSports = new List<SportModel>
         {
             new SportModel() { Id = 1, Name = "Athlétisme", ImageUrl = "athle" },
             new SportModel() { Id = 2, Name = "Aviron", ImageUrl = "aviron" },
@@ -28,11 +29,11 @@ namespace BachelorParis2024.Mocks
 
         public IEnumerable<SportModel> GetAllSports() => ListSports;
 
-        public Models.SportModel GetSportById(int id)
+        public SportModel GetSportById(int id)
         {
             return ListSports.FirstOrDefault(s => s.Id == id);
         }
-        public Models.SportModel GetSportByName(string name)
+        public SportModel GetSportByName(string name)
         {
             return ListSports.FirstOrDefault(s => s.Name == name);
         }

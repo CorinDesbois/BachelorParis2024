@@ -1,4 +1,4 @@
-﻿using BachelorParis2024.Models;
+﻿using BachelorParis2024.Domain.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 
