@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BachelorParis2024.Models
+namespace BachelorParis2024.Domain.Models
 {
     public class SportModel
     {

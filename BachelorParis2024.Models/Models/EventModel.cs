@@ -1,5 +1,4 @@
-﻿
-namespace BachelorParis2024.Models
+﻿namespace BachelorParis2024.Domain.Models
 {
     public class EventModel
     {

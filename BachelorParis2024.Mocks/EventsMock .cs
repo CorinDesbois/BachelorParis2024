@@ -1,5 +1,6 @@
 ﻿using BachelorParis2024;
-using BachelorParis2024.Models;
+using BachelorParis2024.Domain.Interfaces;
+using BachelorParis2024.Domain.Models;
 using System.Collections.Generic;
 
 namespace BachelorParis2024.Mocks

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BachelorParis2024.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 //via l'injection de dépendance dans Program.cs
 //servira également plus tard pour connecter la base de données
 
-namespace BachelorParis2024.Models
+namespace BachelorParis2024.Domain.Interfaces
 {
     public interface IEventRepository
     {
