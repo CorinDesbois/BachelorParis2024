@@ -63,6 +63,11 @@
                                 Billetterie en ligne
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller == "OfferEF" ? "active" : "")" aria-current="@(controller == "OfferEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OfferEF" asp-action="Index">
+                                Gestion des offres
+                            </a>
+                        </li>
                     </ul>
                     <ul class="navbar-nav me-5">
                         <li class="nav-item me-2">
