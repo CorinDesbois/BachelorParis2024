@@ -63,15 +63,15 @@ jobs:
     - name: Restore .NET tools
       run: dotnet tool restore
     - name: Vérifier les outils restaurés
-      run: dotnet tool list --loc
+      run: dotnet tool list --local
     - name: Install dotnet-ef tool
       run: dotnet tool install --global dotnet-ef
     - name: Add dotnet tools to PATH
       run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-    - name: List files for deb
+    - name: List files for debug
       run: ls -R
     - name: Run EF Core migrations
-      run: dotnet ef database update --project .\BachelorParis2024.Repository\BachelorParis2024.Repository.csproj --startup-project .\BachelorParis2024\BachelorParis2024.csproj
+      run: dotnet ef database update --project BachelorParis2024\BachelorParis2024.Repository\BachelorParis2024.Repository.csproj --startup-project BachelorParis2024\BachelorParis2024\BachelorParis2024.csproj
       env:
         ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
