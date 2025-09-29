@@ -16,6 +16,12 @@ jobs:
     runs-on: windows-2022
     steps:
     - uses: actions/checkout@v4
+    - name: Debug – Liste des projets
+      run: |
+        echo "Chemin courant :"
+        pwd
+        echo "Contenu :"
+        ls -R
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with: 
