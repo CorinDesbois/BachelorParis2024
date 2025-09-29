@@ -49,11 +49,17 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Restore .NET tools
       run: dotnet tool restore
-      working-directory: .
+      working-directory: .   # très important : à la racine du repo
+
+    - name: Vérifier les outils restaurés
+      run: dotnet tool list --local
+      working-directory: .   # doit pointer là où se trouve .config/dotnet-tools.json
+
     - name: Run EF Core migrations
-      run: dotnet tool run dotnet-ef database update --project ./BachelorParis2024.Repository --startup-project ./BachelorParis2024
+      run: dotnet tool run ef database update --project ./BachelorParis2024.Repository --startup-project ./BachelorParis2024
       env:
-            ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
+        ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
+
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
