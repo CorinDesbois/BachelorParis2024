@@ -51,11 +51,11 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Restore .NET tools
       run: dotnet tool restore
-      working-directory: ./BachelorParis2024   # très important : à la racine du repo
+      working-directory: BachelorParis2024   # très important : à la racine du repo
 
     - name: Vérifier les outils restaurés
       run: dotnet tool list --local
-      working-directory: ./BachelorParis2024   # doit pointer là où se trouve .config/dotnet-tools.json
+      working-directory: BachelorParis2024   # doit pointer là où se trouve .config/dotnet-tools.json
 
     - name: Run EF Core migrations
       run: dotnet ef database update --project ../BachelorParis2024.Repository --startup-project .
