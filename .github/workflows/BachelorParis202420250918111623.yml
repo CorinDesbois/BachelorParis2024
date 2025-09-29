@@ -52,6 +52,10 @@ jobs:
       run: dotnet tool restore
     - name: Vérifier les outils restaurés
       run: dotnet tool list --local
+    - name: Install dotnet-ef tool
+      run: dotnet tool install --global dotnet-ef
+    - name: Add dotnet tools to PATH
+      run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
     - name: Run EF Core migrations
       run: dotnet ef database update --project BachelorParis2024.Repository --startup-project .
       env:
