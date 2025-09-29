@@ -58,7 +58,7 @@ jobs:
       working-directory: ./BachelorParis2024   # doit pointer là où se trouve .config/dotnet-tools.json
 
     - name: Run EF Core migrations
-      run: dotnet ef database update --project ./BachelorParis2024.Repository --startup-project ./BachelorParis2024
+      run: dotnet ef database update --project ../BachelorParis2024.Repository --startup-project .
       env:
         ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
