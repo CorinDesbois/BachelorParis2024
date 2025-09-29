@@ -47,8 +47,10 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Restore .NET tools
+      run: dotnet tool restore
     - name: Run EF Core migrations
-      run: dotnet ef database update --connection "$ConnectionStrings__AZURE_SQL_CONNECTIONSTRING" 
+      run: dotnet ef database update --project ./BachelorParis2024.Infrastructure --startup-project ./BachelorParis2024
       env:
             ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
     - name: Deploy to Azure WebApp
