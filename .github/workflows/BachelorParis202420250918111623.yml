@@ -21,6 +21,8 @@ jobs:
       uses: actions/setup-dotnet@v4
       with: 
         dotnet-version: '8.0.401'
+    - name: Debug – Liste des fichiers
+      run: ls -R
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
