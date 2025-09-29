@@ -35,7 +35,7 @@ jobs:
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
   deploy:
     runs-on: windows-latest
-    needs: build
+    needs: build-and-deploy
     steps:
     - name: Download artifact from build job
       uses: actions/download-artifact@v4
@@ -47,11 +47,12 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Run EF Core migrations
-      run: dotnet ef database update 
+      run: dotnet ef database update --connection "$ConnectionStrings__AZURE_SQL_CONNECTIONSTRING" 
       env:
             ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        app-name: ${{ env.BachelorParis202420250918111623 }}
+        slot-name: "production"
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
