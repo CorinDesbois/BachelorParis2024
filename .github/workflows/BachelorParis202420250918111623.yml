@@ -57,7 +57,7 @@ jobs:
     - name: Add dotnet tools to PATH
       run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
     - name: Run EF Core migrations
-      run: dotnet ef database update --project BachelorParis2024.Repository --startup-project .
+      run: dotnet ef database update --project BachelorParis2024.Repository --startup-project BachelorParis2024
       env:
         ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
