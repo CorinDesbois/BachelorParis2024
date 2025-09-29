@@ -71,7 +71,7 @@ jobs:
     - name: List files for debug
       run: ls -R
     - name: Run EF Core migrations
-      run: dotnet ef database update -c DbProjectContext --project BachelorParis2024.Repository --startup-project BachelorParis2024
+      run: dotnet ef database update -c DbProjectContext --project BachelorParis2024.Repository --startup-project .
       env:
         ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
