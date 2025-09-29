@@ -47,8 +47,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Run EF Core migrations
-        run: dotnet ef database update --connection "$env:ConnectionStrings__AZURE_SQL_CONNECTIONSTRING"
-        env:ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
+      run: dotnet ef database update 
+      env:
+            ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
