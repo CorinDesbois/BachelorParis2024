@@ -51,7 +51,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Restore .NET tools
       run: dotnet tool restore
-      working-directory: .   # très important : à la racine du repo
+      working-directory: ./BachelorParis2024   # très important : à la racine du repo
 
     - name: Vérifier les outils restaurés
       run: dotnet tool list --local
