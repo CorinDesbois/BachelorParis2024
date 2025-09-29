@@ -13,43 +13,53 @@ env:
 
 jobs:
   build-and-deploy:
-    runs-on: windows-2022   # runner figé pour stabilité
-
+    runs-on: windows-2022
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with: 
+        dotnet-version: '8.0.401'
+    - name: Debug – Liste des fichiers
+      run: ls -R
+    - name: Restore
+      run: dotnet restore BachelorParis2024
+    - name: Build
+      run: dotnet build BachelorParis2024 -c Release --no-restore
+    - name: Test
+      run: dotnet test BachelorParis2024 --no-build
+    - name: Publish
+      run: dotnet publish BachelorParis2024 -c Release -o ./publish
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+  deploy:
+    runs-on: windows-latest
+    needs: build-and-deploy
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v4
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Restore .NET tools
+      run: dotnet tool restore
+    - name: Vérifier les outils restaurés
+      run: dotnet tool list --local
+    - name: Run EF Core migrations
+      run: dotnet ef database update --project BachelorParis2024.Repository --startup-project .
+      env:
+        ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.401'   # version exacte du SDK 
-
-      - name: Restore dependencies
-        run: dotnet restore BachelorParis2024
-
-      - name: Build
-        run: dotnet build BachelorParis2024 -c Release --no-restore
-
-      #  Restauration des outils locaux (dotnet-ef)
-      - name: Restore .NET tools
-        run: dotnet tool restore
-
-      - name: Vérifier les outils restaurés
-        run: dotnet tool list --local
-
-      #  Exécution des migrations EF Core
-      - name: Run EF Core migrations
-        run: dotnet ef database update --project BachelorParis2024.Repository --startup-project BachelorParis2024
-        env:
-          ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
-
-      - name: Publish
-        run: dotnet publish BachelorParis2024 -c Release -o ./publish
-
-      - name: Deploy to Azure WebApp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: BachelorParis202420250918111623
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./publish
-
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.BachelorParis202420250918111623 }}
+        slot-name: "production"
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
