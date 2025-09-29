@@ -9,7 +9,6 @@ env:
   AZURE_WEBAPP_NAME: BachelorParis202420250918111623 
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: BachelorParis2024
   AZURE_WEBAPP_PACKAGE_PATH: ./publish
 
 jobs:
@@ -24,13 +23,13 @@ jobs:
     - name: Debug – Liste des fichiers
       run: ls -R
     - name: Restore
-      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+      run: dotnet restore BachelorParis2024
     - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+      run: dotnet build BachelorParis2024 -c Release --no-restore
     - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+      run: dotnet test BachelorParis2024 --no-build
     - name: Publish
-      run: dotnet publish ./BachelorParis2024 -c Release -o ./publish
+      run: dotnet publish BachelorParis2024 -c Release -o ./publish
     - name: Publish Artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -51,14 +50,10 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Restore .NET tools
       run: dotnet tool restore
-      working-directory: .  # très important : à la racine du repo
-
     - name: Vérifier les outils restaurés
       run: dotnet tool list --local
-      working-directory: .   # doit pointer là où se trouve .config/dotnet-tools.json
-
     - name: Run EF Core migrations
-      run: dotnet ef database update --project ../BachelorParis2024.Repository --startup-project .
+      run: dotnet ef database update --project BachelorParis2024.Repository --startup-project BachelorParis2024
       env:
         ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
