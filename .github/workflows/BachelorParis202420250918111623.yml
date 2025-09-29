@@ -22,6 +22,12 @@ jobs:
         pwd
         echo "Contenu :"
         ls -R
+    - name: Debug – Vérifier les csproj
+      run: |
+        echo "Chemin courant :"
+        pwd
+        echo "Recherche des csproj :"
+        dir -Recurse *.csproj
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with: 
