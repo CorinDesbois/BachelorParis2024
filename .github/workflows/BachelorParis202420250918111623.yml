@@ -51,7 +51,7 @@ jobs:
       run: dotnet tool restore
       working-directory: .
     - name: Run EF Core migrations
-      run: dotnet tool run ef database update --project ./BachelorParis2024.Repository --startup-project ./BachelorParis2024
+      run: dotnet tool run dotnet-ef database update --project ./BachelorParis2024.Repository --startup-project ./BachelorParis2024
       env:
             ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING}}
     - name: Deploy to Azure WebApp
