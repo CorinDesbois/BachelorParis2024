@@ -62,10 +62,11 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Install dotnet-ef tool
-      run: dotnet tool install --global dotnet-ef --version 8.*
-    - name: Add dotnet tools to PATH
-      run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+    - name: Restore .NET tools
+      working-directory: BachelorParis2024
+      run: dotnet tool restore
+    - name: Run EF Core migrations
+      run: dotnet tool run dotnet-ef database update --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj --startup-project BachelorParis2024/BachelorParis2024.csproj
     - name: Run EF Core migrations
       run: dotnet ef database update --project  BachelorParis2024.Repository/BachelorParis2024.Repository.csproj --startup-project BachelorParis2024/BachelorParis2024.csproj
       env:
