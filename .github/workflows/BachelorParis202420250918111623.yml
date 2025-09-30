@@ -34,8 +34,23 @@ jobs:
       uses: actions/setup-dotnet@v4
       with: 
         dotnet-version: '8.0.401'
-    - name: Debug – Liste des fichiers
-      run: ls -R
+    - name: Debug – Explorer la structure du repo
+      run: |
+        echo "Chemin courant :"
+        pwd
+        echo ""
+        echo "Contenu immédiat :"
+        ls
+        echo ""
+        echo "Recherche du fichier solution (.sln) :"
+        dir -Recurse *.sln | Select-Object FullName
+        echo ""
+        echo "Recherche des projets (.csproj) :"
+        dir -Recurse *.csproj | Select-Object FullName
+        echo ""
+        echo "Recherche du manifeste dotnet-tools.json :"
+        dir -Recurse dotnet-tools.json | Select-Object FullName
+      shell: pwsh
     - name: Restore
       run: dotnet restore BachelorParis2024
     - name: Build
@@ -62,8 +77,12 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Restore .NET tools
-      run: dotnet tool restore
+    - name: Install dotnet-ef tool
+      run: dotnet tool install --global dotnet-ef --version 8.*
+    - name: Add dotnet tools to PATH (Windows)
+      run: echo "C:\Users\runneradmin\.dotnet\tools" >> $env:GITHUB_PATH
+      shell: pwsh
+
     - name: Run EF Core migrations
       run: dotnet tool run dotnet-ef database update --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj --startup-project BachelorParis2024/BachelorParis2024.csproj
     - name: Run EF Core migrations
