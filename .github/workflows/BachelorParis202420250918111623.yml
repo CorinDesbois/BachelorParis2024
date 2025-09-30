@@ -78,6 +78,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Restore .NET tools (local manifest)
+      working-directory:
       run: dotnet tool restore
     - name: Run EF Core migrations (via manifest)
       run: dotnet tool run dotnet-ef database update --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj --startup-project BachelorParis2024/BachelorParis2024.csproj
