@@ -4,7 +4,9 @@
   "tools": {
     "dotnet-ef": {
       "version": "8.0.20",
-      "commands": ["dotnet-ef"]
+      "commands": [ "dotnet-ef" ]
     }
   }
 }
+
+
