@@ -77,16 +77,10 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Install dotnet-ef tool
-      run: dotnet tool install --global dotnet-ef --version 8.*
-    - name: Add dotnet tools to PATH (Windows)
-      run: echo "C:\Users\runneradmin\.dotnet\tools" >> $env:GITHUB_PATH
-      shell: pwsh
-
-    - name: Run EF Core migrations
+    - name: Restore .NET tools (local manifest)
+      run: dotnet tool restore
+    - name: Run EF Core migrations (via manifest)
       run: dotnet tool run dotnet-ef database update --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj --startup-project BachelorParis2024/BachelorParis2024.csproj
-    - name: Run EF Core migrations
-      run: dotnet ef database update --project  BachelorParis2024.Repository/BachelorParis2024.Repository.csproj --startup-project BachelorParis2024/BachelorParis2024.csproj
       env:
         ConnectionStrings__AZURE_SQL_CONNECTIONSTRING: ${{ secrets.AZURE_SQL_CONNECTIONSTRING }}
 
