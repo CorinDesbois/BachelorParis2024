@@ -80,6 +80,6 @@ jobs:
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ env.BachelorParis202420250918111623 }}
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         slot-name: "production"
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
