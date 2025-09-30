@@ -63,13 +63,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Restore .NET tools
-      run: dotnet tool restore
+      run: dotnet tool restore --tool-manifest BachelorParis2024/.config/dotnet-tools.json
     - name: Vérifier les outils restaurés
       run: dotnet tool list --local
-    - name: Install dotnet-ef tool
-      run: dotnet tool install --global dotnet-ef
-    - name: Add dotnet tools to PATH
-      run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
     - name: List files for debug
       run: ls -R
     - name: Run EF Core migrations
