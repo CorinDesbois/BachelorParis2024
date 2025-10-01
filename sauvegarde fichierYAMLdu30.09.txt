@@ -1,0 +1,85 @@
+name: Build and deploy .NET Core application to Azure Web App
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AZURE_WEBAPP_NAME: BachelorParis202420250918111623 
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 8.0.x
+  AZURE_WEBAPP_PACKAGE_PATH: ./publish
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-2022
+    steps:
+    - uses: actions/checkout@v4
+    - name: Debug – Liste des projets
+      run: |
+        echo "Chemin courant :"
+        pwd
+        echo "Contenu :"
+        ls -R
+    - name: Debug – Vérifier les csproj
+      run: |
+        echo "Chemin courant :"
+        pwd
+        echo "Recherche des csproj :"
+        dir -Recurse *.csproj
+    - name: Debug – chemins complets des csproj
+      run: dir -Recurse *.csproj | Select-Object FullName
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with: 
+        dotnet-version: '8.0.401'
+    - name: Debug – Explorer la structure du repo
+      run: |
+        echo "Chemin courant :"
+        pwd
+        echo ""
+        echo "Contenu immédiat :"
+        ls
+        echo ""
+        echo "Recherche du fichier solution (.sln) :"
+        dir -Recurse *.sln | Select-Object FullName
+        echo ""
+        echo "Recherche des projets (.csproj) :"
+        dir -Recurse *.csproj | Select-Object FullName
+        echo ""
+        echo "Recherche du manifeste dotnet-tools.json :"
+        dir -Recurse dotnet-tools.json | Select-Object FullName
+      shell: pwsh
+    - name: Restore
+      run: dotnet restore BachelorParis2024
+    - name: Build
+      run: dotnet build BachelorParis2024 -c Release --no-restore
+    - name: Test
+      run: dotnet test BachelorParis2024 --no-build
+    - name: Publish
+      run: dotnet publish BachelorParis2024 -c Release -o ./publish
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+  deploy:
+    runs-on: windows-latest
+    needs: build-and-deploy
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v4
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        slot-name: "production"
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
