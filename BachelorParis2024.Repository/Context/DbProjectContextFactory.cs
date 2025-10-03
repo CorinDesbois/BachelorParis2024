@@ -18,7 +18,7 @@ namespace BachelorParis2024.Repository.Context
         public DbProjectContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<DbProjectContext>();
-            optionsBuilder.UseSqlServer("Data Source=tcp:bachelorparis2024freeserver.database.windows.net,1433;Initial Catalog=BachelorParis2024FreeDB;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication= 'Active Directory Default'; Encrypt=True;");
+            optionsBuilder.UseSqlServer("Server=tcp:bachelorparis2024freeserver.database.windows.net,1433;Database=BachelorParis2024FreeDB;Authentication=Active Directory Default;Encrypt=True;TrustServerCertificate=False;");
             return new DbProjectContext(optionsBuilder.Options);
         }
     }
