@@ -23,7 +23,7 @@ namespace BachelorParis2024.Repository.Context
             if (!optionsBuilder.IsConfigured)
             {
                 //on configure la chaîne de connexion ici si besoin
-                optionsBuilder.UseSqlServer("Data Source=tcp:bachelorparis2024freeserver.database.windows.net,1433;Initial Catalog=BachelorParis2024FreeDB;Persist Security Info=False;User ID=corindesbois_live.fr#EXT#@corindesboislive.onmicrosoft.com;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Authentication= 'Active Directory Integrated';");
+                optionsBuilder.UseSqlServer("Data Source=tcp:bachelorparis2024freeserver.database.windows.net,1433;Initial Catalog=BachelorParis2024FreeDB;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication= 'Active Directory Default'; Encrypt=True;");
             }
         }
 
