@@ -31,8 +31,10 @@
     <ProjectReference Include="..\BachelorParis2024.Repository\BachelorParis2024.Repository.csproj" />
   </ItemGroup>
 
-	
-	
-    
+  <ItemGroup>
+    <Content Update="Views\**\*.*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>
