@@ -11,10 +11,21 @@ using System.ComponentModel;
 builder.Services.AddControllersWithViews();
 
 // Ajout de Entity Framework et de la chaîne de connexion
-builder.Services.AddDbContext<DbProjectContext>(options =>
+/*builder.Services.AddDbContext<DbProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"))
         .EnableSensitiveDataLogging()   // !! à activer seulement en debug
-        .LogTo(Console.WriteLine, LogLevel.Information));
+        .LogTo(Console.WriteLine, LogLevel.Information)); //pour debug*/
+//à supprimer des commentaires
+
+//suppression du AddDbContext classique et
+// AJout d'un DbContextFactory à la place
+//pour essayer de résoudre les problèmes de migration avec EF Core Tools
+//permet de créer des instances de DbProjectContext à la volée
+// AJout d'un DbContextFactory (optionnel)
+//pour essayer de résoudre les problèmes de migration avec EF Core Tools
+//permet de créer des instances de DbProjectContext à la volée
+builder.Services.AddDbContextFactory<DbProjectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
 // Injections de dépendance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();

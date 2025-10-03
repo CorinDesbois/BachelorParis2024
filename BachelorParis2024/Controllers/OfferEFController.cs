@@ -25,7 +25,16 @@ namespace BachelorParis2024.Controllers
         // GET: OfferEF
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Offre.ToListAsync());
+            try
+            {
+                var offres = await _context.Offre.ToListAsync();
+                return View(offres);
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.WriteAllText("C:\\home\\LogFiles\\custom-error.txt", ex.ToString());
+                throw;
+            }
         }
 
         // GET: OfferEF/Details/5
