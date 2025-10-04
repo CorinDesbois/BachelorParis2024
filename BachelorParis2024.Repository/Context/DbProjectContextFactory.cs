@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration.Json;
+using System.IO;
+using Microsoft.Extensions.Configuration.EnvironmentVariables;
 
 
 //ajout d'une classe DbProjectContextFactory:IDesignTimeDbContextFactory
@@ -17,8 +21,17 @@ namespace BachelorParis2024.Repository.Context
     {
         public DbProjectContext CreateDbContext(string[] args)
         {
+            // Charger la config depuis appsettings.json
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables() // permet aussi de lire AZURE_SQL_CONNECTIONSTRING si dispo
+                .Build();
+
+            var connectionString = configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
+
             var optionsBuilder = new DbContextOptionsBuilder<DbProjectContext>();
-            optionsBuilder.UseSqlServer("Server=tcp:bachelorparis2024freeserver.database.windows.net,1433;Database=BachelorParis2024FreeDB;Authentication=Active Directory Default;Encrypt=True;TrustServerCertificate=False;");
+            optionsBuilder.UseSqlServer("AZURE_SQL_CONNECTIONSTRING");
             return new DbProjectContext(optionsBuilder.Options);
         }
     }
