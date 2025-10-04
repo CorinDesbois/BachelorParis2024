@@ -32,7 +32,7 @@ namespace BachelorParis2024.Controllers
             }
             catch (Exception ex)
             {
-                System.IO.File.WriteAllText("C:\\home\\LogFiles\\custom-error.txt", ex.ToString());
+                System.IO.File.WriteAllText("C:home\\LogFiles\\custom-error.txt", ex.ToString());
                 throw;
             }
         }
