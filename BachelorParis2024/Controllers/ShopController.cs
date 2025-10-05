@@ -1,19 +1,53 @@
 ﻿using BachelorParis2024.Domain.Models;
+using BachelorParis2024.Repository.Context;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BachelorParis2024.Controllers
 {
     public class ShopController : Controller
-    {
-        public IActionResult Index()
+    {   
+        //ajout du context pour récupérer les liste des offres depuis la BDD
+        private readonly DbProjectContext _context;
+
+        public ShopController(DbProjectContext context)
         {
-            return View();
+            _context = context;
         }
 
-        public IActionResult OfferDetail()
+        // Liste des offres
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                var availableOffers = await _context.Offre.ToListAsync();
+                return View(availableOffers);
+            }
+            catch (Exception)
+            {
+                return View("Une erreur est survenue, veuillez réessayer");
+            }
+        }
+
+        // Détails d’une offre
+        [HttpGet("Shop/OfferDetail/{id}")]
+        public async Task<IActionResult> OfferDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var offerModel = await _context.Offre
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (offerModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(offerModel);
         }
 
         public IActionResult Booking()
