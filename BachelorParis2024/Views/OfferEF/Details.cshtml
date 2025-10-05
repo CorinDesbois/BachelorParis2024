@@ -16,55 +16,60 @@
 }
 
 @section main {
-    <div id="main" class="main text-center flex-centered">
-
-        <h2>Détails</h2>
-
-        <div>
-            <h4>OfferModel</h4>
-            <hr />
-            <dl class="row">
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.PersonsNumber)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.PersonsNumber)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Price)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Conditions)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Conditions)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.ImageUrl)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.ImageUrl)
-                </dd>
-            </dl>
-        </div>
-        <div>
-            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-            <a asp-action="Index">Retour à la liste</a>
+    <div id="main" class="main">
+        <section class="mb-4">
+            <h4 class="mainTitle">Détail de l'offre</h4>
+            <div class="offerForm">
+                <dl class="row">
+                    <dt class = "col-sm-2 text-end">
+                        Nom
+                    </dt>
+                    <dd class = "col-sm-10 text-start">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class = "col-sm-2 text-end">
+                        Nombre de personnes
+                    </dt>
+                    <dd class="col-sm-10 text-start">
+                        @Html.DisplayFor(model => model.PersonsNumber)
+                    </dd>
+                    <dt class = "col-sm-2 text-end">
+                        Description
+                    </dt>
+                    <dd class="col-sm-10 text-start">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt class="col-sm-2 text-end">
+                        Prix en €
+                    </dt>
+                    <dd class="col-sm-10 text-start">
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+                    <dt class="col-sm-2 text-end">
+                        Conditions et modalités d'accès
+                    </dt>
+                    <dd class="col-sm-10 text-start">
+                        @Html.DisplayFor(model => model.Conditions)
+                    </dd>
+                    <dt class="col-sm-2 text-end">
+                        Image
+                    </dt>
+                    <dd class="col-sm-10 text-start">
+                        @Html.DisplayFor(model => model.ImageUrl)
+                    </dd>
+                </dl>
+                <div>
+                    <a class="link m-4 d-block" asp-action="Edit" asp-route-id="@Model?.Id">Editer</a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="back">
+            <a class="link" asp-action="Index">
+                <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste" width="20rem" />
+                <p class="d-inline text-black">Retour à la liste</p>
+            </a>
         </div>
     </div>
+    
 }
