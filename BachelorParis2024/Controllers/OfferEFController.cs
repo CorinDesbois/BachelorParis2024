@@ -30,10 +30,9 @@ namespace BachelorParis2024.Controllers
                 var offres = await _context.Offre.ToListAsync();
                 return View(offres);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                System.IO.File.WriteAllText("C:home\\LogFiles\\custom-error.txt", ex.ToString());
-                throw;
+                return View("Une erreur est survenue, veuillez réessayer");
             }
         }
 
