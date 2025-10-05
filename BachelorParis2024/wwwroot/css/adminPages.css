@@ -1,0 +1,19 @@
+﻿.main__admin {
+    background-color: #d6dce3;
+    margin-bottom: 2rem;
+}
+.mainTitle {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.offerForm {
+    min-width: 80%;
+    background-color: #d6dce3;
+    padding: 1.5rem;
+    margin: 1.5rem;
+}
+
+.back {
+    color: black;
+}
