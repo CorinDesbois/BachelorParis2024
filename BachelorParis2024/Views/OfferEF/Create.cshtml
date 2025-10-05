@@ -16,59 +16,61 @@
 }
 
 @section main {
-    <div id="main" class="main text-center flex-centered">
+    <div id="main" class="main">
 
-        <h2>Create</h2>
+        <h4 class="mainTitle">Création d'une nouvelle offre</h4>
 
-        <h4>OfferModel</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="PersonsNumber" class="control-label"></label>
-                        <input asp-for="PersonsNumber" class="form-control" />
-                        <span asp-validation-for="PersonsNumber" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description" class="control-label"></label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Price" class="control-label"></label>
-                        <input asp-for="Price" class="form-control" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Conditions" class="control-label"></label>
-                        <input asp-for="Conditions" class="form-control" />
-                        <span asp-validation-for="Conditions" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ImageUrl" class="control-label"></label>
-                        <input asp-for="ImageUrl" class="form-control" />
-                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </form>
+        <section class="flex-centered">
+            <div class="row offerForm ">
+                <div class="col">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PersonsNumber" class="control-label"></label>
+                            <input asp-for="PersonsNumber" class="form-control" />
+                            <span asp-validation-for="PersonsNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Conditions" class="control-label"></label>
+                            <input asp-for="Conditions" class="form-control" />
+                            <span asp-validation-for="Conditions" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImageUrl" class="control-label"></label>
+                            <input asp-for="ImageUrl" class="form-control" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group flex-centered">
+                            <input type="submit" value="Create" class="btn btn_outline_blue mt-3" />
+                        </div>
+                    </form>
+                </div>
             </div>
+        </section>
+        <div class="back">
+            <a class="link" asp-action="Index">
+                <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste" width="20rem" />
+                <p class="d-inline text-black">Retour à la liste</p>
+            </a>
         </div>
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
-
-        </div>
-        }
+    </div>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

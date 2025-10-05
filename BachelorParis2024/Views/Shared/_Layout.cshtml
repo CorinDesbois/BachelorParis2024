@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="~/css/offers.css" />
         <link rel="stylesheet" href="~/css/events.css" />
         <link rel="stylesheet" href="~/css/shop.css" />
+        <link rel="stylesheet" href="~/css/adminPages.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
@@ -48,36 +49,36 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class=" collapse navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="collapse navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item me-2">
-                        <a class="nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")" aria-current="@(controller == "Home" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
+                        <a class="link nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")" aria-current="@(controller == "Home" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
                         </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark @(controller == "Events" ? "active" : "")" aria-current="@(controller == "Events" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Events" asp-action="Index">
+                        <a class="link nav-link text-dark @(controller == "Events" ? "active" : "")" aria-current="@(controller == "Events" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Events" asp-action="Index">
                             Evénements
                         </a>
                     </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(controller == "Shop" ? "active" : "")" aria-current="@(controller == "Shop" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Shop" asp-action="Index">
+                            <a class="link nav-link text-dark @(controller == "Shop" ? "active" : "")" aria-current="@(controller == "Shop" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Shop" asp-action="Index">
                                 Billetterie en ligne
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark @(controller == "OfferEF" ? "active" : "")" aria-current="@(controller == "OfferEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OfferEF" asp-action="Index">
+                            <a class="link nav-link text-dark @(controller == "OfferEF" ? "active" : "")" aria-current="@(controller == "OfferEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OfferEF" asp-action="Index">
                                 Gestion des offres
                             </a>
                         </li>
                     </ul>
                     <ul class="navbar-nav me-5">
                         <li class="nav-item me-2">
-                            <a class="nav-link text-dark @(controller == "Home" && action == "Connection" ? "active" : "")" aria-current="@(controller == "Home" && action == "Connection" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
+                            <a class="link nav-link text-dark @(controller == "Home" && action == "Connection" ? "active" : "")" aria-current="@(controller == "Home" && action == "Connection" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
                                 <img src="~/images/icones/user2.png" alt="connexion" height="35"/>
                                 Connexion
                             </a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-dark @(controller == "Home" && action == "ShoppingCard" ? "active" : "")" aria-current="@(controller == "Home" && action == "ShoppingCard" ? "page" : "")" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voir mon panier"
+                        <a class="link nav-link text-dark @(controller == "Home" && action == "ShoppingCard" ? "active" : "")" aria-current="@(controller == "Home" && action == "ShoppingCard" ? "page" : "")" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voir mon panier"
                                asp-area="" asp-controller="Home" asp-action="ConstructionPage">
                                     <img src="~/images/icones/panier.png" alt="panier" height="35"/>
                             </a>
@@ -100,7 +101,8 @@
                 <a href="https://www.flaticon.com/fr/icones-gratuites/panier" title="panier icônes">Panier icônes créées par Freepik - Flaticon</a> <br />
                 <a href="https://www.flaticon.com/fr/icones-gratuites/sidentifier" title="s'identifier icônes">S'identifier icônes créées par Good Ware - Flaticon</a> <br />
                 https://toppng.com/free-image/the-phryges-official-mascots-of-paris-2024-abstract-backgrounds-PNG-free-PNG-Images_493291
-            <a href="https://www.flaticon.com/fr/icones-gratuites/billet" title="billet icônes">Billet icônes créées par Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/billet" title="billet icônes">Billet icônes créées par Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by gravisio - Flaticon</a>
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
