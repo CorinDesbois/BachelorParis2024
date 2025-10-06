@@ -1,4 +1,5 @@
-﻿using BachelorParis2024.Domain.Models;
+﻿using BachelorParis2024.Domain.Interfaces;
+using BachelorParis2024.Domain.Models;
 using BachelorParis2024.Repository.Context;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
@@ -50,13 +51,10 @@ namespace BachelorParis2024.Controllers
             return View(offerModel);
         }
 
-        public IActionResult Booking()
-        {
-            return View();
-        }
-
         public IActionResult DisplayEventToBook(int eventId, string eventSport, string eventDescription, DateTime eventDate, string eventLocation)
         {
+            //instanciation de l'objet EventModel pour afficher les détails de l'événement
+            //reçus par le formulaire caché
             EventModel eventToDisplay = new()
             {
                 Id = eventId,
@@ -67,13 +65,33 @@ namespace BachelorParis2024.Controllers
                 Location = eventLocation,
                 AvailablePlaces = 15000
             };
-
+            // Récupération de la liste des offres depuis la base de données
+            try
+            { var offers = _context.Offre.ToList(); 
+            
+            var vm = new EventOfferModel
+            {
+                EventToDisplay = eventToDisplay,
+                Offers = offers
+            };
+            
             ViewBag.Id = eventId;
             ViewBag.Sport = eventSport;
             ViewBag.Description = eventDescription;
             ViewBag.Date = eventDate;
             ViewBag.Location = eventLocation;
-            return View("Booking", eventToDisplay);
+            return View("Booking", vm);
+
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
+
+        public IActionResult Booking()
+        {
+            return View();
         }
     }
 }

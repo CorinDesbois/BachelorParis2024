@@ -65,7 +65,6 @@ disciplineImage.forEach(img => {
 
 //Bouton de fermeture de la page Events/Index
 let closeButton = document.querySelector(".js-closeEventsList")
-Feature/select-event-and-offer
     closeButton?.addEventListener("click", () => {
         window.location.assign("../Home#sports_preview")
 
@@ -83,18 +82,17 @@ backToListButton?.addEventListener("click", () => {
 //Accès à la liste des événement par sport depuis la liste complète des sport de la page Home/Index
 //En cliquant sur le sport souhaité dans la liste affichée
 //Utilisation du formulaire caché de la page Home/Index
-/*let eventsButton = document.querySelectorAll(".js-sportSelection")
+let eventsButton = document.querySelectorAll(".js-sportSelection")
 eventsButton.forEach(btn => {
     btn.addEventListener("click", () => {
         console.log("click !!")
-        let category = document.querySelector(".js-sportSelection")
-        let sport = category.textContent
+        let sport = btn.textContent
         console.log(sport)
         document.getElementById("hiddenFormInput").value = sport
         document.getElementById("hiddenFormHomePage").submit()
     })
 })
-A revoir, ne fonctionne pas correctement pour le moment*/
+//A revoir, ne fonctionne pas correctement pour le moment
 
 
     
