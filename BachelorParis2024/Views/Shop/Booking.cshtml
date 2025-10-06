@@ -1,3 +1,4 @@
+@model BachelorParis2024.Domain.Models.EventOfferModel
 
 @{
     ViewData["Title"] = "Billetterie";
@@ -31,48 +32,30 @@
                 </thead>
                 <tbody>
                     <tr class="border-bottom">
-                        <td class="hidden">@ViewBag.Id</td>
-                        <td class="js-sportNameValue">@ViewBag.Sport</td>
-                        <td>@ViewBag.Description</td>
-                        <td>@ViewBag.Date</td>
-                        <td>@ViewBag.Location</td>
+                        <td class="hidden">@Model.EventToDisplay.Id</td>
+                        <td class="js-sportNameValue">@Model.EventToDisplay.Sport</td>
+                        <td>@Model.EventToDisplay.Description</td>
+                        <td>@Model.EventToDisplay.Date</td>
+                        <td>@Model.EventToDisplay.Location</td>
                     </tr>
                 </tbody>
             </table>
             <section class="offerSelection">
                 <h4 class="chooseOfferFormTitle">Choisissez une offre:</h4>
-                <div class="chooseOfferForm flex-centered row row-cols-sm-1 row-cols-md-2 row row-cols-lg-3">
-                    <label class="col" for="solo">
-                        <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
-                            <h3 class="card-header offerTitle text-white">SOLO</h3>
-                            <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/solo.png" alt="offre solo" />
-                            <p>1 personne</p>
-                            <p>95€</p>
-                        </div>
-                        <input type="radio" name="offerSelection" id="solo" />
-                    </label>
-
-                    <label class="col" for="duo">
-                        <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
-                            <h3 class="card-header offerTitle text-white">SOLO</h3>
-                            <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/frigy_duo.png" alt="offre solo" />
-                            <p>2 personnes</p>
-                            <p>180€</p>
-                        </div>
-                        <input type="radio" name="offerSelection" id="duo" />
-                    </label>
-
-                    <label class="col" for="family">
-                        <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
-                            <h3 class="card-header offerTitle text-white">SOLO</h3>
-                            <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/family.png" alt="offre solo" />
-                            <p>4 personnes</p>
-                            <p>330€</p>
-                        </div>
-                        <input type="radio" name="offerSelection" id="family" />
-                    </label>
-                    <div class="btn btn_outline_blue addToCardButton js-addToCard" title="ajouter au panier">Ajouter au panier</div>
+                <div class="chooseOfferForm flex-centered row row-cols-sm-1 row-cols-md-2 row row-cols-lg-4">
+                    @foreach (var offer in Model.Offers) {
+                        <label class="col" for="@offer.Name)">
+                            <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
+                                <h3 class="card-header offerTitle offerTitle_small text-white">@offer.Name</h3>
+                                <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/@offer.ImageUrl" alt="@offer.Name" />
+                                <p>@offer.Description</p>
+                                <p>@Html.DisplayFor(ModelItem => offer.Price)€</p>
+                            </div>
+                            <input type="radio" name="offerSelection" id="@offer.Name" />
+                        </label>
+                    }
                 </div>
+                <div class="btn btn_outline_blue addToCardButton js-addToCard" title="ajouter au panier">Ajouter au panier</div>
                 
             </section>
             
