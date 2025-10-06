@@ -1,10 +1,12 @@
 ﻿using BachelorParis2024.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using BachelorParis2024.Domain.Identity;
 
 namespace BachelorParis2024.Repository.Context
 {
-    public class DbProjectContext : DbContext
+    public class DbProjectContext : IdentityDbContext<BachelorParis2024User>
     {   
         //on crée un constructeur qui prend en paramètre DbContextOptions
         //qui va permettre de configurer le contexte de la base de données

@@ -4,30 +4,39 @@ using BachelorParis2024.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
+using BachelorParis2024.Repository_Context_DbProjectContext;
+using Microsoft.AspNetCore.Identity;
+using BachelorParis2024.Areas.Identity.Data;
 
-    var builder = WebApplication.CreateBuilder(args);
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Ajout de Entity Framework et de la chaîne de connexion
+// Ajout de Entity Framework et de la chaï¿½ne de connexion
 /*builder.Services.AddDbContext<DbProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"))
-        .EnableSensitiveDataLogging()   // !! à activer seulement en debug
+        .EnableSensitiveDataLogging()   // !! ï¿½ activer seulement en debug
         .LogTo(Console.WriteLine, LogLevel.Information)); //pour debug*/
-//à supprimer des commentaires
+//ï¿½ supprimer des commentaires
 
 //suppression du AddDbContext classique et
-// AJout d'un DbContextFactory à la place
-//pour essayer de résoudre les problèmes de migration avec EF Core Tools
-//permet de créer des instances de DbProjectContext à la volée
+// AJout d'un DbContextFactory ï¿½ la place
+//pour essayer de rï¿½soudre les problï¿½mes de migration avec EF Core Tools
+//permet de crï¿½er des instances de DbProjectContext ï¿½ la volï¿½e
 // AJout d'un DbContextFactory (optionnel)
-//pour essayer de résoudre les problèmes de migration avec EF Core Tools
-//permet de créer des instances de DbProjectContext à la volée
+//pour essayer de rï¿½soudre les problï¿½mes de migration avec EF Core Tools
+//permet de crï¿½er des instances de DbProjectContext ï¿½ la volï¿½e
 builder.Services.AddDbContextFactory<DbProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
-// Injections de dépendance pour les mocks
+builder.Services.AddDefaultIdentity<BachelorParis2024User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DbProjectContext>();
+        
+
+// Injections de dï¿½pendance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();
 builder.Services.AddScoped<ISportRepository, SportsMock>();
 

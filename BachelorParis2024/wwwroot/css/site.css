@@ -92,6 +92,12 @@ h2 {
     background-color: hsla(0, 0%, 85%, 30%);
 }
 
+.main__error {
+    width: 80vw;
+    height: 80vh;
+    color: black;
+}
+
 .footer {
     padding: 1vh 2vw 1vh 2vw;
     min-height: 60vh;
