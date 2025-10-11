@@ -19,15 +19,24 @@
 
 @section main {
     <div id="main" class="main main_events text-center bg_light-blue d-flex align-items-center justify-content-center">
-        <section class="cart table-background">
+        <div class="cart table-background">
             <div class="col container container-fluid" id="js-cartContainer">
                 
             </div>
-        </section>
+            <section class="js-cartManage">
+                <div class="back js-pointer js-backToList">
+                    <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste" width="20rem" />
+                    <p class="d-inline text-black">Retour à la liste des événements</p>
+                </div>
+                <div class="btn btn_outline_blue js-validateCart" title="valider le panier">Valider le panier</div>
+                <img src="~/images/icones/corbeille-a-papier.png" class="js-clearCart js-pointer" title="vider le panier">
+            </section>
+        </div>
     </div>
 }
-
+ src=
 @section scripts {
+    <script src="~/js/cartStaticBtns.js" asp-append-version="true"></script>
     <script src="~/js/locaStorage.js" asp-append-version="true"></script>
     <script src="~/js/cart.js" asp-append-version="true"></script>
 }

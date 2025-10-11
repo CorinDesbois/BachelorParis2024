@@ -38,21 +38,23 @@ const renderCart = () => {
             <p>Prix: ${i.price}€</p>`
         divcartItem.appendChild(divOffer)
         
-        const total = parseInt(i.price)
+        const total = parseInt(i.price) * i.qty
 
         const divUpdate = document.createElement("div")
         divUpdate.classList.add("js-cart_Update", "flex-centered", "js-cart_Update", "btn", "rounded-pill", "col")
         const pDecrease = document.createElement("p")
         pDecrease.classList.add("js-cartDecrease", "align-self-center", "js-pointer", "m-lg-2")
         pDecrease.innerHTML = "-"
+        pDecrease.setAttribute("data-id", i.idTicket)
         divUpdate.appendChild(pDecrease)
         const pQty = document.createElement("p")
-        pQty.classList.add("align-self-center", "m-lg-2")
-        pQty.innerHTML = `${n}`
+        pQty.classList.add("align-self-center", "m-lg-2", "js-quantity")
+        pQty.innerHTML = `${i.qty}`
         divUpdate.appendChild(pQty)
         const pIncrease = document.createElement("p")
         pIncrease.classList.add("js-cartIncrease", "align-self-center", "js-pointer", "m-lg-2")
         pIncrease.innerHTML = "+"
+        pIncrease.setAttribute("data-id", i.idTicket)
         divUpdate.appendChild(pIncrease)
         const img = document.createElement("img")
         img.classList.add("js-bin", "align-self-center", "js-pointer", "m-lg-2")
@@ -66,20 +68,41 @@ const renderCart = () => {
         divAmount.innerHTML = `
             <p>Total: ${total}€</p>`
         divcartItem.appendChild(divAmount)
-    } 
+
+    }
     let bins = document.querySelectorAll(".js-bin")
     bins.forEach(bin => {
         bin.addEventListener("click", () => {
-            removeOneItem(i.id)
-            window.alert("Le billet a été supprimé du panier")
+            removeOneItem(i)
+            
             renderCart()
         })
     })
 
+    let increaseBtns = document.querySelectorAll(".js-cartIncrease")
+    increaseBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            let id = e.target.getAttribute("data-id")
+            increaseQty(id)
+            renderCart()
+        })
+    })
 
+    let decreaseBtns = document.querySelectorAll(".js-cartDecrease")
+    decreaseBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            let id = e.target.getAttribute("data-id")
+            decreaseQty(id)
+            renderCart()
+        })
+    })
+    
 
     if (cartContainer.innerHTML === "") {
-        console.log("vore panier est vide")
+        const clearCart = document.querySelector(".js-clearCart")
+        clearCart.classList.add("js-hidden")
+        let validateBtn = document.querySelector(".js-validateCart")
+        validateBtn.classList.add("js-hidden")
         cartContainer.innerHTML = `
         <h3>Votre panier est vide<h3>
         <img src= ../images/icones/chariot.png class="img-fluid" alt="panie vide">`
@@ -87,6 +110,9 @@ const renderCart = () => {
 }
 
 renderCart()
+
+
+
 
 
 

@@ -12,7 +12,7 @@ let dateEvent = document.querySelector(".js-dateEvent")
 let locationEvent = document.querySelector(".js-locationEvent")
 let radios = document.getElementsByName("offerSelection")
 let addToCartBtn = document.querySelector(".js-addToCart")
-let idTicket = 0
+
 
 if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
     addToCartBtn.addEventListener("click", () => {
@@ -20,7 +20,7 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
             if (i.checked) {
                 console.log("input value=" + i.value)
                 let cartItem = {
-                    id: Date.now,
+                    idTicket: Date.now(),
                     idEvent: idEvent.textContent,
                     sport: sportEvent.textContent,
                     event: nameEvent.textContent,
@@ -30,7 +30,7 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
                     offer: i.dataset.name,
                     description: i.dataset.description,
                     price: i.dataset.price,
-                    imageUrl: i.dataset.image
+                    qty:1
                 }
                 saveItems(cartItem)
                 window.alert("Le billet a bien été ajouté au panier")

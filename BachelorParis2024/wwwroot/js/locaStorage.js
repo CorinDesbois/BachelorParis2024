@@ -29,7 +29,41 @@ const removeAllItems = () => {
 const removeOneItem = (i) => {
     let localValue = localStorage.getItem("savedItems")
     let savedItems = JSON.parse(localValue)
-    savedItems.splice(i,1)
+    let item = savedItems.find(x => x.idTicket === i)
+    savedItems.splice(i, 1)
+    window.alert("Le billet va être supprimé du panier")
     localStorage.setItem("savedItems", JSON.stringify(savedItems))
+}
+
+//fonctions permettant la mise à jour de la quantité pour un articles
+const increaseQty = (idTicket) => { 
+    let savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
+    let item = savedItems.find(x => x.idTicket == idTicket)
+    console.log("item: ")
+    console.log(item)
+    console.log(item.qty)
+    console.log(item.idTicket)
+    if (item) {
+        item.qty++
+        localStorage.setItem("savedItems", JSON.stringify(savedItems))
+    }
+}
+
+const decreaseQty = (idTicket) => {
+    let savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
+    let item = savedItems.find(x => x.idTicket == idTicket)
+    console.log("item: ")
+    console.log(item)
+    console.log(item.qty)
+    console.log(item.idTicket)
+    if (item) {
+        if (item.qty > 1) {
+            item.qty--
+        } else {
+            savedItems.splice(i, 1) 
+            window.alert("Le billet va être supprimé du panier")
+        }
+        localStorage.setItem("savedItems", JSON.stringify(savedItems))
+    }
 }
 

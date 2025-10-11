@@ -30,3 +30,21 @@
     margin: 2rem;
     width: 20%
 }
+
+.js-cartManage {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.js-backToList {
+
+}
+
+.js-validateCart {
+}
+
+.js-clearCart {
+    width: 6rem;
+}
+
