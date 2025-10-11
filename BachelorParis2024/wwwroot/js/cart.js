@@ -37,9 +37,9 @@ const renderCart = () => {
             <p>${i.description} </p>
             <p>Prix: ${i.price}€</p>`
         divcartItem.appendChild(divOffer)
-        
-        const total = parseInt(i.price) * i.qty
 
+        const total = parseFloat(i.price) * i.qty
+ 
         const divUpdate = document.createElement("div")
         divUpdate.classList.add("js-cart_Update", "flex-centered", "js-cart_Update", "btn", "rounded-pill", "col")
         const pDecrease = document.createElement("p")
@@ -68,8 +68,16 @@ const renderCart = () => {
         divAmount.innerHTML = `
             <p>Total: ${total}€</p>`
         divcartItem.appendChild(divAmount)
-
     }
+  
+    const divcartAmount = document.createElement("section")
+    divcartAmount.classList.add("js-cartItemSection", "row", "row-cols-sm-2", "row-cols-md-3", "row-cols-lg-4")
+    divcartAmount.innerHTML = `
+        <h4>Total du panier: </h5>
+        <p>${calculateCartAmount() } €</p>`
+     
+    cartContainer.appendChild(divcartAmount)
+
     let bins = document.querySelectorAll(".js-bin")
     bins.forEach(bin => {
         bin.addEventListener("click", () => {

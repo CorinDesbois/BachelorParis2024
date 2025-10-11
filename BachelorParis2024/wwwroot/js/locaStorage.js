@@ -39,10 +39,6 @@ const removeOneItem = (i) => {
 const increaseQty = (idTicket) => { 
     let savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
     let item = savedItems.find(x => x.idTicket == idTicket)
-    console.log("item: ")
-    console.log(item)
-    console.log(item.qty)
-    console.log(item.idTicket)
     if (item) {
         item.qty++
         localStorage.setItem("savedItems", JSON.stringify(savedItems))
@@ -52,10 +48,6 @@ const increaseQty = (idTicket) => {
 const decreaseQty = (idTicket) => {
     let savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
     let item = savedItems.find(x => x.idTicket == idTicket)
-    console.log("item: ")
-    console.log(item)
-    console.log(item.qty)
-    console.log(item.idTicket)
     if (item) {
         if (item.qty > 1) {
             item.qty--
@@ -65,5 +57,15 @@ const decreaseQty = (idTicket) => {
         }
         localStorage.setItem("savedItems", JSON.stringify(savedItems))
     }
+}
+
+//fonction permettant de calculer le total du panier
+const calculateCartAmount = () => {
+    let savedItems = JSON.parse(localStorage.getItem("savedItems")) || [];
+    let total = savedItems.reduce((acc, item) => {
+    let price = parseFloat(item.price.replace(",", "."))
+        return acc + (price * item.qty)
+},0)
+    return total
 }
 
