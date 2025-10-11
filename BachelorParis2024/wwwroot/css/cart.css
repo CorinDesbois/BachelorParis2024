@@ -1,0 +1,32 @@
+﻿.js-cartItemSection {
+    align-items:center;
+    border-bottom: 1px solid;
+    font-size: 1.2rem;
+    padding: 0.5rem 0px 0.5rem 0px;
+}
+
+.js-cart_Event {
+    width: 35%;
+}
+
+.js-cart_Offer {
+    width: 25%;
+}
+
+.js-cart_Update {
+    display: flex;
+    height: 2.2rem;
+    width: 10rem;
+    border: 2px solid #3b7197;
+    font-size: 1.5rem;
+}
+
+.js-bin {
+    height: 2rem;
+}
+
+.js-cart_Amount {
+    background-color: white;
+    margin: 2rem;
+    width: 20%
+}

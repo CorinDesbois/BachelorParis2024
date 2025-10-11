@@ -32,31 +32,46 @@
                 </thead>
                 <tbody>
                     <tr class="border-bottom">
-                        <td class="hidden">@Model.EventToDisplay.Id</td>
-                        <td class="js-sportNameValue">@Model.EventToDisplay.Sport</td>
-                        <td>@Model.EventToDisplay.Description</td>
-                        <td>@Model.EventToDisplay.Date</td>
-                        <td>@Model.EventToDisplay.Location</td>
+                        <td class="hidden js-idEvent">@Model.EventToDisplay.Id</td>
+                        <td class="js-sportEvent">@Model.EventToDisplay.Sport</td>
+                        <td class="js-nameEvent">@Model.EventToDisplay.Name</td>
+                        <td class="js-dateEvent">@Model.EventToDisplay.Date</td>
+                        <td class="js-locationEvent">@Model.EventToDisplay.Location</td>
                     </tr>
                 </tbody>
             </table>
             <section class="offerSelection">
                 <h4 class="chooseOfferFormTitle">Choisissez une offre:</h4>
-                <div class="chooseOfferForm flex-centered row row-cols-sm-1 row-cols-md-2 row row-cols-lg-4">
-                    @foreach (var offer in Model.Offers) {
-                        <label class="col" for="@offer.Name)">
-                            <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
-                                <h3 class="card-header offerTitle offerTitle_small text-white">@offer.Name</h3>
-                                <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/@offer.ImageUrl" alt="@offer.Name" />
-                                <p>@offer.Description</p>
-                                <p>@Html.DisplayFor(ModelItem => offer.Price)€</p>
-                            </div>
-                            <input type="radio" name="offerSelection" id="@offer.Name" />
-                        </label>
-                    }
-                </div>
-                <div class="btn btn_outline_blue addToCardButton js-addToCard" title="ajouter au panier">Ajouter au panier</div>
-                
+                @*Ajout d'un formulaire caché pour envoyer les données vers le panier*@
+                <form id="hiddenFormAddToCart" asp-controller="Shop" asp-action="AddToCart" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="eventId" id="js-eventId" value="@Model.EventToDisplay.Id" />
+                    <input type="hidden" name="eventSport" id="js-eventSport" value="@Model.EventToDisplay.Sport" />
+                    <input type="hidden" name="eventName" id="js-eventName" value="@Model.EventToDisplay.Name" />
+                    <input type="hidden" name="eventDate" id="js-eventDate" value="@Model.EventToDisplay.Date" />
+                    <input type="hidden" name="eventLocation" id="js-eventLocation" value="@Model.EventToDisplay.Location" />
+
+                    @*Seuls les boutons radio du formulaire sont visibles sous les offres*@
+                    <div class="chooseOfferForm flex-centered row row-cols-sm-1 row-cols-md-2 row row-cols-lg-4">
+        
+                        @foreach (var offer in Model.Offers) {
+                            <label class="col">
+                                <input type="radio" name="offerSelection" id="@offer.Name" value="@offer.Id" 
+                                    data-name="@offer.Name" data-description="@offer.Description" data-price="@offer.Price" data.image="@offer.ImageUrl"/>
+                                <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
+                                    <h3 class="card-header offerTitle offerTitle_small text-white">@offer.Name</h3>
+                                    <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/@offer.ImageUrl" alt="@offer.Name" />
+                                    <p>@offer.Description</p>
+                                    <p>@Html.DisplayFor(ModelItem => offer.Price)€</p>
+                                </div>
+                                
+                            </label>
+                        }
+                    </div>
+                    @*boutton submit du formulaire*@
+                    <div class="btn btn_outline_blue addToCardButton js-addToCart" title="ajouter au panier">Ajouter au panier</div>
+                    @*</a>*@
+                </form>
             </section>
             
             <!--formulaire caché qui communique le nom du sport au controller EventsController
@@ -71,3 +86,9 @@
         </div>
     </div>
 }
+
+@section scripts {
+    <script src="~/js/locaStorage.js" asp-append-version="true"></script>
+    <script src="~/js/booking.js" asp-append-version="true"></script>
+}
+
