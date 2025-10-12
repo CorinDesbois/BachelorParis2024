@@ -4,6 +4,10 @@ let n = 1 //-> nb de billets
 let x = 0 //-> index de la ligne
 
 const renderCart = () => {
+    //on supprime l'incone panier dans la barre de navigaation
+    cartNavLink = document.querySelector(".js-cartLink")
+    cartNavLink.classList.add("js-hidden")
+
     //1_Vider le contenu html existant
     const cartContainer = document.querySelector("#js-cartContainer")
     cartContainer.innerHTML = ""
@@ -69,15 +73,24 @@ const renderCart = () => {
             <p>Total: ${total}€</p>`
         divcartItem.appendChild(divAmount)
     }
+
+    if (cartContainer.innerHTML === "") {
+        const clearCart = document.querySelector(".js-clearCart")
+        clearCart.classList.add("js-hidden")
+        let validateBtn = document.querySelector(".js-validateCart")
+        validateBtn.classList.add("js-hidden")
+        cartContainer.innerHTML = `
+        <h3>Votre panier est vide<h3>
+        <img src= ../images/icones/chariot.png class="img-fluid" alt="panier vide">`
+    }
   
     const divcartAmount = document.createElement("section")
     divcartAmount.classList.add("js-cartItemSection", "row", "row-cols-sm-2", "row-cols-md-3", "row-cols-lg-4")
     divcartAmount.innerHTML = `
         <h4>Total du panier: </h5>
         <p>${calculateCartAmount() } €</p>`
-     
     cartContainer.appendChild(divcartAmount)
-
+   
     let bins = document.querySelectorAll(".js-bin")
     bins.forEach(bin => {
         bin.addEventListener("click", () => {
@@ -104,17 +117,7 @@ const renderCart = () => {
             renderCart()
         })
     })
-    
 
-    if (cartContainer.innerHTML === "") {
-        const clearCart = document.querySelector(".js-clearCart")
-        clearCart.classList.add("js-hidden")
-        let validateBtn = document.querySelector(".js-validateCart")
-        validateBtn.classList.add("js-hidden")
-        cartContainer.innerHTML = `
-        <h3>Votre panier est vide<h3>
-        <img src= ../images/icones/chariot.png class="img-fluid" alt="panie vide">`
-    }
 }
 
 renderCart()

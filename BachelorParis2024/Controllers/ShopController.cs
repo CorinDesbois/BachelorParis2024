@@ -129,6 +129,12 @@ namespace BachelorParis2024.Controllers
         {
             return View();
         }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+    
     }
 
 }
