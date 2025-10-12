@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="~/css/events.css" />
         <link rel="stylesheet" href="~/css/shop.css" />
         <link rel="stylesheet" href="~/css/adminPages.css" />
+        <link rel="stylesheet" href="~/css/cart.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
@@ -74,18 +75,14 @@
                 <partial name="_loginPartial" />
 
                     <ul class="navbar-nav me-5">
-                        <li class="nav-item">
-                        <a class="link nav-link text-dark @(controller == "Home" && action == "ShoppingCard" ? "active" : "")" aria-current="@(controller == "Home" && action == "ShoppingCard" ? "page" : "")" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voir mon panier"
-                               asp-area="" asp-controller="Home" asp-action="ConstructionPage">
-                                    <img src="~/images/icones/panier.png" alt="panier" height="35"/>
-                            </a>
+                    <li class="nav-item js-cartLink js-pointer">
+                            <img src="~/images/icones/panier.png" alt="panier" height="35"/>
                         </li>
                     </ul>
                 
                 </div>
             </div>
         </nav>
-
 
 
         <div id="main" class="container full-width">
@@ -100,11 +97,13 @@
                 https://toppng.com/free-image/the-phryges-official-mascots-of-paris-2024-abstract-backgrounds-PNG-free-PNG-Images_493291
                 <a href="https://www.flaticon.com/fr/icones-gratuites/billet" title="billet icônes">Billet icônes créées par Freepik - Flaticon</a>
                 <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by gravisio - Flaticon</a>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/corbeille-a-papier" title="corbeille à papier icônes">Corbeille à papier icônes créées par Ehtisham Abid - Flaticon</a>
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/events.js" asp-append-version="true"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>

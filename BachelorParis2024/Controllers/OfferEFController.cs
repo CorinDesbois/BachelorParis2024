@@ -32,7 +32,7 @@ namespace BachelorParis2024.Controllers
             }
             catch (Exception)
             {
-                return View("Une erreur est survenue, veuillez réessayer");
+                return View("Error");
             }
         }
 
