@@ -27,6 +27,7 @@
     var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
     var isNotHomepage = !(controller == "Home" && action == "Index");
+    var isAdmin = User.IsInRole("Admin");
 }
 
     
@@ -65,7 +66,7 @@
                                 Billetterie en ligne
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="@(isAdmin ? "nav-item" : "js-hidden")">
                             <a class="link nav-link text-dark @(controller == "OfferEF" ? "active" : "")" aria-current="@(controller == "OfferEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OfferEF" asp-action="Index">
                                 Gestion des offres
                             </a>
