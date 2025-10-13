@@ -71,11 +71,15 @@ namespace BachelorParis2024.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Veuillez renseigner un prénom.")]
+            [RegularExpression(@"^[a-zA-ZÀ-ÖØ-öø-ÿ\-'\s]+$",
+                ErrorMessage = "Le prénom ne doit contenir que des lettres.")]
             [Display(Name = "Prénom")]
             public string FirstName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Veuillez renseigner un nom.")]
+            [RegularExpression(@"^[a-zA-ZÀ-ÖØ-öø-ÿ\-'\s]+$",
+                ErrorMessage = "Le nom ne doit contenir que des lettres.")]
             [Display(Name = "Nom")]
             public string LastName { get; set; }
 
@@ -83,8 +87,8 @@ namespace BachelorParis2024.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Veuillez renseigner une adresse email.")]
+            [EmailAddress(ErrorMessage = "Adresse e-mail invalide.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -93,9 +97,9 @@ namespace BachelorParis2024.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "Le {0} doit contenir {2} and at max {1} caractères.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Le format du mot de passe n'est pas valide.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Mot de passe")]
             public string Password { get; set; }
 
             /// <summary>
@@ -103,7 +107,7 @@ namespace BachelorParis2024.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Confirmer le mot de passe")]
             [Compare("Password", ErrorMessage = "Le mot de passe saisi ne correspond pas au mot de passe initial.")]
             public string ConfirmPassword { get; set; }
         }
@@ -133,7 +137,10 @@ namespace BachelorParis2024.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    //Ajout d'un rôle "User" par défaut à chaque nouvel utilisateur
+                    await _userManager.AddToRoleAsync(user, "User");
+
+                    _logger.LogInformation("New User Account created.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
