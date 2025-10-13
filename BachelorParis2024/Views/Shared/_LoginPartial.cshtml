@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using BachelorParis2024.Areas.Identity.Data
+@using BachelorParis2024.Domain.Identity;
 
 @inject SignInManager<BachelorParis2024User> SignInManager
 @inject UserManager<BachelorParis2024User> UserManager
@@ -8,10 +8,10 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+         <p id="manage" class="link nav-link text-dark align-self-center fs-4" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bonjour @UserManager.GetUserName(User) !</p>
     </li>
     <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <form id="logoutForm" class="form-inline align-self-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
         </form>
     </li>
@@ -19,11 +19,10 @@
 else
 {   
     <img class="align-self-center" src="~/images/icones/user2.png" alt="connexion" height="35" />
-    <li class="nav-item">
-        <a class="link nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">
-             
-                            Créer un compte   
-        </a>
+    <li class=" link nav-link text-dark js-pointer nav-item js-identityConnection">
+            @*<a class="link nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">*@
+           Créer un compte   
+        @*</a>*@
     </li>
     <li class="nav-item">
         <a class="link nav-link text-dark align-self-center" id="login" asp-area="Identity" asp-page="/Account/Login">

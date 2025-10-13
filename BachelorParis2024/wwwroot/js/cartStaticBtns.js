@@ -1,5 +1,4 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
-    console.log("le dom est prêt !")
     const clearCart = document.querySelector(".js-clearCart")
     clearCart.addEventListener ("click", () => {
         console.log("click !!")

@@ -1,11 +1,11 @@
-﻿using BachelorParis2024.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using BachelorParis2024.Domain.Identity;
 
 namespace BachelorParis2024.Repository_Context_DbProjectContext;
 
-public class cs : IdentityDbContext<BachelorParis2024User>
+public class cs : IdentityDbContext<Domain.Identity.BachelorParis2024User>
 {
     public cs(DbContextOptions<cs> options)
         : base(options)
