@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using BachelorParis2024.Repository_Context_DbProjectContext;
 using Microsoft.AspNetCore.Identity;
-using BachelorParis2024.Areas.Identity.Data;
+using BachelorParis2024.Domain.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +31,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContextFactory<DbProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
-builder.Services.AddDefaultIdentity<BachelorParis2024User>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<BachelorParis2024User>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DbProjectContext>();
         
