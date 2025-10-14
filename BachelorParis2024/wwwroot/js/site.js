@@ -13,5 +13,3 @@ createAccount.addEventListener("click", () => {
 
     
 })
-
-//asp-area="Identity" asp-page="/Account/Register

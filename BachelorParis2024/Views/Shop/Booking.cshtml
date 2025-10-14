@@ -80,7 +80,12 @@
             <form id="hiddenFormCLoseBookingPage" asp-controller="Events" asp-action="DisplayEventsBySport" method="post" value="">
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="valueFromHiddenForm" id="hiddenInputCLoseBookingPage" />
-                <button type="submit" class="btn btn_outline_black js-buttonBackToEventList" title="fermer la page">X</button>
+                <div class="back">
+                    <a class="link js-buttonBackToEventList">
+                        <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste des événements" width="20rem" />
+                        <p class="d-inline text-black">Retour à la liste</p>
+                    </a>
+                </div>
             </form>
             <!---->
         </div>

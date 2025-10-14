@@ -42,7 +42,13 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
 }
 
 //Affichage de la page panier lorsue l'on clique sur l'icône dans la barre de navigation
-cartLink = document.querySelector(".js-cartLink")
+const cartLink = document.querySelector(".js-cartLink")
 cartLink.addEventListener("click", () => {
     location.href = 'Cart';
 });
+
+// retourne à la liste des événements au click sur la flèche
+const btn = document.querySelector(".js-buttonBackToEventList")
+btn.addEventListener("click", () => {
+    location.href = "../Events/Index"
+})

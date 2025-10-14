@@ -33,7 +33,26 @@ builder.Services.AddDefaultIdentity<BachelorParis2024User>(options =>
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DbProjectContext>();
-        
+
+//Configuration du cookie de connexion Identity
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login";   // redirection si non connecté
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    
+    //comme le panier est validé par un appel API (fetch), on désactive la redirection
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return Task.CompletedTask;
+    };
+});
+
 
 // Injections de dependance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();
@@ -109,11 +128,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.MapRazorPages();
 

@@ -90,12 +90,13 @@ const renderCart = () => {
         <h4>Total du panier: </h5>
         <p>${calculateCartAmount() } €</p>`
     cartContainer.appendChild(divcartAmount)
+
+    //Fonctions de mise à jour des articles (+, -, supprimer)
    
     let bins = document.querySelectorAll(".js-bin")
     bins.forEach(bin => {
         bin.addEventListener("click", () => {
             removeOneItem(i)
-            
             renderCart()
         })
     })
@@ -118,6 +119,11 @@ const renderCart = () => {
         })
     })
 
+    //Fonction de validation du panier
+    const submitBtn = document.querySelector(".js-validateCart")
+    submitBtn.addEventListener("click", () => {
+        
+    })
 }
 
 renderCart()
