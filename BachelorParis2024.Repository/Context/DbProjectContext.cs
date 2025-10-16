@@ -23,6 +23,7 @@ namespace BachelorParis2024.Repository.Context
             modelBuilder.Entity<Cart>()
                 .HasIndex(c => c.UserId)
                 .IsUnique();
+            modelBuilder.Entity<Cart>().ToTable("Carts");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
