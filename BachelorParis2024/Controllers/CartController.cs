@@ -12,6 +12,7 @@ namespace BachelorParis2024.Controllers
 {
     public class CartController : Controller
     {
+
         //injection du context  +l'interface IEventRepository(pour les événement qui sont provisoirement dans le mock) 
         private readonly DbProjectContext _context;
         private readonly IEventRepository _eventRepository;
@@ -42,8 +43,6 @@ namespace BachelorParis2024.Controllers
                     return Unauthorized(new { message = "User ID not found in claims" });
                 }
 
-
-
                 var cart = new Cart
                 {
                     UserId = userId,
@@ -66,8 +65,8 @@ namespace BachelorParis2024.Controllers
                         return NotFound(new { message = "événement non trouvée" });
                     }
 
-                    var newCartItem = new CartItem 
-                    {   
+                    var newCartItem = new CartItem
+                    {
                         IdTicket = item.IdTicket,
                         IdEvent = item.IdEvent,
                         Sport = selectedEvent.Sport,
@@ -82,28 +81,51 @@ namespace BachelorParis2024.Controllers
                         Quantity = item.Quantity,
                         Cart = cart //rattache chaque item au panier
                     };
-                    //_context.Cart.Add(newCart);
                     //on enregistre chaque item dans la base de données
                     _context.CartItems.Add(newCartItem);
                     await _context.SaveChangesAsync();
-
-
-                    
                 }
-                //on stocke le panier dans la base de données
-
                
+                //return View("Checkout", cartItems);
                 //return RedirectToAction(nameof(Index));*/
-
-                
             }
             return Ok(new { message = "panier sauvegardé" });
-
         }
-            /*else
+
+        public async Task<IActionResult> Checkout()
+        {
+            //On récupère l'Id de l'utisateur via Idenity
+            if (User.Identity?.IsAuthenticated == true)
             {
-                return Unauthorized();
-            }*/
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userId == null)
+                {
+                    return View("/Idenity/Login");
+                }
+
+                //on récupère le panier de l'utilisateur connecté
+                var newcart = await _context.Cart.Where(c => c.UserId == userId)
+                    .Include(c => c.Items)
+                    .FirstOrDefaultAsync();
+
+                List<CartItem> cartItems = new List<CartItem>();
+                
+                if (newcart != null)
+                {
+                    cartItems = await _context.CartItems
+                        .Where(ci => ci.CartId == newcart.Id)
+                        .ToListAsync();
+
+                    var ticket = new TicketModel
+                    {
+                        Cart = newcart,
+                        CartItems = cartItems
+                    };
+                    return View("Checkout", ticket);
+                }
+            }  
+            return View("/Idenity/Login");
         }
     }
+}
 

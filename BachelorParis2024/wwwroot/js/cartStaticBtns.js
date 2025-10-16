@@ -36,6 +36,7 @@ submit.addEventListener("click", async () => {
     });
     if (response.ok) {
         console.log("panier envoyé")
+        location.href="../Cart/Checkout"
     }
     else if (response.status === 401) {
         console.error("utilisateur non connecté")
