@@ -18,6 +18,11 @@ namespace BachelorParis2024.Repository.Context
         {
             base.OnModelCreating(modelBuilder);
             //on configure les entités ici si besoin
+            //contrainte d'unicité sur le UserId dans la table Cart
+            //1 utilisateur ne peut avoir qu'un seul panier
+            modelBuilder.Entity<Cart>()
+                .HasIndex(c => c.UserId)
+                .IsUnique();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,5 +36,10 @@ namespace BachelorParis2024.Repository.Context
 
         //on crée une propriété DbSet pour chaque entité que l'on veut créer dans la base de données
         public DbSet<OfferModel> Offre { get; set; }
-    }   
+
+        public DbSet<Cart> Cart { get; set; }
+
+        public DbSet<CartItem> CartItems { get; set; }
+
+    }
 }

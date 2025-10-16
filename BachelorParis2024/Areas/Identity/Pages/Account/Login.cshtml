@@ -2,7 +2,7 @@
 @model BachelorParis2024.Areas.Identity.Pages.Account.LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Connexion";
 }
 
 <!--Ajout d'une balise dialog qui permettra par la suite d'ouvrir cette page avec javascript sous forme d'une fenêtre modale-->
@@ -12,7 +12,7 @@
         <div class="col-md-4">
             <section>
                 <form id="account" method="post">
-                    <h2>Use a local account to log in.</h2>
+                    <h2>Identifiez-vous pour accéder à votre compte.</h2>
                     <hr />
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                     <div class="form-floating mb-3">
@@ -38,8 +38,8 @@
                         <p>
                             <a id="forgot-password" asp-page="./ForgotPassword">Mot de passe oublié?</a>
                         </p>
-                        <p>S'enregistrer en tant que nouvel utilisateur'</a>
-                        </p>
+                        <a asp-page="./Register">Vous n'avez pas encore de compte ? Créez-en un en quelques clics</a>
+                        </a>
                         @*<p>
                             <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Renvoyer l'emal de confirmation'</a>
                         </p>*@
@@ -78,6 +78,11 @@
             </section>*@
         </div>
     </div>
+   
+        <a class="back link d-inline asp-controller="Home" asp-action="Index">
+            <p class="d-inline text-black"><img class="d-inline" src="~/images/icones/back.png" alt="Accueil" width="20rem" />Accueil</p>
+        </a>
+
 </dialog>
 
 @section Scripts {

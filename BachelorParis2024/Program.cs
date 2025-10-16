@@ -23,7 +23,17 @@ builder.Services.AddControllersWithViews();
 //pour essayer de r�soudre les probl�mes de migration avec EF Core Tools
 //permet de cr�er des instances de DbProjectContext � la vol�e
 builder.Services.AddDbContextFactory<DbProjectContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"),
+        sqlOptions =>
+        {
+            // Active la résilience de connexion
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,              // nombre maximum de tentatives
+                maxRetryDelay: TimeSpan.FromSeconds(10), // délai max entre tentatives
+                errorNumbersToAdd: null        // erreurs SQL spécifiques si besoin
+            );
+        }));
 
 //Ajout de Identity pour gérer la création de comptes, les login et les rôles
 builder.Services.AddDefaultIdentity<BachelorParis2024User>(options =>
@@ -33,7 +43,26 @@ builder.Services.AddDefaultIdentity<BachelorParis2024User>(options =>
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DbProjectContext>();
-        
+
+//Configuration du cookie de connexion Identity
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login";   // redirection si non connecté
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    
+    //comme le panier est validé par un appel API (fetch), on désactive la redirection
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return Task.CompletedTask;
+    };
+});
+
 
 // Injections de dependance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();
@@ -109,11 +138,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.MapRazorPages();
 

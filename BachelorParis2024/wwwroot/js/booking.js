@@ -18,7 +18,6 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
     addToCartBtn.addEventListener("click", () => {
         for (i of radios) {
             if (i.checked) {
-                console.log("input value=" + i.value)
                 let cartItem = {
                     idTicket: Date.now(),
                     idEvent: idEvent.textContent,
@@ -34,6 +33,7 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
                 }
                 saveItems(cartItem)
                 window.alert("Le billet a bien été ajouté au panier")
+                console.log(cartItem.idTicket)
                 renderCart()
             }
         }
@@ -42,7 +42,13 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
 }
 
 //Affichage de la page panier lorsue l'on clique sur l'icône dans la barre de navigation
-cartLink = document.querySelector(".js-cartLink")
+const cartLink = document.querySelector(".js-cartLink")
 cartLink.addEventListener("click", () => {
     location.href = 'Cart';
 });
+
+// retourne à la liste des événements au click sur la flèche
+const btn = document.querySelector(".js-buttonBackToEventList")
+btn.addEventListener("click", () => {
+    location.href = "../Events/Index"
+})
