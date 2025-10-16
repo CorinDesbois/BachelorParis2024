@@ -23,7 +23,17 @@ builder.Services.AddControllersWithViews();
 //pour essayer de r�soudre les probl�mes de migration avec EF Core Tools
 //permet de cr�er des instances de DbProjectContext � la vol�e
 builder.Services.AddDbContextFactory<DbProjectContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"),
+        sqlOptions =>
+        {
+            // Active la résilience de connexion
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,              // nombre maximum de tentatives
+                maxRetryDelay: TimeSpan.FromSeconds(10), // délai max entre tentatives
+                errorNumbersToAdd: null        // erreurs SQL spécifiques si besoin
+            );
+        }));
 
 //Ajout de Identity pour gérer la création de comptes, les login et les rôles
 builder.Services.AddDefaultIdentity<BachelorParis2024User>(options =>

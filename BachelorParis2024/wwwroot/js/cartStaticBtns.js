@@ -23,6 +23,9 @@ const submit = document.querySelector(".js-submitCart")
 submit.addEventListener("click", async () => {
     console.log('clic !')
     const cart = JSON.parse(localStorage.getItem("savedItems")) || []
+    console.log(cart)
+    console.log("stringify: ")
+    console.log(JSON.stringify(cart))
 
     const response = await fetch("/Cart/PostCart", {
         method: "POST",

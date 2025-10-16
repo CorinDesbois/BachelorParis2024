@@ -124,6 +124,7 @@ const renderCart = () => {
     submitBtn.addEventListener("click", () => {
         
     })
+
 }
 
 renderCart()

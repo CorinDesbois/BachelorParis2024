@@ -18,7 +18,6 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
     addToCartBtn.addEventListener("click", () => {
         for (i of radios) {
             if (i.checked) {
-                console.log("input value=" + i.value)
                 let cartItem = {
                     idTicket: Date.now(),
                     idEvent: idEvent.textContent,
@@ -34,6 +33,7 @@ if (typeof addToCartBtn !== "undefined" && addToCartBtn !== "null") {
                 }
                 saveItems(cartItem)
                 window.alert("Le billet a bien été ajouté au panier")
+                console.log(cartItem.idTicket)
                 renderCart()
             }
         }

@@ -4,6 +4,7 @@ using BachelorParis2024.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BachelorParis2024.Repository.Migrations
 {
     [DbContext(typeof(DbProjectContext))]
-    partial class DbProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20251015091007_changePricCartItems")]
+    partial class changePricCartItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,13 +137,16 @@ namespace BachelorParis2024.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IdEvent")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "idEvent");
 
                     b.Property<int>("IdOffer")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "idOffer");
 
-                    b.Property<long>("IdTicket")
-                        .HasColumnType("bigint");
+                    b.Property<int>("IdTicket")
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "idTicket");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -161,7 +167,8 @@ namespace BachelorParis2024.Repository.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "qty");
 
                     b.Property<string>("Sport")
                         .IsRequired()
