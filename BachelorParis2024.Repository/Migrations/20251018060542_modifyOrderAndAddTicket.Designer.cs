@@ -4,6 +4,7 @@ using BachelorParis2024.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BachelorParis2024.Repository.Migrations
 {
     [DbContext(typeof(DbProjectContext))]
-    partial class DbProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20251018060542_modifyOrderAndAddTicket")]
+    partial class modifyOrderAndAddTicket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,14 +227,17 @@ namespace BachelorParis2024.Repository.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
 
+                    b.Property<int>("IdEvent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdOffer")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("OrderStatus")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -256,19 +262,11 @@ namespace BachelorParis2024.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("IdEvent")
                         .HasColumnType("int");
 
                     b.Property<int>("IdOffer")
                         .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -459,7 +457,7 @@ namespace BachelorParis2024.Repository.Migrations
             modelBuilder.Entity("BachelorParis2024.Domain.Models.Ticket", b =>
                 {
                     b.HasOne("BachelorParis2024.Domain.Models.Order", "Order")
-                        .WithMany("Tickets")
+                        .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -526,8 +524,6 @@ namespace BachelorParis2024.Repository.Migrations
             modelBuilder.Entity("BachelorParis2024.Domain.Models.Order", b =>
                 {
                     b.Navigation("Items");
-
-                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

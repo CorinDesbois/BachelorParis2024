@@ -23,7 +23,18 @@ namespace BachelorParis2024.Repository.Context
             modelBuilder.Entity<Cart>()
                 .HasIndex(c => c.UserId)
                 .IsUnique();
+            //La classe Cart correspond à la table Carts en BDD
             modelBuilder.Entity<Cart>().ToTable("Carts");
+
+            //on veut que l'ID de commande soit un guid généré automatiquement
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Id)
+                .HasDefaultValueSql("NEWID()");
+
+            //on veut que l'ID de Ticket soit un guid généré automatiquement
+            modelBuilder.Entity<Ticket>()
+                .Property(o => o.Id)
+                .HasDefaultValueSql("NEWID()");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -42,5 +53,8 @@ namespace BachelorParis2024.Repository.Context
 
         public DbSet<CartItem> CartItems { get; set; }
 
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<Ticket>Ticket { get; set; }
     }
 }

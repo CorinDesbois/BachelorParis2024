@@ -3,6 +3,7 @@ using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Mocks;
 using BachelorParis2024.Repository.Context;
 using BachelorParis2024.Repository_Context_DbProjectContext;
+using BachelorParis2024.Services.Payment;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -67,6 +68,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Injections de dependance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();
 builder.Services.AddScoped<ISportRepository, SportsMock>();
+// Injection de dependance pour le processeur de paiement -> simulation pour le moment, à remplacer par la suite
+builder.Services.AddScoped<IPaymentProcessor, SimulatePaymentProcessor>();
 
 var mvcBuilder = builder.Services.AddRazorPages();
 

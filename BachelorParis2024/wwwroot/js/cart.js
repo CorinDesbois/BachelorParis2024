@@ -1,8 +1,5 @@
 ﻿//fonction permettant d'afficher le panier de façon dynamique
 
-let n = 1 //-> nb de billets
-let x = 0 //-> index de la ligne
-
 const renderCart = () => {
     //on supprime l'incone panier dans la barre de navigaation
     cartNavLink = document.querySelector(".js-cartLink")

@@ -5,11 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>BachelorParis2024</RootNamespace>
+	<WarningLevel>4</WarningLevel>
+	<DebugType>full</DebugType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="Views\Home\Index1.cshtml" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />

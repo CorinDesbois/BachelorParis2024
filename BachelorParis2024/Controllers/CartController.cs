@@ -2,6 +2,7 @@
 using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Domain.Models;
 using BachelorParis2024.Repository.Context;
+using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -79,15 +80,13 @@ namespace BachelorParis2024.Controllers
                         OfferPersonNb = offer.PersonsNumber,
                         Price = offer.Price,
                         Quantity = item.Quantity,
+                        Total = offer.Price * item.Quantity,
                         Cart = cart //rattache chaque item au panier
                     };
                     //on enregistre chaque item dans la base de données
                     _context.CartItems.Add(newCartItem);
                     await _context.SaveChangesAsync();
                 }
-               
-                //return View("Checkout", cartItems);
-                //return RedirectToAction(nameof(Index));*/
             }
             return Ok(new { message = "panier sauvegardé" });
         }
@@ -111,21 +110,22 @@ namespace BachelorParis2024.Controllers
                 List<CartItem> cartItems = new List<CartItem>();
                 
                 if (newcart != null)
-                {
+                {   
                     cartItems = await _context.CartItems
                         .Where(ci => ci.CartId == newcart.Id)
                         .ToListAsync();
 
-                    var ticket = new TicketModel
+                    var ticket = new CartItemViewModel
                     {
                         Cart = newcart,
-                        CartItems = cartItems
+                        CartItems = cartItems, 
                     };
                     return View("Checkout", ticket);
                 }
             }  
             return View("/Idenity/Login");
         }
+    
     }
 }
 

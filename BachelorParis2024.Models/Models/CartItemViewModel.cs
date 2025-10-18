@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BachelorParis2024.Domain.Models
 {
-    public class TicketModel
+    public class CartItemViewModel
     {   
         public required IEnumerable<CartItem>  CartItems  { get; set; }
 
