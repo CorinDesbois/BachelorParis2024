@@ -1,0 +1,22 @@
+﻿.order {
+    border-bottom: 2px solid black;   
+}
+
+.orderTitle {
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.orderItem {
+    border-top: 1px dashed black;
+    padding: 1rem;
+    align-items: center;
+}
+
+.total {
+    background-color: white;
+}
+
+.js-ticketDetails:hover {
+    background-color: lightgray;
+}

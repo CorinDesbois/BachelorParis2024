@@ -87,6 +87,11 @@ h2 {
     margin: 0px 2.5vw 0px 2.5vw;
 }
 
+.authenticatedNavbar {
+    width: 60%;
+}
+
+
 
 .main {
     margin: 2vh 2.5vw 2vh 2.5vw;

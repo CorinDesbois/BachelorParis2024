@@ -1,0 +1,28 @@
+﻿@using BachelorParis2024.Domain.Models;
+
+@model Ticket;
+
+@{
+    ViewData["Title"] = "E-Ticket";
+}
+
+
+
+@section header {
+    <div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%" />
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height="30%" />
+        </div>
+        <h2 class="d-block d-flex align-items-start justify-content-center">Mon espace personnel</h2>
+    </div>
+}
+
+@section main {
+    <div id="main" class="main main_events text-center bg_light-blue d-flex align-items-center justify-content-center">
+        <div class="cart table-background">
+            <h2> Mon billet</h2>
+        </div>
+    </div>
+}

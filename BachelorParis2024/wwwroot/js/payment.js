@@ -25,7 +25,7 @@ payBtn.addEventListener("click", async() => {
             localStorage.clear()
             setTimeout(() => {
                 window.alert("Votre paiement a été accepté. Vous pouvez d'ors et déjà retrouver vos billets dans l'onglet mes commandes. Nous vous disons un grand merci et à bientôt !")
-                location.href = "../OrdersEF/Index"
+                location.href = "../Order/OrderList"
             },500)
             
         }
@@ -35,3 +35,9 @@ payBtn.addEventListener("click", async() => {
         location.href = "../Shared/Error"
         }
 })
+
+//Affichage de la page panier lorsue l'on clique sur l'icône dans la barre de navigation
+cartLink = document.querySelector(".js-cartLink")
+cartLink.addEventListener("click", () => {
+    location.href = '../Shop/Cart';
+});

@@ -11,10 +11,6 @@ const renderCart = () => {
     
     //2_Récupérer les articles contenus dans le localStorage
     const items = getItems()
-    if (items.lenght === 0) {
-        
-        console.log("panier vide !!")
-    }
 
     //3_les afficher dans la div prévue à cet effet
 
@@ -74,7 +70,7 @@ const renderCart = () => {
     if (cartContainer.innerHTML === "") {
         const clearCart = document.querySelector(".js-clearCart")
         clearCart.classList.add("js-hidden")
-        let validateBtn = document.querySelector(".js-validateCart")
+        let validateBtn = document.querySelector(".js-submitCart")
         validateBtn.classList.add("js-hidden")
         cartContainer.innerHTML = `
         <h3>Votre panier est vide<h3>
