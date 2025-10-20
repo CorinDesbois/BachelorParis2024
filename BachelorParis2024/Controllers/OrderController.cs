@@ -39,6 +39,7 @@ namespace BachelorParis2024.Controllers
                 return View("/Identity/Login");
             }
             List<Order> orders = await _context.Order
+                .Include(o => o.Tickets)
                 .AsNoTracking() //améliore les performances pour les opérations en lecture seule
                 .Where(o => o.UserId == userId)
                 .ToListAsync(); //Obligatoire avec IQueryable<> sinon la méthode retourne une erreur

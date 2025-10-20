@@ -13,6 +13,8 @@ using Microsoft.SqlServer.Management.Smo;
 using NuGet.Versioning;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 
@@ -28,12 +30,16 @@ namespace BachelorParis2024.Controllers
         private readonly DbProjectContext _context;
         private readonly IPaymentProcessor _IpaymentProcessor;
         private readonly UserManager<BachelorParis2024User> _userManager;
+        private readonly IConfiguration _config;
+        private readonly QrCodeService _qrCodeService;
 
-        public PaymentController(DbProjectContext context, IPaymentProcessor IPaymentProcessor, UserManager<BachelorParis2024User> userManager)
+        public PaymentController(DbProjectContext context, IPaymentProcessor IPaymentProcessor, UserManager<BachelorParis2024User> userManager, IConfiguration config, QrCodeService qrCodeService)
         {
             _context = context;
             _IpaymentProcessor = IPaymentProcessor;
             _userManager = userManager;
+            _config = config;
+            _qrCodeService = qrCodeService;
         }
 
         [Authorize]
@@ -103,16 +109,58 @@ namespace BachelorParis2024.Controllers
                     Price = i.Price,
                     Quantity = i.Quantity,
                     Total = i.Total,
-                    Order = order //rattache chaque ticket à sa commande
+                    Order = order, //rattache chaque ticket à sa commande
+                    QrContent = string.Empty,
                 };
+            
                 //on enregistre chaque ticket dans la base de données
                 _context.Ticket.Add(ticket);
                 await _context.SaveChangesAsync();
-           }
+
+                //Génération du contenu QR sécurisé
+                ticket.QrContent = GenerateQrContent(user.Id, ticket.Id);
+
+                //on met à jour le contenu QR dans le ticket
+                await _context.SaveChangesAsync();
+            }
             _context.Cart.Remove(userCart);
             await _context.SaveChangesAsync();
+
+            
+
             return Ok(new { message = "commande enregistrée" });
-        }    
+        }
+
+        //Méthode permettant de générer un QR Code pour chaque ticket
+        private string GenerateQrContent(string userId, Guid ticketId)
+        {
+            var secretKey = _config["QrCode:SecretKey"];
+            var payload = $"user={userId}&ticket={ticketId}";
+            var signature = ComputeHmac(payload, secretKey);
+            return $"{payload}&sig={signature}";
+        }
+        
+        //Méthode retournant un QR code sous forme de fichier png à insérer dans la vue
+        public IActionResult QrCode(Guid ticketId)
+        {
+            var ticket = _context.Ticket.Find(ticketId);
+            if (ticket == null || string.IsNullOrEmpty(ticket.QrContent))
+                return NotFound();
+
+            var qrBytes = _qrCodeService.GenerateQrCode(ticket.QrContent);
+            return File(qrBytes, "image/png");
+        }
+
+        //Méthode permettant de calculer la signature HMAC pour sécuriser le contenu du QR code
+        private string ComputeHmac(string data, string secretKey)
+        {
+            var keyBytes = Encoding.UTF8.GetBytes(secretKey);
+            var dataBytes = Encoding.UTF8.GetBytes(data);
+
+            using var hmac = new HMACSHA256(keyBytes);
+            var hashBytes = hmac.ComputeHash(dataBytes);
+            return Convert.ToHexString(hashBytes);
+        }
     }
 }
  

@@ -9,6 +9,8 @@ namespace BachelorParis2024.Domain.Models
     public class TicketOrderViewModel
     {   
         public Order? Order { get; set; }
+
+        public Ticket? Ticket { get; set; }
         public required List<Order> Orders { get; set; }
 
         public required List<Ticket> Tickets { get; set; }

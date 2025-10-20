@@ -42,9 +42,9 @@
                                 <h4>Montant: @o.TotalAmount</h4>
                             </div>
 
-                            @foreach (var item in Model.Tickets)
-                            {
-                                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 orderItem js-backToList js-pointer js-ticketDetails">
+                            @foreach (var item in o.Tickets)
+                            {   
+                                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-5 orderItem js-ticketDetails">
                                     <div class="col align-middle">
                                         <p>Offre @item.OfferName</p>
                                         <p>@item.OfferDescription</p>
@@ -61,21 +61,27 @@
                                         <p>Qté:</p>
                                         <p>@item.Quantity</p>
                                     </div>
-                                    <div class="col total">
+                                    <div class="col total mt-3">
                                         <p>Total:</p>
                                         <p>@item.Total</p>
+                                    </div>
+                                    <div class="col mt-3">
+                                        <a class="link js-pointer" asp-controller="Ticket" asp-action="Ticket" asp-route-id="@item.Id">
+                                            <img class="seeTicket" src="~/images/icones/zoom.png" alt="afficher les ticket" title="Afficher le bille" />
+                                        </a>
                                     </div>
                                 </div>
                             }
                         </section> 
                     } 
+
                 }
                 
                 <section class="js-cartManage">
-                    <div class="back js-pointer js-backToList link">
+                    <a class="back js-pointer js-backToList link" asp-controller="Events" asp-action="Index">
                         <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste" width="20rem" />
                         <p class="d-inline text-black">Retour à la liste des événements</p>
-                    </div>
+                    </a>
                 </section>
             </div>
         </div>

@@ -10,7 +10,7 @@
     <li class="nav-item align-self-center ms-2">
          <p id="manage" class="nav-link text-dark align-self-center fs-5" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bonjour @UserManager.GetUserName(User)</p>
     </li>
-    <li class="nav-item align-self-center ms-2">
+        <li class=" align-self-center ms-2 @(User.IsInRole("Admin") ? "js-hidden" : "nav-item")">
         <a class="link nav-link btn btn-link border-0" asp-controller="Order" asp-action="OrderList">
             <p class="link text-dark">Mes commandes</p>
         </a>

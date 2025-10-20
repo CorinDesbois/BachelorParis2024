@@ -64,6 +64,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     };
 });
 
+//Injection de dépendence pour le QRCode Service
+builder.Services.AddSingleton<QrCodeService>();
 
 // Injections de dependance pour les mocks
 builder.Services.AddScoped<IEventRepository, EventsMock>();

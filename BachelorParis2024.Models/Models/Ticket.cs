@@ -40,5 +40,7 @@ namespace BachelorParis2024.Domain.Models
         public decimal Total { get; set; }
 
         public required Order Order { get; set; }
+
+        public required string QrContent { get; set; }
     }
 }

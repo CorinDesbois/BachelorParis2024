@@ -10,11 +10,11 @@ using BachelorParis2024.Repository.Context;
 
 namespace BachelorParis2024.Controllers
 {
-    public class OrdersEFController : Controller
+    public class OrdersAdminEFController : Controller
     {
         private readonly DbProjectContext _context;
 
-        public OrdersEFController(DbProjectContext context)
+        public OrdersAdminEFController(DbProjectContext context)
         {
             _context = context;
         }
