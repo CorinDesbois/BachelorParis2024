@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BachelorParis2024.Domain.Models
 {
-    public class CartItem
+    public class Ticket
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int CartId { get; set; }
+        public Guid OrderId { get; set; }
 
-        public long IdTicket { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
 
         public int IdEvent { get; set; }
 
@@ -25,7 +24,7 @@ namespace BachelorParis2024.Domain.Models
         public DateTime Date { get; set; }
 
         public required string Location { get; set; }
-        
+
         public int IdOffer { get; set; }
 
         public required string OfferName { get; set; }
@@ -40,6 +39,8 @@ namespace BachelorParis2024.Domain.Models
 
         public decimal Total { get; set; }
 
-        public required Cart Cart { get; set; }
+        public required Order Order { get; set; }
+
+        public required string QrContent { get; set; }
     }
 }

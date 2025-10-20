@@ -1,0 +1,17 @@
+﻿.checkoutTitle {
+    background-color: #3b7197;
+    padding: 1rem;
+    width: 100%;
+    color: white;
+}
+
+.checkoutSubtitle {
+    padding: 1rem;
+}
+
+.checkoutItem {
+    border-top: 1px solid black;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 0px 0.5rem 0px;
+}

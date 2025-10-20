@@ -21,7 +21,6 @@ backArrow.addEventListener ("click", () => {
 //ce dernier contrôlera si l'utilisateur est connecté et sauvegardera le panier dans la BDD
 const submit = document.querySelector(".js-submitCart")
 submit.addEventListener("click", async () => {
-    console.log('clic !')
     const cart = JSON.parse(localStorage.getItem("savedItems")) || []
     console.log(cart)
     console.log("stringify: ")

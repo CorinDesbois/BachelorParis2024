@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -13,6 +14,9 @@
         <link rel="stylesheet" href="~/css/shop.css" />
         <link rel="stylesheet" href="~/css/adminPages.css" />
         <link rel="stylesheet" href="~/css/cart.css" />
+        <link rel="stylesheet" href="~/css/checkout.css" />
+        <link rel="stylesheet" href="~/css/ordersList.css" />
+        <link rel="stylesheet" href="~/css/ticket.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
@@ -27,7 +31,12 @@
     var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
     var isNotHomepage = !(controller == "Home" && action == "Index");
-    var isAdmin = User.IsInRole("Admin");
+    //var isAdmin = User.IsInRole("Admin");
+    var isAdmin = false;
+    if (User?.Identity?.IsAuthenticated == true)
+    {
+        isAdmin = User.IsInRole("Admin");
+    }
 }
 
     
@@ -44,7 +53,7 @@
 
     <nav class="@(isNotHomepage ? "smallerNavbar" : "") navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid bg_gold">
-                <a class="navbar-brand ms-5" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand ms-2" asp-controller="Home" asp-action="Index">
                     <img class="navbar-logo" src="~/images/logos_jo/eiffel-tower-svgrepo-com.svg" alt="icone tour effeil" height="40">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -53,33 +62,39 @@
                 </button>
                 <div class="collapse navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item me-2">
+                        <li class="nav-item ms-2">
                         <a class="link nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")" aria-current="@(controller == "Home" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
                         </li>
-                    <li class="nav-item">
-                        <a class="link nav-link text-dark @(controller == "Events" ? "active" : "")" aria-current="@(controller == "Events" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Events" asp-action="Index">
-                            Evénements
-                        </a>
-                    </li>
-                        <li class="nav-item">
-                            <a class="link nav-link text-dark flex-centered @(controller == "Shop" ? "active" : "")" aria-current="@(controller == "Shop" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Shop" asp-action="Index">
+                        <li class="nav-item ms-2">
+                            <a class="link nav-link text-dark @(controller == "Events" ? "active" : "")" aria-current="@(controller == "Events" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Events" asp-action="Index">
+                                Evénements
+                            </a>
+                        </li>
+                    <li class="ms-2 @(isAdmin ? "js-hidden" : "nav-item")">
+                            <a class="link nav-link text-dark @(controller == "Shop" ? "active" : "")" aria-current="@(controller == "Shop" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Shop" asp-action="Index">
                                 Billetterie en ligne
                             </a>
                         </li>
-                        <li class="@(isAdmin ? "nav-item" : "js-hidden")">
+                        <li class="@(isAdmin ? "nav-item" : "js-hidden") nav-item ms-2">
                             <a class="link nav-link text-dark @(controller == "OfferEF" ? "active" : "")" aria-current="@(controller == "OfferEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OfferEF" asp-action="Index">
                                 Gestion des offres
                             </a>
                         </li>
+                        <li class="@(isAdmin ? "nav-item" : "js-hidden") nav-item ms-2">
+                        <a class="link nav-link text-dark @(controller == "OrderAdminEF" ? "active" : "")" aria-current="@(controller == "OrderAdminEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OrderAdminEF" asp-action="Index">
+                                Analyse des ventes
+                            </a>
+                        </li>
                     </ul>
 
-                <partial name="_loginPartial" />
-
+                    <partial name="_loginPartial" />
+                    
                     <ul class="navbar-nav me-5">
-                    <li class="nav-item js-cartLink js-pointer">
+                    <li class="nav-item js-cartLink js-pointer @(isAdmin ? "js-hidden" : "nav-item")">
                             <img src="~/images/icones/panier.png" alt="panier" height="35"/>
                         </li>
                     </ul>
+
                 
                 </div>
             </div>
@@ -99,12 +114,14 @@
                 <a href="https://www.flaticon.com/fr/icones-gratuites/billet" title="billet icônes">Billet icônes créées par Freepik - Flaticon</a>
                 <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by gravisio - Flaticon</a>
                 <a href="https://www.flaticon.com/fr/icones-gratuites/corbeille-a-papier" title="corbeille à papier icônes">Corbeille à papier icônes créées par Ehtisham Abid - Flaticon</a>
+                <a href="https://www.flaticon.com/fr/icones-gratuites/voir-plus" title="voir plus icônes">Voir plus icônes créées par Smashicons - Flaticon</a>
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/js/events.js" asp-append-version="true"></script>
+
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>

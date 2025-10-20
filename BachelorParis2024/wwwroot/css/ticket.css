@@ -1,0 +1,64 @@
+﻿.ticket-A4 {
+    aspect-ratio: 1 / 1.414; /* Ratio A4 */
+    width: 100%;
+    max-width: 800px; /* = 210mm */
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+@media print {
+    body {
+        margin: 0;
+    }
+
+    .ticket-A4 {
+        box-shadow: none;
+        border: none;
+        page-break-after: always;
+    }
+}
+
+@media (max-width: 600px) {
+    .ticket-A4 {
+        padding: 1rem;
+        max-width: 100%;
+        margin: 0px;
+    }
+}
+
+.ticketHeader {
+    background-image: url("../images/backgrounds/tour_eiffel_header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    padding: 5rem;
+    margin: 1rem;
+    color: white;
+}
+
+.ticketData {
+    border: 2px solid #3b7197;
+    margin: 2rem;
+    align-content: center;
+    height: 11%;
+    align-content: center;
+    font-size: 1.2rem
+}
+
+.ticketEventDetail {
+    border: 2px solid #3b7197;
+    margin: 2rem;
+    height: 25%;
+    align-content: center;
+    font-size: 1.5rem
+}
+
+.QR {
+    width: 40%;
+}
+
