@@ -2,6 +2,7 @@
 using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Domain.Models;
 using System.Collections.Generic;
+using System.Composition;
 
 namespace BachelorParis2024.Mocks
 {
@@ -213,12 +214,26 @@ namespace BachelorParis2024.Mocks
 
         public IEnumerable<EventModel> GetAllEvents() => _listEvents;
 
-        //public IEnumerable<EventModel> DisplayEventsBySport(string sport) => [.. _listEvents.Where(e => e.Sport.Equals(sport, StringComparison.OrdinalIgnoreCase)).ToList(new List<EventModel>())];
-   
-        public EventModel GetEventById(int id) => _listEvents.FirstOrDefault(e => e.Id == id);
+        public EventModel? GetEventById(int id)
+        {   
+            if (id <= 0)
+            {
+                return null;
+            }
+            return _listEvents.FirstOrDefault(e =>e.Sport!=null && e.Id == id);
+        }
 
-        public EventModel GetEventByName(string name) => _listEvents.FirstOrDefault(e => e.Name == name);
+        public EventModel? GetEventByName(string? name)
+        {
+            if (string.IsNullOrWhiteSpace(name)) return null;
 
-        public EventModel GetEventBySport(string sport) => _listEvents.FirstOrDefault(e => e.Sport == sport);
+            return _listEvents.FirstOrDefault(e =>e.Name!= null && e.Name == name!);
+        }
+
+        public EventModel? GetEventBySport(string sport)
+        {
+            if (string.IsNullOrWhiteSpace(sport)) return null;
+            return _listEvents.FirstOrDefault(e =>e.Sport !=null && e.Sport == sport);
+        }
     }
 }
