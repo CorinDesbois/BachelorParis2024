@@ -65,7 +65,7 @@
                         <li class="nav-item ms-2">
                         <a class="link nav-link text-dark @(controller == "Home" && action == "Index" ? "active" : "")" aria-current="@(controller == "Home" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
                         </li>
-                        <li class="nav-item ms-2">
+                        <li class="@(isAdmin ? "js-hidden" : "nav-item") ms-2">
                             <a class="link nav-link text-dark @(controller == "Events" ? "active" : "")" aria-current="@(controller == "Events" && action == "Index" ? "page" : "")" asp-area="" asp-controller="Events" asp-action="Index">
                                 Evénements
                             </a>
@@ -81,7 +81,7 @@
                             </a>
                         </li>
                         <li class="@(isAdmin ? "nav-item" : "js-hidden") nav-item ms-2">
-                        <a class="link nav-link text-dark @(controller == "OrderAdminEF" ? "active" : "")" aria-current="@(controller == "OrderAdminEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OrderAdminEF" asp-action="Index">
+                        <a class="link nav-link text-dark @(controller == "OrdersAdminEF" ? "active" : "")" aria-current="@(controller == "OrdersAdminEF" && action == "Index" ? "page" : "")" asp-area="" asp-controller="OrdersAdminEF" asp-action="Index">
                                 Analyse des ventes
                             </a>
                         </li>

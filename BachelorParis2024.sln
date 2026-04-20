@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BachelorParis2024.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BachelorParis2024.Repository", "BachelorParis2024.Repository\BachelorParis2024.Repository.csproj", "{EEAB9563-00F3-42D4-A6F2-FA7CC3C77E6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BachelorParis2024.Tests", "BachelorParis2024.Tests\BachelorParis2024.Tests.csproj", "{B761A938-F4D7-4FBD-B14C-E8C968D19810}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EEAB9563-00F3-42D4-A6F2-FA7CC3C77E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEAB9563-00F3-42D4-A6F2-FA7CC3C77E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEAB9563-00F3-42D4-A6F2-FA7CC3C77E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B761A938-F4D7-4FBD-B14C-E8C968D19810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B761A938-F4D7-4FBD-B14C-E8C968D19810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B761A938-F4D7-4FBD-B14C-E8C968D19810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B761A938-F4D7-4FBD-B14C-E8C968D19810}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -105,10 +105,10 @@ using (var scope = app.Services.CreateScope())
     }
 
     // Lecture des valeurs dans appsettings.json
-    var adminEmail = config["AdminUser:Email"];
-    var adminPassword = config["AdminUser:Password"];
-    var adminFirstName = config["AdminUser:FirstName"];
-    var adminLastName = config["AdminUser:LastName"];
+    var adminEmail = config["AdminUser:Email"] ?? throw new InvalidOperationException("AdminUser:Email is missing");
+    var adminPassword = config["AdminUser:Password"] ?? throw new InvalidOperationException("AdminUser:Password is missing");
+    var adminFirstName = config["AdminUser:FirstName"] ?? throw new InvalidOperationException("AdminUser:FirstName is missing");
+    var adminLastName = config["AdminUser:LastName"] ?? throw new InvalidOperationException("AdminUser:LastName is missing");
 
     // Vérifie si l’admin existe déjà
     var adminUser = await userManager.FindByEmailAsync(adminEmail);

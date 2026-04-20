@@ -66,7 +66,7 @@ namespace BachelorParis2024.Controllers
         }
 
 
-        public async Task<IActionResult> Ticket()
+        public IActionResult Ticket()
         {
             return View();
         }
