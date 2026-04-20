@@ -1,5 +1,7 @@
 using System.Diagnostics;
-using BachelorParis2024.Models;
+using BachelorParis2024.Domain;
+using BachelorParis2024.Domain.Interfaces;
+using BachelorParis2024.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace  BachelorParis2024.Controllers

@@ -20,7 +20,6 @@
 html {
     font-size: 14px;
     position: relative;
-    /*min-height: 100%;*/
 }
 
 @media (min-width: 768px) {
@@ -39,8 +38,9 @@ body {
 
 .with-background {
     min-height: 100vh;
+    background-color: #3b7197;
     background-image: url("../images/backgrounds/tour_eiffel_header.jpg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     border: none;
     padding: 0px 0px 0px 0px;
@@ -53,6 +53,7 @@ body {
 h1 {
     font-weight: 700;
     font-style: normal;
+   
 }
 
 .header {
@@ -60,7 +61,7 @@ h1 {
     margin-top: 5vh;
     margin-bottom: 0.5vh;
     min-width: 94vw;
-    background-color: hsla(0, 0%, 85%, 30%);
+    background-color: hsla(0, 0%, 85%, 75%);
     padding-top: 1vh;
 }
 
@@ -86,19 +87,29 @@ h2 {
     margin: 0px 2.5vw 0px 2.5vw;
 }
 
+.authenticatedNavbar {
+    width: 60%;
+}
+
+
 
 .main {
     margin: 2vh 2.5vw 2vh 2.5vw;
     background-color: hsla(0, 0%, 85%, 30%);
 }
 
+.main__error {
+    width: 80vw;
+    height: 80vh;
+    color: black;
+}
+
 .footer {
     padding: 1vh 2vw 1vh 2vw;
-    height: fit-content;
+    min-height: 60vh;
     min-width: 100vw;
     font-size: 1rem;
     text-wrap:wrap;
-
 }
 
 .full-width {
@@ -122,9 +133,17 @@ h2 {
     display: none;
 }
 
+.hidden {
+    display: none;
+}
+
 .link {
     text-decoration: none;
 }
+
+    .link:hover {
+        font-weight: bold;
+    }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;

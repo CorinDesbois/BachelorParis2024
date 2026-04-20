@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BachelorParis2024.Domain.Models.OfferModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section header {
+    <div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%" />
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height="30%" />
+        </div>
+        <h2 class="headerSubtitle d-block d-flex align-items-start justify-content-center">Gestion des offres</h2>
+    </div>
+}
+
+@section main {
+    <div id="main" class="main pb-4">
+        <section class="mb-4">
+            <h4 class="mainTitle">Liste des offres enregistrées</h4>
+            <div class="offerForm">
+                <table class="table table-sm table-striped table-hover table-responsive align-middle">
+                    <thead>
+                        <tr>
+                            <th>
+                                Offre
+                            </th>
+                            <th>
+                                Nb Pers
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Prix
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PersonsNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                <a class="link m-4" asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
+                                <a class="link m-4" asp-action="Details" asp-route-id="@item.Id">Afficher le détail</a> |
+                                <a class="link m-4 text-danger m-4" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                            </td>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+                <div class="btnNewOffer flex-centered">
+                    <a class="btn btn_outline_blue mt-3" title="Ajouter une offre" asp-action="Create">
+                        Ajouter une offre
+                    </a>
+                </div>
+            </div>
+        </section>    
+    </div>
+}

@@ -1,9 +1,17 @@
-﻿
+﻿@using BachelorParis2024.Domain.Models
+
 @{
     ViewData["Title"] = "Evénements";
 }
 
-@model IEnumerable<BachelorParis2024.Models.EventModel>
+@{
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var isNotFullList = !(controller == "Events" && action == "Index");
+}
+
+
+@model IEnumerable<EventModel>
 
 @section header {
 <div id="header" class="header text-center">
@@ -23,8 +31,9 @@
                 <caption>"Liste des événements @ViewBag.Titre"</caption>
                 <thead>
                     <tr class="border-bottom">
-                        <th scope="col">Libellé</th>
-                        <th scope="col">Date</th>
+                        <th class="hidden" scope="col">Id</th>
+                        <th scope="col">&Eacutepreuve</th>
+                        <th scope="col">Date et heure</th>
                         <th scope="col">Lieu</th>
                         <th scope="col">Réserver des places</th>
                     </tr>
@@ -35,26 +44,50 @@
                 {
                     <tbody>
                         <tr class="border-bottom">
-                            <td scope="row">@eventItem.Description</td>
+                            <td class="hidden" scope="row">@eventItem.Id</td>
+                            @*<td class="sportSelection js-sportSelection js-pointer @(isNotFullList ? "hidden" : "")">@eventItem.Sport</td>*@
+                            <td>
+                                <p class="@(isNotFullList ? "hidden" : "") sportSelection js-sportSelection js-pointer">@eventItem.Sport</p>
+                                <p>@eventItem.Description</p>
+                            </td>
                             <td>@eventItem.Date</td>
                             <td>@eventItem.Location</td>
                             <td>
-                                <a asp-controller="Home" asp-action="Offers">
-                                    <div class="btn btn_outline_blue js-bookEvent" title="Réserver">
-                                        +
-                                    </div>
-                                </a>
+                            <!--formulaire caché-->
+                            <!--seul le bouton submit apparaît sur la page, il permet de sélectionner l'événement choisi
+                            et d'en transmettre les valeurs au controller "ShopController"-->
+                                <form id="hiddenFormEventsPage" asp-controller="Shop" asp-action="DisplayEventToBook" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="eventId" id="js-hiddenEventId" value="@eventItem.Id" />
+                                    <input type="hidden" name="eventSport" id="js-hiddenEventSport" value="@eventItem.Sport" />
+                                    <input type="hidden" name="eventName" id="js-hiddenEventName" value="@eventItem.Name" />
+                                    <input type="hidden" name="eventDate" id="js-hiddenEventDate" value="@eventItem.Date" />
+                                    <input type="hidden" name="eventLocation" id="js-hiddenEventLocation" value="@eventItem.Location" />
+
+                                    <button type="submit" class="btn btn_outline_blue js-bookEvent" title="Réserver">
+                                            +
+                                    </button>
+                                </form>
+                            <!---->
                             </td>
                         </tr>
                     </tbody>
+                   
                 }
                 }
                 else
                 {
                     <tr>Aucun événement trouvé, veuillez réessayer</tr>
-                }   
+                }
+               
             </table>
             <div class="btn btn_outline_black js-closeEventsList" title="fermer la page">X</div>
         </div>
+        <!--formulaire caché qui communique le nom du sport au controller -->
+        <form id="hiddenFormEventPage" asp-controller="Events" asp-action="DisplayEventsBySport" method="post" value="">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="valueFromHiddenForm" id="hiddenFormInput" />
+        </form>
+        <!---->
     </div>
 }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model BachelorParis2024.Domain.Models.OfferModel
+
+@{
     ViewData["Title"] = "Billetterie en ligne";
 }
 
@@ -20,22 +22,26 @@
             <div class="offerDescription">
 
                 <div class="d-flex flex-row d-flex justify-content-between">
-                    <h3 class="offerTitle text-white flex-grow-1">OFFRE SOLO</h3>
-                    <div class="btn btn_outline_black js-closeOfferPage" title="fermer la page">X</div>
+                    <h2 class="offerTitle text-white flex-grow-1">@Html.DisplayFor(model => model.Name)</h2>
+                    <a asp-action="Index">
+                        <div class="btn btn_outline_black js-closeOfferPage" title="fermer la page">
+                            X
+                        </div>
+                    </a>
                 </div>
-                <h4 class="numberOfPersons text-white">Billet donnant accès à 1 personne</h4>
-                <h4 class="text-white">Prix: 95€</h4>
+                <h4 class="numberOfPersons text-white">@Html.DisplayFor(model => model.Description)</h4>
+                <h4 class="text-white">Prix: @Html.DisplayFor(model => model.Price)</h4>
                 <h5 class="conditionsTitle text-white">Conditions et modlités d'accès à l'événement</h5>
                 <p class="conditions text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                    fugiat nulla pariatur.
+                    @Html.DisplayFor(model => model.Conditions)
                 </p>
             </div>
-                <div class="btn btn_outline_white js-bookOffer" title="Réserver">
-                   Choisir cette offre
-                </div>
+            <h4 class="text-white">
+                Vous n'avez pas encore choisi à quel événement vous désirez assister ?
+            </h4>
+                <a class="btn btn_outline_white mt-3" title="Réserver" asp-area="" asp-controller="EVents" asp-action="Index">
+                    La liste complète se trouve juste ici !
+                </a>
         </section>
        
         

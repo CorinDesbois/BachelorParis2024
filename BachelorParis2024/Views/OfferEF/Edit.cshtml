@@ -1,0 +1,74 @@
+﻿@model BachelorParis2024.Domain.Models.OfferModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@section header {
+    <div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%" />
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height="30%" />
+        </div>
+        <h2 class="d-block d-flex align-items-start justify-content-center">Gestion des offres</h2>
+    </div>
+}
+
+@section main {
+    <div id="main" class="main">
+        <section class="flex-centered">
+            <div class="row offerForm ">
+                <div class="col">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PersonsNumber" class="control-label"></label>
+                            <input asp-for="PersonsNumber" class="form-control" />
+                            <span asp-validation-for="PersonsNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Conditions" class="control-label"></label>
+                            <input asp-for="Conditions" class="form-control" />
+                            <span asp-validation-for="Conditions" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImageUrl" class="control-label"></label>
+                            <input asp-for="ImageUrl" class="form-control" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group flex-centered">
+                            <input type="submit" value="Save" class="btn btn_outline_blue mt-3" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <div class="back">
+            <a class="link" asp-action="Index">
+                <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste" width="20rem" />
+                <p class="d-inline text-black">Retour à la liste</p>
+            </a>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -7,3 +7,20 @@
     min-width:90%;  
     min-height: 50vh;
 }
+
+.sportSelection:hover {
+    font-weight: bold;
+}
+
+/*@media screen and (max-width: 474px) {
+    .main_events {
+        min-width: 120vw;
+        background-color: #d6dce3;
+        margin-left: 0px;
+    overflow: scroll;
+    }
+
+    .table-background {
+        min-width: 100vw;
+    }
+}*/

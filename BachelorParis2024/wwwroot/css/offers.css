@@ -50,6 +50,11 @@
 
 .offerTitle {
     text-align: center;
+    font-size: 3rem;
+}
+
+.offerTitle_small {
+    font-size: 1rem;
 }
 
 .numberOfPersons {
@@ -65,5 +70,14 @@
 }
 
 .selectOffer {
-  
+      
+}
+
+.cardOfferTitle {
+     font-size: 1rem;
+}
+
+input[type="radio"]:checked + .card {
+    border: 3px solid #007bff;
+    box-shadow: 0 0 10px #3b7197;
 }

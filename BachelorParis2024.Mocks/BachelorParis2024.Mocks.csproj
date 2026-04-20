@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BachelorParis2024.Models\BachelorParis2024.Models.csproj" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.8.0" />
+    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects.SSMS" Version="161.47027.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BachelorParis2024.Models\BachelorParis2024.Domain.csproj" />
   </ItemGroup>
 
 </Project>

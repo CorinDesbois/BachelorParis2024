@@ -1,11 +1,13 @@
 ﻿using BachelorParis2024.Mocks;
-using BachelorParis2024.Models;
+using BachelorParis2024.Domain;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Linq;
+using BachelorParis2024.Domain.Models;
+using BachelorParis2024.Domain.Interfaces;
 
 namespace BachelorParis2024.Controllers
 {
@@ -37,7 +39,20 @@ namespace BachelorParis2024.Controllers
 
         }
 
-        
+        public IActionResult Index()
+        {
+            try
+            {
+                IEnumerable<EventModel> allEvents = _eventRepository.GetAllEvents();
+                IEnumerable<EventModel> eventList = allEvents.OrderBy(ev => ev.Sport);
+                ViewBag.Titre = "Evénements";
+                return View("Index", eventList);
+            }
+            catch(Exception)
+            {
+                return View("Error");
+            }
+        }
     }    
 }
 

@@ -1,5 +1,99 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+@model BachelorParis2024.Domain.Models.EventOfferModel
+
 @{
+    ViewData["Title"] = "Billetterie";
 }
+
+
+
+@section header {
+    <div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%" />
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height="30%" />
+        </div>
+        <h2 class="js-eventsPage-title d-block d-flex align-items-start justify-content-center">Billetterie</h2>
+    </div>
+}
+
+@section main {
+    <div id="main" class="main main_events text-center bg_light-blue d-flex align-items-center justify-content-center">
+        <div class="table-background">
+            <table class="table table-striped table-hover table-responsive align-middle">
+                <thead>
+                    <tr class="border-bottom">
+                        <th class="hidden" scope="col">Id</th>
+                        <th scope="col">Sport</th>
+                        <th scope="col">&Eacutepreuve</th>
+                        <th scope="col">Date et heure</th>
+                        <th scope="col">Lieu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-bottom">
+                        <td class="hidden js-idEvent">@Model.EventToDisplay.Id</td>
+                        <td class="js-sportEvent">@Model.EventToDisplay.Sport</td>
+                        <td class="js-nameEvent">@Model.EventToDisplay.Name</td>
+                        <td class="js-dateEvent">@Model.EventToDisplay.Date</td>
+                        <td class="js-locationEvent">@Model.EventToDisplay.Location</td>
+                    </tr>
+                </tbody>
+            </table>
+            <section class="offerSelection">
+                <h4 class="chooseOfferFormTitle">Choisissez une offre:</h4>
+                @*Ajout d'un formulaire caché pour envoyer les données vers le panier*@
+                <form id="hiddenFormAddToCart" asp-controller="Shop" asp-action="AddToCart" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="eventId" id="js-eventId" value="@Model.EventToDisplay.Id" />
+                    <input type="hidden" name="eventSport" id="js-eventSport" value="@Model.EventToDisplay.Sport" />
+                    <input type="hidden" name="eventName" id="js-eventName" value="@Model.EventToDisplay.Name" />
+                    <input type="hidden" name="eventDate" id="js-eventDate" value="@Model.EventToDisplay.Date" />
+                    <input type="hidden" name="eventLocation" id="js-eventLocation" value="@Model.EventToDisplay.Location" />
+
+                    @*Seuls les boutons radio du formulaire sont visibles sous les offres*@
+                    <div class="chooseOfferForm flex-centered row row-cols-sm-1 row-cols-md-2 row row-cols-lg-4">
+        
+                        @foreach (var offer in Model.Offers) {
+                            <label class="col">
+                                <input type="radio" name="offerSelection" id="@offer.Name" value="@offer.Id" 
+                                    data-name="@offer.Name" data-description="@offer.Description" data-price="@offer.Price" data.image="@offer.ImageUrl"/>
+                                <div class="card card__offer card__chooseOffer bg_gold container container-fluid d-flex">
+                                    <h3 class="card-header offerTitle offerTitle_small text-white">@offer.Name</h3>
+                                    <img class="img-offre img-offreSelection img-fluid" src="~/images/logos_jo/@offer.ImageUrl" alt="@offer.Name" />
+                                    <p>@offer.Description</p>
+                                    <p>@Html.DisplayFor(ModelItem => offer.Price)€</p>
+                                </div>
+                                
+                            </label>
+                        }
+                    </div>
+                    
+                    <div class="btn btn_outline_blue addToCardButton js-addToCart" title="ajouter au panier">Ajouter au panier</div>
+                    
+                </form>
+            </section>
+            
+            <!--formulaire caché qui communique le nom du sport au controller EventsController
+            pour réafficher la liste des événements lorsque l'on ferme la page booking avec le bouton'
+            -->
+            <form id="hiddenFormCLoseBookingPage" asp-controller="Events" asp-action="DisplayEventsBySport" method="post" value="">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="valueFromHiddenForm" id="hiddenInputCLoseBookingPage" />
+                <div class="back">
+                    <a class="link js-buttonBackToEventList">
+                        <img class="d-inline" src="~/images/icones/back.png" alt="retour à la liste des événements" width="20rem" />
+                        <p class="d-inline text-black">Retour à la liste</p>
+                    </a>
+                </div>
+            </form>
+            <!---->
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script src="~/js/locaStorage.js" asp-append-version="true"></script>
+    <script src="~/js/booking.js" asp-append-version="true"></script>
+}
+

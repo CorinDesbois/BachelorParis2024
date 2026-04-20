@@ -1,0 +1,54 @@
+﻿@using BachelorParis2024.Domain.Models;
+
+@model TicketViewModel;
+
+@{
+    ViewData["Title"] = "E-Ticket";
+}
+
+
+
+@section header {
+    <div id="header" class="header text-center">
+        <div class="logoSite container container-fluid d-block d-flex align-items-center justify-content-center">
+            <img class="logo-flamme-header img-fluid" src="~/images/logos_jo/flamme.png" alt="logo flamme olympique" height="50%" />
+            <h1 class="d-block">PARIS 2024</h1>
+            <img class="logo-anneaux-header img-fluid" src="~/images/logos_jo/anneaux.png" alt="logo anneaux olympics" height="30%" />
+        </div>
+        <h2 class="d-block d-flex align-items-start justify-content-center">Mon espace personnel</h2>
+    </div>
+}
+
+@section main {
+    <div id="main" class="main main_events text-center bg_light-blue d-flex align-items-center justify-content-center">
+        <div class="table-background">     
+            <div class="ticket-A4 container container-fluid">
+                <div class="ticketHeader">
+                    <h3>Paris 2024</h3>
+                    <h4>Billet électronique</h4>
+                </div>
+                <div class="row row-cols-2 ticketData">
+                    <div class="col">
+                        <p>@Model.FirstName</p>
+                        <p>@Model.LastName </p>
+                    </div>
+                    <div class="col">
+                        <p>@Model.Ticket.OfferName</p>
+                        <p>Nb de personnes: @Model.Ticket.OfferPersonNb</p>
+                        <p>@Model.Ticket.Price</p>
+                    </div>
+                </div>
+                <div class="ticketEventDetail">
+                    <p>@Model.Ticket.Sport</p>
+                    <p>@Model.Ticket.Event</p>
+                    <p>Le @Model.Ticket.Date.ToString("dd/MM/yy à HH:mm")</p>
+                    <p>@Model.Ticket.Location</p>
+                </div>
+                <img class ="QR" src="@Url.Action("QrCode", "Payment", new { ticketId = Model.Ticket.Id })" alt="QR Code du billet" />
+            
+            </div>
+        </div>
+            
+    </div>
+    
+}

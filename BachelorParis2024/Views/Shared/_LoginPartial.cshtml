@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BachelorParis2024.Domain.Identity;
+
+@inject SignInManager<BachelorParis2024User> SignInManager
+@inject UserManager<BachelorParis2024User> UserManager
+
+<ul class="navbar-nav @(SignInManager.IsSignedIn(User) ? "justify-content-around" : "justify-content-end") ">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item align-self-center ms-2">
+         <p id="manage" class="nav-link text-dark align-self-center fs-5" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bonjour @UserManager.GetUserName(User)</p>
+    </li>
+        <li class=" align-self-center ms-2 @(User.IsInRole("Admin") ? "js-hidden" : "nav-item")">
+        <a class="link nav-link btn btn-link border-0" asp-controller="Order" asp-action="OrderList">
+            <p class="link text-dark">Mes commandes</p>
+        </a>
+    </li>
+    <li class="nav-item align-self-center ms-2">
+        <form id="logoutForm" class="form-inline align-self-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="link nav-link btn btn-link text-danger border-0">Déconnexion</button>
+        </form>
+    </li>
+    
+}
+else
+{   
+    <li class=" nav-item align-self-center ms-2 text-dark js-pointer js-identityConnection">
+        <img class="align-self-center ms-2" src="~/images/icones/user2.png" alt="connexion" height="35" />
+        Créer un compte   
+    </li>
+    <li class="nav-item align-self-center ms-2">
+        <a class="link nav-link text-dark align-self-center" id="login" asp-area="Identity" asp-page="/Account/Login">
+            Se connecter
+        </a>
+    </li>
+}
+</ul>

@@ -1,6 +1,10 @@
-﻿@{
+﻿@using BachelorParis2024.Domain.Models;
+
+@{
     ViewData["Title"] = "Billetterie en ligne";
 }
+
+@model IEnumerable<OfferModel>
 
 @section header {
 <div id="header" class="header text-center">
@@ -18,42 +22,22 @@
     <div id="main" class="main main__offers text-center flex-centered">
         <!--A mettre en BDD-->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row__offers">
+
+        @foreach (var offer in Model)
+        {
             <div class="col">
                 <div class="card card__offer bg_gold container container-fluid d-flex">
-                    <h3 class="card-header text-white">SOLO</h3>
-                    <img class="img-offre img-fluid" src="~/images/logos_jo/solo.png" alt="offre solo"/>
-                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered justify-self-center" asp-area="" asp-controller="Shop" asp-action="OfferDetail">
-
+                    <h3 class="card-header text-white">@Html.DisplayFor(modelItem => offer.Name)</h3>
+                    <img class="img-offre img-fluid" src="~/images/logos_jo/@offer.ImageUrl" alt="offre solo"/>
+                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered justify-self-center" 
+                    asp-action="OfferDetail" asp-route-id="@offer.Id">
                         Voir l'offre
-
                     </a>
                 </div>
             </div>
+        }
  
-            <div class="col mb-3 mb-sm-0">
-                <div class="card card__offer bg_gold container container-fluid">
-                    <h3 class="card-header text-white">DUO</h3>
-                    <img class="img-offre img-fluid" src="~/images/logos_jo/frigy_duo.png" alt="offre duo" />
-                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
-                        
-                            Voir l'offre
-                       
-                    </a>
-                </div>
-            </div>
- 
-            <div class="col mb-3 mb-sm-0">
-                <div class="card card__offer bg_gold container container-fluid">
-                    <h3 class="card-header text-white">FAMILLE</h3>
-                    <img class="img-offre img-fluid" src="~/images/logos_jo/family.png" alt="offre famille" />
-                    <a class="btn_small btn_small__offers text-decoration-none flex-centered container container-fluid bg_blue text-white rounded-pill flex-centered" asp-area="" asp-controller="Home" asp-action="ConstructionPage">
-
-                        Voir l'offre
-
-                    </a>
-  
-                 </div>
-            </div>
+            
         </div>
     </div>
 }
