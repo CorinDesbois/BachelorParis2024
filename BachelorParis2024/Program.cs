@@ -153,6 +153,13 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
+//vérifie si la BDD existe, la crée si nécessaire et effectue les migrations manquantes
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DbProjectContext>();
+    db.Database.Migrate();
+}
+
 app.Run();
 
     
