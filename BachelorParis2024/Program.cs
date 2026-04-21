@@ -25,7 +25,7 @@ builder.Services.AddControllersWithViews();
 //permet de cr�er des instances de DbProjectContext � la vol�e
 builder.Services.AddDbContextFactory<DbProjectContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"),
+        builder.Configuration.GetConnectionString("DefaultConnection"),
         sqlOptions =>
         {
             // Active la résilience de connexion
