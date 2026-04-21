@@ -24,7 +24,7 @@ builder.Services.AddControllersWithViews();
 //pour essayer de r�soudre les probl�mes de migration avec EF Core Tools
 //permet de cr�er des instances de DbProjectContext � la vol�e
 builder.Services.AddDbContextFactory<DbProjectContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         sqlOptions =>
         {
