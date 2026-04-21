@@ -32,7 +32,6 @@ builder.Services.AddDbContextFactory<DbProjectContext>(options =>
             sqlOptions.EnableRetryOnFailure(
                 maxRetryCount: 5,              // nombre maximum de tentatives
                 maxRetryDelay: TimeSpan.FromSeconds(10), // délai max entre tentatives
-                errorNumbersToAdd: null        // erreurs SQL spécifiques si besoin
             );
         }));
 
