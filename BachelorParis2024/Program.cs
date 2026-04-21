@@ -23,17 +23,13 @@ builder.Services.AddControllersWithViews();
 // AJout d'un DbContextFactory � la place
 //pour essayer de r�soudre les probl�mes de migration avec EF Core Tools
 //permet de cr�er des instances de DbProjectContext � la vol�e
-builder.Services.AddDbContextFactory<DbProjectContext>(options =>
+builder.Services.AddDbContext<DbProjectContext>(options =>
+{
     options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlOptions =>
-        {
-            // Active la résilience de connexion
-            sqlOptions.EnableRetryOnFailure(
-                maxRetryCount: 5,              // nombre maximum de tentatives
-                maxRetryDelay: TimeSpan.FromSeconds(10), // délai max entre tentatives
-            );
-        }));
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    );
+});
+
 
 //Ajout de Identity pour gérer la création de comptes, les login et les rôles
 builder.Services.AddDefaultIdentity<BachelorParis2024User>(options =>
