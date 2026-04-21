@@ -36,8 +36,9 @@ namespace BachelorParis2024.Repository.Context
                 .Property(o => o.Id)
                 .HasDefaultValueSql("NEWID()");
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //Dans un projet ASP.NET Core moderne, OnConfiguring ne doit jamais être utilisé.
+        //C’est Program.cs qui configure le DbContext.
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
@@ -45,6 +46,7 @@ namespace BachelorParis2024.Repository.Context
                 optionsBuilder.UseSqlServer("Server=tcp:bachelorparis2024freeserver.database.windows.net,1433;Initial Catalog=BachelorParis2024FreeDB;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication= 'Active Directory Default';");
             }
         }
+        */
 
         //on crée une propriété DbSet pour chaque entité que l'on veut créer dans la base de données
         public DbSet<OfferModel> Offre { get; set; }
