@@ -8,7 +8,6 @@ cartLink.addEventListener("click", () => {
 const createAccount = document.querySelector(".js-identityConnection")
 //let registerUser = document.getElementById("registerUser")
 createAccount.addEventListener("click", () => {
-    console.log("click !!")
     location.href="../Identity/Account/Register"
 
     
