@@ -2,9 +2,7 @@
 using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Domain.Models;
 using BachelorParis2024.Repository.Context;
-using Humanizer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;

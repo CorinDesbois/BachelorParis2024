@@ -2,15 +2,9 @@ using BachelorParis2024.Domain.Identity;
 using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Mocks;
 using BachelorParis2024.Repository.Context;
-using BachelorParis2024.Repository_Context_DbProjectContext;
 using BachelorParis2024.Services.Payment;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.SqlServer.Management.Smo;
-using System.ComponentModel;
 
 
 var builder = WebApplication.CreateBuilder(args);

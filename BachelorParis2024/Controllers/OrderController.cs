@@ -1,14 +1,9 @@
 ﻿using BachelorParis2024.Domain.Identity;
-using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Domain.Models;
 using BachelorParis2024.Repository.Context;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Exchange.WebServices.Data;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace BachelorParis2024.Controllers
 {
