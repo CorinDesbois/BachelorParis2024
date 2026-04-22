@@ -24,12 +24,9 @@ builder.Services.AddControllersWithViews();
 //pour essayer de r�soudre les probl�mes de migration avec EF Core Tools
 //permet de cr�er des instances de DbProjectContext � la vol�e
 builder.Services.AddDbContext<DbProjectContext>(options =>
-{
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")
-    );
-});
-
+        ));
 
 //Ajout de Identity pour gérer la création de comptes, les login et les rôles
 builder.Services.AddDefaultIdentity<BachelorParis2024User>(options =>
@@ -72,6 +69,13 @@ var mvcBuilder = builder.Services.AddRazorPages();
 
 
 var app = builder.Build();
+
+//vérifie si la BDD existe, la crée si nécessaire et effectue les migrations manquantes
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DbProjectContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -147,13 +151,6 @@ app.MapControllerRoute(
 
 
 app.MapRazorPages();
-
-//vérifie si la BDD existe, la crée si nécessaire et effectue les migrations manquantes
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<DbProjectContext>();
-    db.Database.Migrate();
-}
 
 app.Run();
 

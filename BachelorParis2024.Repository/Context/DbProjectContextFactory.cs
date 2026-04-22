@@ -8,7 +8,7 @@ using BachelorParis2024.Domain.Identity;
 //pour essayer de résoudre le problème de migration
 //permettra à Entity Framework de créer une instance de DbProjectContext au moment de la
 //conception (design time)
-namespace BachelorParis2024.Repository.Context
+/*namespace BachelorParis2024.Repository.Context
 {
     internal class DbProjectContextFactory : IDesignTimeDbContextFactory<DbProjectContext>
     {
@@ -28,4 +28,4 @@ namespace BachelorParis2024.Repository.Context
             return new DbProjectContext(optionsBuilder.Options);
         }
     }
-}
+}*/

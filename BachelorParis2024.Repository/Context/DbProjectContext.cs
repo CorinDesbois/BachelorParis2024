@@ -29,12 +29,12 @@ namespace BachelorParis2024.Repository.Context
             //on veut que l'ID de commande soit un guid généré automatiquement
             modelBuilder.Entity<Order>()
                 .Property(o => o.Id)
-                .HasDefaultValueSql("NEWID()");
+                .HasDefaultValueSql("gen_random_uuid()");
 
             //on veut que l'ID de Ticket soit un guid généré automatiquement
             modelBuilder.Entity<Ticket>()
                 .Property(o => o.Id)
-                .HasDefaultValueSql("NEWID()");
+                .HasDefaultValueSql("gen_random_uuid()");
         }
         //Dans un projet ASP.NET Core moderne, OnConfiguring ne doit jamais être utilisé.
         //C’est Program.cs qui configure le DbContext.
