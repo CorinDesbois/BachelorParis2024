@@ -1,10 +1,6 @@
-﻿using BachelorParis2024.Domain.Interfaces;
-using BachelorParis2024.Domain.Models;
+﻿using BachelorParis2024.Domain.Models;
 using BachelorParis2024.Repository.Context;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Elfie.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BachelorParis2024.Controllers

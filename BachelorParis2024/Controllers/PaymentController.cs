@@ -1,5 +1,4 @@
 ﻿using BachelorParis2024.Domain.Identity;
-using BachelorParis2024.Domain.Interfaces;
 using BachelorParis2024.Domain.Models;
 using BachelorParis2024.Repository.Context;
 using BachelorParis2024.Services.Payment;
@@ -7,15 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Exchange.WebServices.Data;
-using Microsoft.SqlServer.Management.Sdk.Sfc;
-using Microsoft.SqlServer.Management.Smo;
-using NuGet.Versioning;
-using System.Linq;
-using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace BachelorParis2024.Controllers
