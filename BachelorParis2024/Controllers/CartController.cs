@@ -70,7 +70,7 @@ namespace BachelorParis2024.Controllers
                         IdEvent = item.IdEvent,
                         Sport = selectedEvent.Sport,
                         Event = selectedEvent.Name,
-                        Date = selectedEvent.Date,
+                        Date = selectedEvent.Date.ToUniversalTime(),
                         Location = selectedEvent.Location,
                         IdOffer = item.IdOffer,
                         OfferName = offer.Name,
@@ -91,7 +91,7 @@ namespace BachelorParis2024.Controllers
 
         public async Task<IActionResult> Checkout()
         {
-            //On récupère l'Id de l'utisateur via Idenity
+            //On récupère l'Id de l'utisateur via Identity
             if (User.Identity?.IsAuthenticated == true)
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

@@ -92,7 +92,7 @@ namespace BachelorParis2024.Controllers
                     IdEvent = i.IdEvent,
                     Sport = i.Sport,
                     Event = i.Event,
-                    Date = i.Date,
+                    Date = i.Date.ToUniversalTime(),
                     Location = i.Location,
                     IdOffer = i.IdOffer,
                     OfferName = i.OfferName,
