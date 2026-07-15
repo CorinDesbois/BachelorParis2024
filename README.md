@@ -96,6 +96,8 @@ Mettre à jour la base de données
 ## ⚠️ Limites actuelles
 Ce projet a été réalisé dans le cadre d’un examen, avec un temps limité.
 Il contient donc quelques bugs connus et fonctionnalités incomplètes.
+Limite liée à l’hébergement gratuit : 
+La base de données utilisée pour la billetterie est hébergée sur Render (free tier). Ce plan impose une réinitialisation mensuelle, pouvant entraîner une indisponibilité temporaire. Le fonctionnement normal est rétabli dès que la base est réinitialisée.
 
 ## 🔧 Améliorations prévues
 - Finaliser la partie **analyse des ventes**.
