@@ -57,17 +57,16 @@ dotnet ef database update
 ```
 Ajouter une migration
 ```bash
-dotnet ef migrations add NomDeMigration \
-  --context DbProjectContext \
-  --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj \
+dotnet ef migrations add NomDeMigration 
+  --context DbProjectContext 
+  --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj 
   --startup-project BachelorParis2024/BachelorParis2024.csproj
 ```
 Mettre à jour la base de données
 ```bash
-dotnet ef database update \
-  --context DbProjectContext \
-  --project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj \
-  --startup-project BachelorParis2024/BachelorParis2024.csproj
+--context DbProjectContext
+--project BachelorParis2024.Repository/BachelorParis2024.Repository.csproj
+--startup-project BachelorParis2024/BachelorParis2024.csproj
 ```
 
 ## 📁 Structure de la solution
